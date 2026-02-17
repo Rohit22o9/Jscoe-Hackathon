@@ -309,43 +309,109 @@ document.addEventListener('DOMContentLoaded', () => {
     // Wizard Form Submission
     const wizardForm = document.getElementById('registration-wizard');
     if (wizardForm) {
-        wizardForm.addEventListener('submit', (e) => {
+        wizardForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             if (!validateStep(4)) return;
 
+            // Anti-bot check
+            const honey = wizardForm.querySelector('input[name="_honey"]');
+            if (honey && honey.value) return;
+
             const btn = document.getElementById('final-submit-btn');
+            const btnText = document.getElementById('submit-text');
+            const btnLoader = document.getElementById('submit-loader');
+
             if (btn) {
-                btn.innerHTML = `<span class="flex items-center justify-center gap-3"><i data-lucide="loader-2" class="animate-spin w-5 h-5"></i> SUBMITTING...</span>`;
-                if (typeof lucide !== 'undefined') lucide.createIcons();
                 btn.disabled = true;
+                if (btnText) btnText.classList.add('hidden');
+                if (btnLoader) btnLoader.classList.remove('hidden');
             }
 
-            setTimeout(() => {
-                const successDiv = document.createElement('div');
-                successDiv.className = 'fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-xl p-6';
-                successDiv.innerHTML = `
-                    <div class="glass p-12 rounded-[40px] border-green-500/30 text-center max-w-lg scale-90 transition-all duration-500" id="success-popup">
-                        <img src="logo.jpeg" alt="IIC Logo" class="w-20 h-20 rounded-2xl mx-auto mb-6 object-cover border border-white/10 shadow-2xl">
-                        <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 text-green-500 text-glow">
-                            <i data-lucide="check" class="w-8 h-8"></i>
-                        </div>
-                        <h2 class="text-3xl font-orbitron font-bold mb-4">REGISTRATION SUCCESSFUL!</h2>
-                        <p class="text-white/60 text-lg mb-8 leading-relaxed">Your team has been successfully registered for IIC 2K26. A confirmation email will be sent shortly.</p>
-                        <button onclick="location.reload()" class="bg-white text-dark font-black px-12 py-5 rounded-2xl hover:scale-105 active:scale-95 transition-all text-lg shadow-xl">
-                            BACK TO HOME
-                        </button>
-                    </div>
-                `;
-                document.body.appendChild(successDiv);
-                if (typeof lucide !== 'undefined') lucide.createIcons();
-                setTimeout(() => {
-                    const popup = document.getElementById('success-popup');
-                    if (popup) popup.classList.replace('scale-90', 'scale-100');
-                }, 100);
-            }, 2000);
+            try {
+                const formData = new FormData(wizardForm);
+                const data = Object.fromEntries(formData.entries());
+
+                // Handle File to Base64
+                const fileInput = wizardForm.querySelector('input[name="screenshot"]');
+                if (fileInput && fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert('File too large. Max 5MB allowed.');
+                        throw new Error('File too large');
+                    }
+                    const base64 = await toBase64(file);
+                    data.screenshot = {
+                        base64: base64,
+                        type: file.type,
+                        name: file.name
+                    };
+                }
+
+                // POST to Google Apps Script
+                // REPLACE THIS URL with your deployed web app URL
+                const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    showSuccessPopup();
+                } else {
+                    throw new Error(result.message || 'Submission failed');
+                }
+
+            } catch (error) {
+                console.error('Submission Error:', error);
+                alert('Submission Failed. Please try again.');
+                if (btn) {
+                    btn.disabled = false;
+                    if (btnText) btnText.classList.remove('hidden');
+                    if (btnLoader) btnLoader.classList.add('hidden');
+                }
+            }
         });
     }
 });
+
+// Helper: Convert File to Base64
+const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+});
+
+// Success Popup Helper
+function showSuccessPopup() {
+    const successDiv = document.createElement('div');
+    successDiv.className = 'fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-xl p-6';
+    successDiv.innerHTML = `
+        <div class="glass p-12 rounded-[40px] border-green-500/30 text-center max-w-lg scale-90 transition-all duration-500" id="success-popup">
+            <img src="logo.jpeg" alt="IIC Logo" class="w-20 h-20 rounded-2xl mx-auto mb-6 object-cover border border-white/10 shadow-2xl">
+            <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 text-green-500 text-glow">
+                <i data-lucide="check" class="w-8 h-8"></i>
+            </div>
+            <h2 class="text-3xl font-orbitron font-bold mb-4 uppercase">Registration Successful!</h2>
+            <p class="text-white/60 text-lg mb-8 leading-relaxed">
+                Your submission is under verification.<br>
+                Confirmation email will be sent within 48 hours.
+            </p>
+            <button onclick="location.reload()" class="bg-white text-dark font-black px-12 py-5 rounded-2xl hover:scale-105 active:scale-95 transition-all text-lg shadow-xl">
+                BACK TO HOME
+            </button>
+        </div>
+    `;
+    document.body.appendChild(successDiv);
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+    setTimeout(() => {
+        const popup = document.getElementById('success-popup');
+        if (popup) popup.classList.replace('scale-90', 'scale-100');
+    }, 100);
+}
 
 // Mobile Menu Toggle
 const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
