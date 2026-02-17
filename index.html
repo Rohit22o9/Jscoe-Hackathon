@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Innovation Challenge 2K26</title>
+    <meta name="description"
+        content="Where Innovation Meets Global Impact. Join the International Innovation Challenge 2K26 with a ₹4,00,000 prize pool.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="logo.jpeg">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#050505',
+                        'navy-dark': '#000814',
+                        'neon-blue': '#00d4ff',
+                        'neon-purple': '#9b5de5',
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px #00d4ff, 0 0 10px #00d4ff' },
+                            '100%': { boxShadow: '0 0 20px #00d4ff, 0 0 40px #9b5de5' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Global toggle function for accordions/FAQs
+        window.toggleFaq = (button) => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                content.style.paddingBottom = '0';
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.paddingBottom = '24px';
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</head>
+
+<body class="font-inter">
+    <div id="cursor-glow"></div>
+    <div class="scrollbar-progress" id="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="logo.jpeg" alt="IIC Logo"
+                    class="w-10 h-10 rounded-lg object-cover shadow-[0_0_15px_rgba(0,212,255,0.3)] border border-white/10">
+                <span class="font-orbitron font-bold text-xl tracking-tighter">IIC 2K26</span>
+            </div>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#about"
+                    class="text-white hover:text-neon-blue transition-all font-medium text-sm uppercase tracking-widest">About</a>
+                <a href="#prizes"
+                    class="text-white hover:text-neon-blue transition-all font-medium text-sm uppercase tracking-widest">Prizes</a>
+                <a href="#tracks"
+                    class="text-white hover:text-neon-blue transition-all font-medium text-sm uppercase tracking-widest">Tracks</a>
+                <a href="#timeline"
+                    class="text-white hover:text-neon-blue transition-all font-medium text-sm uppercase tracking-widest">Timeline</a>
+                <a href="guidelines.html"
+                    class="text-white hover:text-neon-blue transition-all font-medium text-sm uppercase tracking-widest">Guidelines</a>
+                <a href="#faq"
+                    class="text-white hover:text-neon-blue transition-all font-medium text-sm uppercase tracking-widest">FAQ</a>
+                <a href="guidelines.html#ppt-format"
+                    class="bg-gradient-to-r from-neon-purple to-neon-blue text-white px-4 py-2 rounded-lg text-xs font-black hover:scale-105 transition-all shadow-[0_0_15px_rgba(155,93,229,0.4)]">PPT
+                    FORMAT</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#register"
+                    class="hidden sm:inline-block bg-neon-blue text-dark font-bold px-6 py-2 rounded-full hover:bg-white transition-all transform hover:scale-105 text-sm">
+                    REGISTER NOW
+                </a>
+                <button id="mobile-menu-toggle"
+                    class="md:hidden text-white p-2 focus:outline-none bg-white/5 rounded-lg border border-white/10">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu"
+            class="md:hidden hidden absolute top-full left-0 w-full bg-dark/98 backdrop-blur-3xl border-b border-white/10 py-8 px-6 space-y-6 shadow-2xl z-[100]">
+            <div class="flex flex-col gap-6">
+                <a href="#about"
+                    class="mobile-nav-link text-white/70 hover:text-neon-blue transition-colors font-bold tracking-widest uppercase text-base">About</a>
+                <a href="#prizes"
+                    class="mobile-nav-link text-white/70 hover:text-neon-blue transition-colors font-bold tracking-widest uppercase text-base">Prizes</a>
+                <a href="#tracks"
+                    class="mobile-nav-link text-white/70 hover:text-neon-blue transition-colors font-bold tracking-widest uppercase text-base">Innovation
+                    Tracks</a>
+                <a href="#timeline"
+                    class="mobile-nav-link text-white/70 hover:text-neon-blue transition-colors font-bold tracking-widest uppercase text-base">Timeline</a>
+                <a href="guidelines.html"
+                    class="mobile-nav-link text-white/70 hover:text-neon-blue transition-colors font-bold tracking-widest uppercase text-base">Guidelines</a>
+                <a href="#faq"
+                    class="mobile-nav-link text-white/70 hover:text-neon-blue transition-colors font-bold tracking-widest uppercase text-base">FAQ</a>
+                <a href="guidelines.html#ppt-format"
+                    class="inline-block bg-gradient-to-r from-neon-purple to-neon-blue text-white px-6 py-4 rounded-xl text-center font-black uppercase tracking-widest text-sm shadow-xl shadow-neon-purple/20">PPT
+                    FORMAT</a>
+                <a href="#register"
+                    class="sm:hidden block bg-neon-blue text-dark font-bold px-6 py-4 rounded-full text-center text-sm shadow-xl shadow-neon-blue/20">REGISTER
+                    NOW</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-[#050505]">
+        <div class="absolute inset-0 grid-bg opacity-30"></div>
+        <div id="particles-js" class="absolute inset-0"></div>
+
+        <!-- Animated Background Glows -->
+        <div class="absolute top-1/4 -left-20 w-96 h-96 bg-neon-blue/20 rounded-full blur-[120px] animate-pulse-slow">
+        </div>
+        <div
+            class="absolute bottom-1/4 -right-20 w-96 h-96 bg-neon-purple/20 rounded-full blur-[120px] animate-pulse-slow">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col items-center text-center mb-16">
+                <!-- Badges -->
+                <div data-aos="fade-up" class="inline-flex flex-wrap items-center justify-center gap-4 mb-10">
+                    <div
+                        class="flex items-center gap-2 px-5 py-2 rounded-full border border-neon-blue bg-neon-blue/10 text-neon-blue font-black text-[11px] tracking-[0.2em] uppercase shadow-[0_0_20px_rgba(0,212,255,0.3)]">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-neon-blue"></span>
+                        </span>
+                        LIVE REGISTRATION
+                    </div>
+                    <div
+                        class="px-5 py-2 rounded-full border border-white/10 bg-white/5 text-white/60 font-bold text-[11px] tracking-widest uppercase flex items-center gap-2">
+                        <img src="logo.jpeg" alt="Logo"
+                            class="w-4 h-4 rounded-full object-cover border border-white/20"> JSPM Event Committee
+                    </div>
+                </div>
+
+                <!-- Main Heading (Centered & Highlighted) -->
+                <div class="hero-title-highlight mb-10" data-aos="zoom-out" data-aos-delay="100">
+                    <h1
+                        class="text-5xl md:text-[4.5rem] lg:text-[6rem] xl:text-[7.5rem] font-orbitron font-black leading-[1] tracking-tighter group">
+                        <span class="block text-mask">INTERNATIONAL</span>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-white to-neon-purple">INNOVATION</span>
+                        <span class="block text-mask">CHALLENGE <span
+                                class="text-neon-blue animate-glitch">2K26</span></span>
+                    </h1>
+                </div>
+
+                <!-- Subtitle -->
+                <p data-aos="fade-up" data-aos-delay="200"
+                    class="text-xl md:text-2xl text-white/50 max-w-4xl leading-relaxed font-light mb-12">
+                    Where Innovation Meets <span class="text-white">Global Impact</span>. Join the brightest minds
+                    across the globe to solve <span class="text-neon-blue font-medium">real-world problems</span>
+                    and win from a massive prize pool.
+                </p>
+
+                <!-- Actions -->
+                <div data-aos="fade-up" data-aos-delay="300"
+                    class="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
+                    <a href="#register"
+                        class="w-full sm:w-auto bg-gradient-to-r from-neon-blue to-neon-purple text-dark font-black px-14 py-6 rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_50px_rgba(0,212,255,0.4)] flex items-center justify-center gap-3 group relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        </div>
+                        <span class="relative z-10 flex items-center gap-3 text-lg">
+                            🔥 REGISTER NOW
+                            <i data-lucide="zap"
+                                class="w-6 h-6 group-hover:scale-125 transition-transform text-white"></i>
+                        </span>
+                    </a>
+                    <button
+                        class="w-full sm:w-auto glass px-14 py-6 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-white/10 transition-all text-white shadow-xl group border-white/20">
+                        <i data-lucide="download" class="w-6 h-6 group-hover:-translate-y-1 transition-transform"></i>
+                        DOWNLOAD BROCHURE
+                    </button>
+                </div>
+            </div>
+
+            <!-- Detail Split Row -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center mt-12 pb-12">
+                <!-- Info & Stats -->
+                <div class="space-y-10" data-aos="fade-right" data-aos-delay="400">
+                    <div class="flex items-center gap-6">
+                        <div class="h-px w-20 bg-gradient-to-r from-neon-blue to-transparent"></div>
+                        <div class="flex flex-col">
+                            <span class="text-[12px] uppercase tracking-[0.4em] text-white/40 font-black mb-1">Total
+                                Prize Pool</span>
+                            <span
+                                class="text-4xl md:text-5xl font-orbitron font-black text-yellow-400 text-glow">₹4,00,000+</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div
+                            class="glass p-6 rounded-[32px] border-white/10 group hover:border-neon-blue/40 transition-all">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-neon-blue/10 flex items-center justify-center text-neon-blue mb-4">
+                                <i data-lucide="layers" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="text-xs uppercase font-black text-white/30 tracking-widest mb-1">Themes</h4>
+                            <p class="text-xl font-bold">17+ Tracks</p>
+                        </div>
+                        <div
+                            class="glass p-6 rounded-[32px] border-white/10 group hover:border-neon-purple/40 transition-all">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-neon-purple/10 flex items-center justify-center text-neon-purple mb-4">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="text-xs uppercase font-black text-white/30 tracking-widest mb-1">Reach</h4>
+                            <p class="text-xl font-bold">Global Impact</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Countdown & Venue -->
+                <div class="lg:pl-12" data-aos="fade-left" data-aos-delay="500">
+                    <div class="glass p-10 rounded-[48px] border-white/10 relative overflow-hidden group">
+                        <div
+                            class="absolute -top-10 -right-10 w-40 h-40 bg-neon-blue/10 rounded-full blur-3xl group-hover:bg-neon-blue/20 transition-all">
+                        </div>
+
+                        <div class="relative z-10 space-y-10 text-center">
+                            <h4 class="text-xs font-black uppercase tracking-[0.6em] text-white/20 mb-8">Event Starts In
+                            </h4>
+                            <div class="grid grid-cols-4 gap-4">
+                                <div class="flex flex-col">
+                                    <span id="days"
+                                        class="text-3xl md:text-5xl font-orbitron font-black text-neon-blue text-digital">00</span>
+                                    <span class="text-[9px] uppercase font-bold text-white/30 mt-2">Days</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span id="hours"
+                                        class="text-3xl md:text-5xl font-orbitron font-black text-white text-digital">00</span>
+                                    <span class="text-[9px] uppercase font-bold text-white/30 mt-2">Hrs</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span id="minutes"
+                                        class="text-3xl md:text-5xl font-orbitron font-black text-white text-digital">00</span>
+                                    <span class="text-[9px] uppercase font-bold text-white/30 mt-2">Min</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span id="seconds"
+                                        class="text-3xl md:text-5xl font-orbitron font-black text-white text-digital">00</span>
+                                    <span class="text-[9px] uppercase font-bold text-white/30 mt-2">Sec</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-8 border-t border-white/5">
+                                <div
+                                    class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 hover:border-neon-blue/30 transition-all group/v">
+                                    <i data-lucide="map-pin"
+                                        class="w-5 h-5 text-neon-blue group-hover/v:animate-bounce"></i>
+                                    <span class="text-sm font-bold text-white/80">Hybrid Mode (Online/Offline)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-dark relative">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-8 italic">THE FUTURE <br> <span
+                            class="text-neon-blue">BEGINS HERE</span></h2>
+                    <p class="text-white/60 text-lg leading-relaxed mb-8">
+                        The International Innovation Challenge 2K26 is a flagship global hackathon designed to bring
+                        together visionary students, developers, and entrepreneurs. Over 36 hours, participants will
+                        tackle complex challenges in 17 diverse tracks, receiving mentorship from industry leaders and
+                        competing for a share of our ₹4,00,000 prize pool.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <div class="w-2 h-2 bg-neon-blue rounded-full"></div>
+                            <span>International participation from 50+ countries</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-2 h-2 bg-neon-blue rounded-full"></div>
+                            <span>Open Innovation & Industry Mentorship</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-2 h-2 bg-neon-blue rounded-full"></div>
+                            <span>Startup Incubation opportunities for winners</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div data-aos="zoom-in" data-aos-delay="100" class="glass p-8 rounded-3xl hover:-translate-y-2">
+                        <div
+                            class="w-14 h-14 bg-neon-blue/20 rounded-2xl flex items-center justify-center text-neon-blue mb-6">
+                            <i data-lucide="code-2" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">BUILD</h3>
+                        <p class="text-white/50 text-sm">Turn your wildest ideas into working prototypes with
+                            cutting-edge tech.</p>
+                    </div>
+                    <div data-aos="zoom-in" data-aos-delay="200"
+                        class="glass p-8 rounded-3xl hover:-translate-y-2 mt-0 md:mt-10">
+                        <div
+                            class="w-14 h-14 bg-neon-purple/20 rounded-2xl flex items-center justify-center text-neon-purple mb-6">
+                            <i data-lucide="users" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">COLLABORATE</h3>
+                        <p class="text-white/50 text-sm">Network with global peers and industry veterans to expand your
+                            vision.</p>
+                    </div>
+                    <div data-aos="zoom-in" data-aos-delay="300" class="glass p-8 rounded-3xl hover:-translate-y-2">
+                        <div
+                            class="w-14 h-14 bg-yellow-400/20 rounded-2xl flex items-center justify-center text-yellow-500 mb-6">
+                            <i data-lucide="rocket" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">LAUNCH</h3>
+                        <p class="text-white/50 text-sm">Get the exposure and funding needed to scale your project to a
+                            startup.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prize Pool Section -->
+    <section id="prizes" class="py-24 relative overflow-hidden bg-[#0a0a0a]">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon-blue/5 rounded-full blur-[120px]">
+        </div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h2 data-aos="fade-up" class="text-4xl md:text-6xl font-orbitron font-black mb-16">THE <span
+                    class="text-yellow-400">WINNINGS</span></h2>
+
+            <div data-aos="scale-up"
+                class="inline-block p-1 bg-gradient-to-r from-neon-blue via-yellow-400 to-neon-purple rounded-[40px] mb-20 shadow-[0_0_50px_rgba(250,204,21,0.2)]">
+                <div class="bg-dark px-16 py-12 rounded-[38px] flex flex-col items-center">
+                    <span class="text-white/60 text-lg uppercase tracking-[0.5em] mb-4">Total Prize Pool</span>
+                    <div class="flex items-center gap-4">
+                        <span class="text-6xl md:text-9xl font-orbitron font-black text-white">₹</span>
+                        <span id="counter"
+                            class="text-6xl md:text-9xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600">4,00,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 2nd Place -->
+                <div data-aos="fade-up" data-aos-delay="100"
+                    class="glass p-10 rounded-[40px] border-white/5 order-2 md:order-1">
+                    <div
+                        class="w-20 h-20 bg-slate-400/20 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-400">
+                        <i data-lucide="trophy" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">RUNNER UP</h3>
+                    <p class="text-4xl font-orbitron font-bold text-slate-300 mb-4">₹1,00,000</p>
+                    <p class="text-white/40 text-sm">Silver Trophy + Performance Merch + Cloud Credits</p>
+                </div>
+                <!-- 1st Place -->
+                <div data-aos="fade-up"
+                    class="glass p-12 rounded-[40px] border-yellow-500/30 -mt-8 order-1 md:order-2 bg-gradient-to-b from-yellow-400/5 to-transparent">
+                    <div
+                        class="w-24 h-24 bg-yellow-400/20 rounded-full flex items-center justify-center mx-auto mb-6 text-yellow-400">
+                        <i data-lucide="crown" class="w-12 h-12"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-2">CHAMPIONS</h3>
+                    <p class="text-5xl font-orbitron font-bold text-yellow-400 mb-6">₹2,00,000</p>
+                    <p class="text-white/40 text-sm">Platinum Trophy + Full Incubation Support + Investor Access</p>
+                </div>
+                <!-- 3rd Place -->
+                <div data-aos="fade-up" data-aos-delay="200" class="glass p-10 rounded-[40px] border-white/5 order-3">
+                    <div
+                        class="w-20 h-20 bg-orange-700/20 rounded-full flex items-center justify-center mx-auto mb-6 text-orange-700">
+                        <i data-lucide="medal" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">SECOND RUNNER UP</h3>
+                    <p class="text-4xl font-orbitron font-bold text-orange-600 mb-4">₹50,000</p>
+                    <p class="text-white/40 text-sm">Bronze Trophy + Digital Badges + Tech Subscriptions</p>
+                </div>
+            </div>
+
+            <p class="mt-16 text-white/40 italic">* Consolidation prizes worth ₹50,000 for top performing domain
+                specific teams.</p>
+        </div>
+    </section>
+
+    <!-- Tracks Section -->
+    <section id="tracks" class="py-24 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 data-aos="fade-up" class="text-4xl md:text-5xl font-orbitron font-bold mb-4">🚀 INNOVATION <span
+                        class="text-neon-blue">TRACKS</span> 2026</h2>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-white/50">Choose your domain and build the
+                    future. 17 paths to glory.</p>
+            </div>
+
+            <div id="tracks-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Tracks will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="py-24 relative bg-[#050505]">
+        <div class="container mx-auto px-6">
+            <h2 data-aos="fade-up" class="text-4xl font-orbitron font-bold text-center mb-20">EVENT <span
+                    class="text-neon-purple">TIMELINE</span></h2>
+
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Line -->
+                <div
+                    class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 timeline-line transform md:-translate-x-1/2 opacity-20">
+                </div>
+
+                <div class="space-y-12">
+                    <!-- Step 1 -->
+                    <div data-aos="fade-right" class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-2xl font-bold text-neon-blue">Registrations Open</h3>
+                            <p class="text-white/50 mt-1">Feb 20, 2026</p>
+                            <p class="mt-2 text-sm text-white/40">Secure your spot in the most awaited innovation
+                                challenge of the year.</p>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 w-8 h-8 bg-neon-blue rounded-full transform -translate-x-1/2 shadow-[0_0_20px_rgba(0,212,255,0.6)] z-10 border-4 border-dark">
+                        </div>
+                        <div class="md:w-1/2 md:pl-12"></div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div data-aos="fade-left" class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12"></div>
+                        <div
+                            class="absolute left-4 md:left-1/2 w-8 h-8 bg-neon-purple rounded-full transform -translate-x-1/2 shadow-[0_0_20px_rgba(155,93,229,0.6)] z-10 border-4 border-dark">
+                        </div>
+                        <div class="md:w-1/2 md:pl-12">
+                            <h3 class="text-2xl font-bold text-neon-purple">Registrations Close</h3>
+                            <p class="text-white/50 mt-1">March 15, 2026</p>
+                            <p class="mt-2 text-sm text-white/40">Last chance to submit your team details and project
+                                abstract.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div data-aos="fade-right" class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-2xl font-bold text-neon-blue">Shortlisting</h3>
+                            <p class="text-white/50 mt-1">March 20, 2026</p>
+                            <p class="mt-2 text-sm text-white/40">Our expert panel evaluates abstracts and announces the
+                                finalists.</p>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 w-8 h-8 bg-neon-blue rounded-full transform -translate-x-1/2 shadow-[0_0_20px_rgba(0,212,255,0.6)] z-10 border-4 border-dark">
+                        </div>
+                        <div class="md:w-1/2 md:pl-12"></div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div data-aos="fade-left" class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12"></div>
+                        <div
+                            class="absolute left-4 md:left-1/2 w-8 h-8 border-4 border-neon-purple bg-dark rounded-full transform -translate-x-1/2 animate-pulse z-10">
+                        </div>
+                        <div class="md:w-1/2 md:pl-12">
+                            <h3 class="text-2xl font-bold text-neon-purple">Hackathon Day 1</h3>
+                            <p class="text-white/50 mt-1">March 28, 2026</p>
+                            <p class="mt-2 text-sm text-white/40">Building phase starts. Mentorship sessions and
+                                workshops throughout the day.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div data-aos="fade-up" class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-2xl font-bold text-yellow-400">Grand Finale</h3>
+                            <p class="text-white/50 mt-1">March 29, 2026</p>
+                            <p class="mt-2 text-sm text-white/40">Final presentation, judging, and the prestigious award
+                                ceremony.</p>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 w-8 h-8 bg-yellow-400 rounded-full transform -translate-x-1/2 shadow-[0_0_30px_rgba(250,204,21,0.8)] z-10 border-4 border-dark">
+                        </div>
+                        <div class="md:w-1/2 md:pl-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section
+    <section class="py-16 bg-dark border-y border-white/5">
+        <div class="container mx-auto px-6 mb-10 text-center">
+            <h3 class="text-white/40 uppercase tracking-[0.3em] font-bold text-sm">🤝 OUR COLLABORATION PARTNERS</h3>
+        </div>
+        <div class="marquee-container">
+            <div class="marquee-content" id="partner-marquee">
+                <div
+                    class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer px-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Google_Labs_logo.svg" class="h-10"
+                        alt="Google">
+                </div>
+                <div
+                    class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer px-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.svg" class="h-10"
+                        alt="Meta">
+                </div>
+                <div
+                    class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer px-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" class="h-10"
+                        alt="Microsoft">
+                </div>
+                <div
+                    class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer px-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Amazon_logo_2024.svg" class="h-10"
+                        alt="Amazon">
+                </div>
+                <div
+                    class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer px-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" class="h-10" alt="IBM">
+                </div>
+                <div
+                    class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer px-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel-logo.svg" class="h-10"
+                        alt="Intel">
+                </div>
+                <div
+                    class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer px-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Google_Labs_logo.svg" class="h-10"
+                        alt="Google">
+                </div>
+                <div
+                    class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer px-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.svg" class="h-10"
+                        alt="Meta">
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Modal -->
+    <div id="track-modal"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass max-w-2xl w-full p-10 rounded-[40px] border-neon-blue/30 relative scale-90 transition-transform duration-300"
+            id="modal-content">
+            <button onclick="closeModal()"
+                class="absolute top-8 right-8 text-white/50 hover:text-white transition-colors">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            <div class="w-20 h-20 bg-neon-blue/20 rounded-3xl flex items-center justify-center text-neon-blue mb-8"
+                id="modal-icon-container">
+                <i id="modal-icon-elem" data-lucide="cpu" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-4xl font-orbitron font-bold mb-6" id="modal-title">Track Title</h3>
+            <p class="text-white/60 text-lg leading-relaxed mb-10" id="modal-desc">
+                Extended description of the innovation track goes here. This section provides more detail about the
+                problems aimed to be solved and the potential impact of the projects in this domain.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#register" onclick="closeModal()"
+                    class="bg-neon-blue text-dark font-black px-8 py-4 rounded-2xl flex items-center justify-center gap-2 hover:scale-105 transition-all">
+                    BUILD IN THIS TRACK <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <button onclick="closeModal()"
+                    class="glass px-8 py-4 rounded-2xl font-bold hover:bg-white/5 transition-all">
+                    DISMISS
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Section -->
+    <section id="register" class="py-24 relative overflow-hidden bg-gradient-to-b from-dark to-[#0a0a0a]">
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Multi-Step Form Container -->
+            <div class="max-w-4xl mx-auto glass p-8 md:p-12 rounded-[40px] border-neon-blue/20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-orbitron font-bold mb-2">🌍 International Innovation Challenge
+                        2K26</h2>
+                    <h3 class="text-xl text-white/50">Student Team Registration Form</h3>
+                    <div class="h-1 w-24 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto mt-4 rounded-full">
+                    </div>
+                </div>
+
+                <!-- Progress Stepper -->
+                <div class="mb-12 relative overflow-x-auto pb-4">
+                    <div class="flex justify-between items-center min-w-[600px] relative z-10 px-4">
+                        <!-- Step 1 -->
+                        <div class="flex flex-col items-center step-item active" data-step="1">
+                            <div
+                                class="w-12 h-12 rounded-full glass border-2 flex items-center justify-center mb-2 transition-all duration-300 step-circle">
+                                <i data-lucide="info" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] md:text-xs uppercase tracking-widest font-bold opacity-50">Basic
+                                Info</span>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="flex flex-col items-center step-item" data-step="2">
+                            <div
+                                class="w-12 h-12 rounded-full glass border-2 flex items-center justify-center mb-2 transition-all duration-300 step-circle">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <span
+                                class="text-[10px] md:text-xs uppercase tracking-widest font-bold opacity-50">Members</span>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="flex flex-col items-center step-item" data-step="3">
+                            <div
+                                class="w-12 h-12 rounded-full glass border-2 flex items-center justify-center mb-2 transition-all duration-300 step-circle">
+                                <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                            </div>
+                            <span
+                                class="text-[10px] md:text-xs uppercase tracking-widest font-bold opacity-50">Project</span>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="flex flex-col items-center step-item" data-step="4">
+                            <div
+                                class="w-12 h-12 rounded-full glass border-2 flex items-center justify-center mb-2 transition-all duration-300 step-circle">
+                                <i data-lucide="credit-card" class="w-6 h-6"></i>
+                            </div>
+                            <span
+                                class="text-[10px] md:text-xs uppercase tracking-widest font-bold opacity-50">Payment</span>
+                        </div>
+                    </div>
+                    <!-- Progress Line -->
+                    <div class="absolute top-6 left-[10%] right-[10%] h-[2px] bg-white/10 -z-0 min-w-[500px]">
+                        <div id="step-progress-line"
+                            class="h-full bg-gradient-to-r from-neon-blue to-neon-purple transition-all duration-500 w-0">
+                        </div>
+                    </div>
+                </div>
+
+                <form id="registration-wizard" class="space-y-8">
+                    <!-- STEP 1: Basic Info -->
+                    <div class="form-step active" id="step-1">
+                        <h4 class="text-xl font-bold mb-8 flex items-center gap-3">
+                            <span
+                                class="w-8 h-8 rounded-lg bg-neon-blue/20 text-neon-blue flex items-center justify-center text-sm font-black">1</span>
+                            Team & Institution Information
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase text-white/40 ml-2">Team Name *</label>
+                                <input type="text" required name="teamName"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    placeholder="Letters & Spaces Only">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase text-white/40 ml-2">College / Institution Name
+                                    *</label>
+                                <input type="text" required name="college"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    placeholder="Full name of institution">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase text-white/40 ml-2">Institution Type *</label>
+                                <select required name="collegeType"
+                                    class="w-full bg-[#0d0d0d] border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Select Type</option>
+                                    <option>Government / Semi-Gov</option>
+                                    <option>Private University</option>
+                                    <option>Autonomous Institute</option>
+                                    <option>International School/College</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase text-white/40 ml-2">Country *</label>
+                                <input type="text" required name="country"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    placeholder="e.g. India">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase text-white/40 ml-2">State / Province *</label>
+                                <input type="text" required name="state"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    placeholder="e.g. Maharashtra">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase text-white/40 ml-2">PIN / Postal Code
+                                    *</label>
+                                <input type="text" required name="pin"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    placeholder="XXXXXX">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Members -->
+                    <div class="form-step hidden" id="step-2">
+                        <h4 class="text-xl font-bold mb-8 flex items-center gap-3">
+                            <span
+                                class="w-8 h-8 rounded-lg bg-neon-purple/20 text-neon-purple flex items-center justify-center text-sm font-black">2</span>
+                            Team Members (2–4 Members)
+                        </h4>
+                        <div class="space-y-8">
+                            <div class="p-6 rounded-3xl bg-white/5 border border-white/5">
+                                <h5 class="text-sm font-bold text-neon-blue mb-4 uppercase tracking-widest">Team Leader
+                                </h5>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <input type="text" required name="leaderName"
+                                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-blue text-sm"
+                                        placeholder="Full Name *">
+                                    <input type="email" required name="leaderEmail"
+                                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-blue text-sm"
+                                        placeholder="Email *">
+                                    <input type="tel" required name="leaderPhone"
+                                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-blue text-sm"
+                                        placeholder="Phone Number *">
+                                </div>
+                            </div>
+                            <div class="p-6 rounded-3xl bg-white/5 border border-white/5">
+                                <h5 class="text-sm font-bold text-white/40 mb-4 uppercase tracking-widest">Member 2</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <input type="text" required name="m2Name"
+                                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
+                                        placeholder="Full Name *">
+                                    <input type="email" required name="m2Email"
+                                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
+                                        placeholder="Email *">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="p-6 rounded-3xl bg-white/5 border border-white/5">
+                                    <h5 class="text-sm font-bold text-white/40 mb-4 uppercase tracking-widest">Member 3
+                                        (Optional)</h5>
+                                    <div class="space-y-4">
+                                        <input type="text" name="m3Name"
+                                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
+                                            placeholder="Full Name">
+                                        <input type="email" name="m3Email"
+                                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
+                                            placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="p-6 rounded-3xl bg-white/5 border border-white/5">
+                                    <h5 class="text-sm font-bold text-white/40 mb-4 uppercase tracking-widest">Member 4
+                                        (Optional)</h5>
+                                    <div class="space-y-4">
+                                        <input type="text" name="m4Name"
+                                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
+                                            placeholder="Full Name">
+                                        <input type="email" name="m4Email"
+                                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
+                                            placeholder="Email">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Project -->
+                    <div class="form-step hidden" id="step-3">
+                        <h4 class="text-xl font-bold mb-8 flex items-center gap-3">
+                            <span
+                                class="w-8 h-8 rounded-lg bg-yellow-400/20 text-yellow-500 flex items-center justify-center text-sm font-black">3</span>
+                            Project & Innovation Track
+                        </h4>
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold uppercase text-white/40 ml-2">Innovation Track
+                                        *</label>
+                                    <select required name="track"
+                                        class="w-full bg-[#0d0d0d] border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue appearance-none cursor-pointer">
+                                        <option value="" disabled selected>Select a track</option>
+                                        <option>Agriculture & FoodTech</option>
+                                        <option>Smart Automation</option>
+                                        <option>Smart Vehicles</option>
+                                        <option>HealthTech / BioTech</option>
+                                        <option>Social Good / Accessibility</option>
+                                        <option>Transportation & Logistics</option>
+                                        <option>Defense / Security</option>
+                                        <option>Space Technology</option>
+                                        <option>Heritage & Culture</option>
+                                        <option>Clean & Green Technology</option>
+                                        <option>Smart Education</option>
+                                        <option>Games & Toys</option>
+                                        <option>Fintech / Blockchain</option>
+                                        <option>Robotics & Drones</option>
+                                        <option>Disaster Management</option>
+                                        <option>Tourism & Hospitality</option>
+                                        <option>Miscellaneous / Open Innovation</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold uppercase text-white/40 ml-2">Project Title
+                                        *</label>
+                                    <input type="text" required name="projectTitle"
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                        placeholder="Enter catch project title">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase text-white/40 ml-2">Short Project Description
+                                    *</label>
+                                <textarea required name="projectDesc"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all h-40"
+                                    placeholder="Describe your solution..."></textarea>
+                                <p class="text-[10px] text-white/30 ml-2">Briefly explain your idea in 150–250 words.
+                                </p>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase text-white/40 ml-2">GitHub / Portfolio Link
+                                    (Optional)</label>
+                                <input type="url" name="githubLink"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    placeholder="https://github.com/...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Payment -->
+                    <div class="form-step hidden" id="step-4">
+                        <h4 class="text-xl font-bold mb-8 flex items-center gap-3">
+                            <span
+                                class="w-8 h-8 rounded-lg bg-green-500/20 text-green-500 flex items-center justify-center text-sm font-black">4</span>
+                            Registration Payment
+                        </h4>
+
+                        <div
+                            class="p-8 rounded-[32px] bg-gradient-to-r from-neon-blue/10 to-neon-purple/10 border border-white/5 text-center mb-8">
+                            <span
+                                class="text-white/60 uppercase tracking-widest text-xs font-bold mb-2 block">Registration
+                                Fee</span>
+                            <div class="text-4xl font-orbitron font-black text-white">₹500 <span
+                                    class="text-lg font-normal opacity-50">per Team</span></div>
+                            <p class="text-sm text-white/40 mt-2 italic">Complete payment before final submission.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <div class="space-y-6 flex flex-col items-center justify-center">
+                                <div
+                                    class="w-48 h-48 glass rounded-3xl p-4 flex items-center justify-center border-dashed border-2 border-white/20">
+                                    <div class="text-center">
+                                        <i data-lucide="qr-code" class="w-24 h-24 text-white/10 mx-auto"></i>
+                                        <span class="text-[10px] uppercase font-bold text-white/20 mt-2 block">QR
+                                            Placeholder</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs font-bold text-white/50 uppercase tracking-widest">Scan & Pay ₹500 via
+                                    UPI</p>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold uppercase text-white/40 ml-2">UPI Transaction ID
+                                        *</label>
+                                    <input type="text" required name="transactionId"
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                        placeholder="Enter 12-digit UPI ID">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold uppercase text-white/40 ml-2">Upload Payment
+                                        Screenshot *</label>
+                                    <input type="file" required name="screenshot" accept="image/*,.pdf"
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all text-sm file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-black file:bg-neon-blue file:text-dark cursor-pointer text-white/40">
+                                </div>
+                                <div class="flex items-start gap-3 ml-2 pt-2">
+                                    <input type="checkbox" required
+                                        class="mt-1 w-4 h-4 rounded accent-neon-blue cursor-pointer">
+                                    <span class="text-xs text-white/50 leading-relaxed">I confirm that the payment
+                                        details provided are accurate and understand that registration is
+                                        non-refundable.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-center gap-4 pt-10 border-t border-white/5">
+                        <button type="button" id="prev-btn"
+                            class="w-full md:w-auto px-8 py-4 glass rounded-2xl font-bold text-white/30 cursor-not-allowed opacity-50 flex items-center justify-center gap-2 transition-all hover:bg-white/5"
+                            disabled>
+                            <i data-lucide="arrow-left" class="w-5 h-5"></i> PREVIOUS
+                        </button>
+                        <button type="button" id="next-btn"
+                            class="w-full md:w-auto px-10 py-5 bg-gradient-to-r from-neon-blue to-neon-purple text-dark font-black rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_30px_rgba(155,93,229,0.3)] flex items-center justify-center gap-2">
+                            NEXT STEP <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                        <button type="submit" id="final-submit-btn"
+                            class="hidden w-full md:w-auto px-12 py-5 bg-gradient-to-r from-neon-blue to-neon-purple text-dark font-black rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_40px_rgba(0,212,255,0.4)] flex items-center justify-center gap-3">
+                            <i data-lucide="zap"></i> COMPLETE REGISTRATION
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Button -->
+    <a href="#register"
+        class="fixed bottom-8 right-8 z-[90] bg-neon-blue text-dark font-black px-6 py-4 rounded-2xl flex items-center gap-3 shadow-[0_0_30px_rgba(0,212,255,0.5)] md:hidden hover:scale-105 transition-all">
+        <i data-lucide="zap"></i> REGISTER
+    </a>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-[#0a0a0a]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 data-aos="fade-up" class="text-4xl font-orbitron font-bold mb-4">EVENT <span
+                        class="text-neon-blue">GALLERY</span></h2>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-white/50">Glimpses from our past innovation
+                    challenges.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div data-aos="zoom-in" class="relative group overflow-hidden rounded-3xl h-64 cursor-pointer">
+                    <img src="image1.png"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        alt="Hackathon">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <span class="text-lg font-bold">JSPM JSCOE Signed MoU with PNB Bali, Indonesia</span>
+                    </div>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="100"
+                    class="relative group overflow-hidden rounded-3xl h-64 md:col-span-2 cursor-pointer">
+                    <img src="image3.png"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        alt="Workshop">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <span class="text-lg font-bold">JSPM JSCOE Signed MoU with Universitas Christian Petra, Surabaya
+                            Indonesia</span>
+                    </div>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="200"
+                    class="relative group overflow-hidden rounded-3xl h-64 md:col-span-2 cursor-pointer">
+                    <img src="image4.png"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        alt="Awards">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <span class="text-lg font-bold">JSPM JSCOE Signed MoU with RVS College of Engineering &
+                            Technology, Jamshedpur</span>
+                    </div>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="300"
+                    class="relative group overflow-hidden rounded-3xl h-64 cursor-pointer">
+                    <img src="image5.png"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        alt="Robotics">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <span class="text-lg font-bold">JSPM JSCOE Signed MoU with ITB STIKOM Bali, Indonesia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-dark">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-4xl font-orbitron font-bold text-center mb-16">FREQUENTLY ASKED <span
+                    class="text-neon-blue">QUESTIONS</span></h2>
+
+            <div class="space-y-4">
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center group"
+                        onclick="toggleFaq(this)">
+                        <span class="font-bold text-lg">Who can participate?</span>
+                        <i data-lucide="chevron-down" class="transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-8 pb-0">
+                        <p class="pb-6 text-white/60">Any university student or recent graduate from any college
+                            globally can participate. Teams can have 2 to 4 members.</p>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center group"
+                        onclick="toggleFaq(this)">
+                        <span class="font-bold text-lg">Is there any registration fee?</span>
+                        <i data-lucide="chevron-down" class="transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-8 pb-0">
+                        <p class="pb-6 text-white/60">Yes, there is a mandatory registration fee of ₹500 per team. This
+                            fee covers basic coordination and ensures serious participation. Teams must upload the
+                            payment screenshot during the registration process for verification.</p>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center group"
+                        onclick="toggleFaq(this)">
+                        <span class="font-bold text-lg">Are online teams allowed?</span>
+                        <i data-lucide="chevron-down" class="transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-8 pb-0">
+                        <p class="pb-6 text-white/60">This is a hybrid event. Initial rounds are online, but the grand
+                            finale will be held on-site at our campus.</p>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center group"
+                        onclick="toggleFaq(this)">
+                        <span class="font-bold text-lg">What is the judging criteria?</span>
+                        <i data-lucide="chevron-down" class="transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-8 pb-0">
+                        <p class="pb-6 text-white/60">Projects are judged based on innovation, technical implementation,
+                            social impact, and viability of the solution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#020202] pt-20 pb-10 border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="logo.jpeg" alt="IIC Logo"
+                            class="w-12 h-12 rounded-xl object-cover border border-white/10">
+                        <span class="font-orbitron font-bold text-2xl">IIC 2K26</span>
+                    </div>
+                    <p class="text-white/40 max-w-md mb-8">
+                        Organized by the Event Organizing Committee, JSPM University. Empowering the next generation of
+                        global innovators to solve humanity's greatest challenges.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:text-neon-blue transition-all"><i
+                                data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:text-neon-blue transition-all"><i
+                                data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:text-neon-blue transition-all"><i
+                                data-lucide="linkedin" class="w-5 h-5"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:text-neon-blue transition-all"><i
+                                data-lucide="github" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-lg">Quick Links</h4>
+                    <ul class="space-y-4 text-white/50">
+                        <li><a href="#about" class="hover:text-neon-blue">About</a></li>
+                        <li><a href="#tracks" class="hover:text-neon-blue">Innovation Tracks</a></li>
+                        <li><a href="#timeline" class="hover:text-neon-blue">Timeline</a></li>
+                        <li><a href="guidelines.html" class="hover:text-neon-blue">Guidelines</a></li>
+                        <li><a href="#faq" class="hover:text-neon-blue">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-lg">Contact Us</h4>
+                    <ul class="space-y-4 text-white/50 text-sm">
+                        <li class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4"></i>
+                            contact@iic2k26.com</li>
+                        <li class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4"></i> +91 98765 43210
+                        </li>
+                        <li class="flex items-start gap-3"><i data-lucide="map-pin" class="w-4 h-4 mt-1"></i> JSPM
+                            University Campus, Wagholi, Pune, Maharashtra 412207</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-10 text-center text-white/30 text-sm">
+                <p>&copy; 2026 International Innovation Challenge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Particles -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script src="main.js" type="module"></script>
+</body>
+
+</html>
