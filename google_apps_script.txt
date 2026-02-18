@@ -8,17 +8,41 @@
  */
 
 const SHEET_NAME = 'Registrations';
-const DRIVE_FOLDER_ID = 'YOUR_DRIVE_FOLDER_ID_HERE'; // User needs to replace this
+const DRIVE_FOLDER_ID = '1Wz5fN30iV6jbNh0CpjN8DFA75jDz4fPq'; 
 
 function doPost(e) {
+  const lock = LockService.getScriptLock();
+  lock.tryLock(10000); 
+
+  const debugLogs = [];
+  function log(msg) {
+    debugLogs.push(new Date().toISOString() + ": " + msg);
+  }
+
   try {
+    log("Started execution");
     const data = JSON.parse(e.postData.contents);
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME) || SpreadsheetApp.getActiveSpreadsheet().insertSheet(SHEET_NAME);
     
-    // Set headers if new sheet
+    // Get Active Spreadsheet (The one this script is attached to)
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    if (!ss) throw new Error("Script is not attached to a Spreadsheet. Please check the container.");
+    
+    log("Accessed Spreadsheet: " + ss.getName());
+    log("Spreadsheet URL: " + ss.getUrl()); // CLICK THIS IN LOGS TO FIND DATA
+
+    // Get Sheet
+    let sheet = ss.getSheetByName(SHEET_NAME);
+    if (!sheet) {
+      log("Sheet 'Registrations' not found, creating it...");
+      sheet = ss.insertSheet(SHEET_NAME);
+    } else {
+      log("Found existing sheet: " + SHEET_NAME);
+    }
+    
+    // Headers
     if (sheet.getLastRow() === 0) {
       const headers = [
-        'Timestamp', 'Team Name', 'Institution', 'Country', 'State', 'PIN', 
+        'Timestamp', 'Team Name', 'Institution', 'Institution Type', 'Country', 'State', 'PIN', 
         'Team Leader Name', 'Leader Email', 'Leader Phone', 'Team Size',
         'Member 2 Name', 'Member 2 Email', 'Member 3 Name', 'Member 3 Email', 
         'Member 4 Name', 'Member 4 Email', 'Innovation Track', 'Project Title', 
@@ -28,23 +52,31 @@ function doPost(e) {
       sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold').setBackground('#f3f3f3');
     }
 
-    // Handle File Upload to Drive
+    // File Upload
     let fileUrl = "No Screenshot";
-    if (data.screenshot && data.screenshot.base64) {
-      const folder = DriveApp.getFolderById(DRIVE_FOLDER_ID);
-      const contentType = data.screenshot.type || 'image/png';
-      const fileName = `Payment_${data.teamName.replace(/\s+/g, '_')}_${Date.now()}`;
-      const decodedData = Utilities.base64Decode(data.screenshot.base64.split(',')[1]);
-      const blob = Utilities.newBlob(decodedData, contentType, fileName);
-      const file = folder.createFile(blob);
-      fileUrl = file.getUrl();
+    try {
+      if (data.screenshot && data.screenshot.base64) {
+        log("Uploading file...");
+        const folder = DriveApp.getFolderById(DRIVE_FOLDER_ID);
+        const contentType = data.screenshot.type || 'image/png';
+        const fileName = `Payment_${data.teamName.replace(/\s+/g, '_')}_${Date.now()}`;
+        const decodedData = Utilities.base64Decode(data.screenshot.base64.split(',')[1]);
+        const blob = Utilities.newBlob(decodedData, contentType, fileName);
+        const file = folder.createFile(blob);
+        fileUrl = file.getUrl();
+        log("File uploaded: " + fileUrl);
+      }
+    } catch (driveError) {
+      log("Drive Error: " + driveError.toString());
+      fileUrl = "Error: " + driveError.toString(); // Don't fail the whole registration
     }
 
-    // Prepare Row Data
+    // Row Data
     const row = [
       new Date(),
       data.teamName,
       data.college,
+      data.collegeType || '-',
       data.country,
       data.state,
       data.pin,
@@ -68,23 +100,25 @@ function doPost(e) {
     ];
 
     sheet.appendRow(row);
+    SpreadsheetApp.flush(); 
+    log("Row saved successfully.");
 
     return ContentService.createTextOutput(JSON.stringify({
       status: 'success',
       message: 'Registration recorded successfully',
-      fileUrl: fileUrl
+      spreadsheetName: ss.getName(),
+      spreadsheetUrl: ss.getUrl(), // Return URL to frontend
+      logs: debugLogs
     })).setMimeType(ContentService.MimeType.JSON);
 
   } catch (error) {
+    log("CRITICAL ERROR: " + error.toString());
     return ContentService.createTextOutput(JSON.stringify({
       status: 'error',
-      message: error.toString()
+      message: error.toString(),
+      logs: debugLogs
     })).setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
   }
-}
-
-// Enable CORS
-function doOptions(e) {
-  return ContentService.createTextOutput("")
-    .setMimeType(ContentService.MimeType.TEXT);
 }

@@ -263,7 +263,17 @@ const validateStep = (step) => {
     let isValid = true;
 
     inputs.forEach(input => {
-        if (!input.value.trim()) {
+        if (input.type === 'checkbox' || input.type === 'radio') {
+            if (!input.checked) {
+                isValid = false;
+                // For checkbox, we might want to highlight the parent or the text
+                const container = input.closest('div') || input.parentElement;
+                if (container) {
+                    container.classList.add('border', 'border-red-500/50', 'rounded-lg', 'p-2');
+                    setTimeout(() => container.classList.remove('border', 'border-red-500/50', 'rounded-lg', 'p-2'), 3000);
+                }
+            }
+        } else if (!input.value.trim()) {
             isValid = false;
             input.classList.add('border-red-500/50');
             setTimeout(() => input.classList.remove('border-red-500/50'), 3000);
@@ -309,6 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Wizard Form Submission
     const wizardForm = document.getElementById('registration-wizard');
     if (wizardForm) {
+        wizardForm.setAttribute('novalidate', 'true');
         wizardForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             if (!validateStep(4)) return;
@@ -349,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // POST to Google Apps Script
                 // REPLACE THIS URL with your deployed web app URL
-                const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+                const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUHnsoThhKmnvW9h70tsNtT68sqvhwH-gMYYEolBFRv4ndvw05l28nBDgHjQW04lODxA/exec';
 
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',
@@ -357,10 +368,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 const result = await response.json();
+                console.log("Backend Logs:", result.logs);
+                console.log("DATA SAVED HERE (CLICK ME):", result.spreadsheetUrl); // Clickable Link
 
                 if (result.status === 'success') {
                     showSuccessPopup();
                 } else {
+                    console.error("Backend Error Logs:", result.logs);
                     throw new Error(result.message || 'Submission failed');
                 }
 
