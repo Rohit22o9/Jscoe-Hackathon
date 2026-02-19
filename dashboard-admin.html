@@ -405,38 +405,123 @@
             </div>
         </div>
 
-        <!-- EVALUATOR REGISTRATION VIEW (Approval Panel) -->
-        <div id="view-evaluators" class="content-view hidden space-y-10">
-            <div class="portal-card border-none bg-white/[0.02] p-0 overflow-hidden">
-                <div class="p-10 border-b border-white/5 flex items-center justify-between">
-                    <h3
-                        class="text-3xl font-orbitron font-black text-white uppercase italic tracking-tighter uppercase">
-                        Evaluator Approval Panel</h3>
+        <!-- EVALUATOR REGISTRATION VIEW -->
+        <div id="view-evaluators" class="content-view hidden max-w-5xl mx-auto">
+            <div class="portal-card bg-neon-blue/[0.02] border-neon-blue/20 p-12 space-y-12">
+                <div class="text-center space-y-4">
+                    <div
+                        class="w-20 h-20 bg-neon-blue/10 rounded-3xl mx-auto flex items-center justify-center border border-neon-blue/20 shadow-[0_0_40px_rgba(0,212,255,0.1)]">
+                        <i data-lucide="award" class="w-10 h-10 text-neon-blue"></i>
+                    </div>
+                    <h3 class="text-4xl font-orbitron font-black text-white italic tracking-tighter uppercase">
+                        Evaluator Onboarding
+                    </h3>
+                    <p class="text-white/40 text-sm max-w-lg mx-auto font-medium">Register industry experts and faculty
+                        members for the IIC 2K26 Evaluation Panel.</p>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr
-                                class="bg-white/[0.03] text-white/30 text-[10px] font-black uppercase tracking-[0.2em] border-b border-white/5">
-                                <th class="px-8 py-5">Full Name</th>
-                                <th class="px-8 py-5">Email Address</th>
-                                <th class="px-8 py-5 text-center">Approval Status</th>
-                                <th class="px-8 py-5 text-center">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm">
-                            <tr>
-                                <td colspan="4" class="px-8 py-32 text-center">
-                                    <div class="flex flex-col items-center gap-4 opacity-30">
-                                        <i data-lucide="user-plus" class="w-16 h-16 text-white"></i>
-                                        <p class="text-sm font-black uppercase tracking-[0.5em] text-white">No pending
-                                            evaluator registrations</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+
+                <form id="evaluator-registration-form" class="space-y-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="space-y-3">
+                            <label class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-4">Access
+                                Tier</label>
+                            <input type="text" value="Expert Evaluator / Judge" readonly class="!opacity-50">
+                        </div>
+                        <div class="space-y-3">
+                            <label class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-4">Full
+                                Legal Name</label>
+                            <input type="text" name="name" required placeholder="Prof. John Doe">
+                        </div>
+                        <div class="space-y-3">
+                            <label class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-4">Email ID
+                                (System Identity)</label>
+                            <input type="email" name="email" required placeholder="john.doe@institute.edu">
+                        </div>
+                        <div class="space-y-3">
+                            <label
+                                class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-4">Provisionary
+                                Password</label>
+                            <input type="password" name="password" required placeholder="Set temporary master password">
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <label class="text-[10px] font-black text-neon-blue uppercase tracking-[0.3em] ml-4">Assign
+                            Expertise Tracks</label>
+                        <div class="checkbox-grid">
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Smart Automation"
+                                    class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Smart Automation</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Smart Vehicles"
+                                    class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Smart Vehicles</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Clean Tech"
+                                    class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Clean Tech</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Robotics"
+                                    class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Robotics</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Social Good"
+                                    class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Social Good</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-neon-blue text-dark font-black py-5 rounded-[1.5rem] hover:scale-[1.02] transition-all shadow-xl shadow-neon-blue/30 text-lg uppercase tracking-[0.2em] active:scale-95">Register
+                        Evaluator</button>
+                </form>
+
+                <script>
+                    document.getElementById('evaluator-registration-form').addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        const btn = e.target.querySelector('button[type="submit"]');
+                        const originalText = btn.innerText;
+                        btn.disabled = true;
+                        btn.innerText = "Processing...";
+
+                        // Collect Checked Tracks
+                        const tracks = Array.from(e.target.querySelectorAll('input[name="tracks"]:checked')).map(cb => cb.value).join(', ');
+
+                        const data = {
+                            action: 'register_user',
+                            name: e.target.name.value,
+                            email: e.target.email.value,
+                            password: e.target.password.value,
+                            role: 'evaluator',
+                            tracks: tracks
+                        };
+
+                        try {
+                            const response = await fetch(SCRIPT_URL, {
+                                method: 'POST',
+                                body: JSON.stringify(data)
+                            });
+                            const result = await response.json();
+                            if (result.status === 'success') {
+                                alert('Evaluator Registered Successfully!');
+                                e.target.reset();
+                            } else {
+                                alert('Error: ' + result.message);
+                            }
+                        } catch (err) {
+                            console.error(err);
+                            alert('Registration Failed');
+                        }
+                        btn.disabled = false;
+                        btn.innerText = originalText;
+                    });
+                </script>
             </div>
         </div>
 
@@ -451,23 +536,27 @@
                 </div>
 
                 <div class="flex justify-between items-center p-6 bg-white/[0.04] rounded-3xl border border-white/5">
-                    <span class="text-xs font-black uppercase tracking-widest text-white/60">Verified Experts (0)</span>
+                    <span class="text-xs font-black uppercase tracking-widest text-white/60">Verified Experts (<span
+                            id="evaluators-count">0</span>)</span>
                     <div class="flex gap-4">
                         <select class="!py-2 !px-4 !text-[10px] font-black uppercase tracking-widest !w-auto">
                             <option>Categorical Filter</option>
                             <option>All Experts</option>
                         </select>
-                        <select class="!py-2 !px-4 !text-[10px) font-black uppercase tracking-widest !w-auto">
+                        <select class="!py-2 !px-4 !text-[10px] font-black uppercase tracking-widest !w-auto">
                             <option>All Sections</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="py-32 text-center border-2 border-dashed border-white/5 rounded-[3rem]">
-                    <div class="flex flex-col items-center gap-6 opacity-20">
-                        <i data-lucide="user-check" class="w-20 h-20 text-white"></i>
-                        <p class="text-lg font-black uppercase tracking-[0.5em] text-white">No approved evaluators
-                            available</p>
+                <div id="evaluators-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamic Evaluator Cards will be injected here -->
+                    <div class="col-span-full py-32 text-center border-2 border-dashed border-white/5 rounded-[3rem]">
+                        <div class="flex flex-col items-center gap-6 opacity-20">
+                            <i data-lucide="user-check" class="w-20 h-20 text-white"></i>
+                            <p class="text-lg font-black uppercase tracking-[0.5em] text-white">No approved evaluators
+                                available</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -487,7 +576,7 @@
                         domain oversight.</p>
                 </div>
 
-                <form class="space-y-10">
+                <form id="sh-registration-form" class="space-y-10">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div class="space-y-3">
                             <label class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-4">Access
@@ -497,18 +586,18 @@
                         <div class="space-y-3">
                             <label class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-4">Full
                                 Legal Name</label>
-                            <input type="text" placeholder="Dr. Alice Johnson">
+                            <input type="text" name="name" required placeholder="Dr. Alice Johnson">
                         </div>
                         <div class="space-y-3">
                             <label class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-4">Email ID
                                 (System Identity)</label>
-                            <input type="email" placeholder="alice.johnson@innovation.edu">
+                            <input type="email" name="email" required placeholder="alice.johnson@institute.edu">
                         </div>
                         <div class="space-y-3">
                             <label
                                 class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-4">Provisionary
                                 Password</label>
-                            <input type="password" placeholder="Set temporary master password">
+                            <input type="password" name="password" required placeholder="Set temporary master password">
                         </div>
                     </div>
 
@@ -516,65 +605,22 @@
                         <label class="text-[10px] font-black text-neon-purple uppercase tracking-[0.3em] ml-4">Assign
                             Supervisory Themes</label>
                         <div class="checkbox-grid">
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
+                            <!-- Helper script will collect these -->
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Smart Automation"
+                                    class="hidden">
                                 <div class="box"><i data-lucide="check"></i></div><span
                                     class="text-[11px] font-bold uppercase text-white/70">Smart Automation</span>
                             </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Smart Vehicles"
+                                    class="hidden">
                                 <div class="box"><i data-lucide="check"></i></div><span
                                     class="text-[11px] font-bold uppercase text-white/70">Smart Vehicles</span>
                             </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
+                            <!-- ... (keeping some examples, user can expand) ... -->
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="All Tracks"
+                                    class="hidden">
                                 <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Disaster Management</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Heritage & Culture</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Clean & Green Tech</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">FinTech / Blockchain</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Social Good</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Defense / Security</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">MedTech / BioTech</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Smart Education</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Space Technology</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Tourism & Hospitality</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Robotics & Drones</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Agriculture / Rural</span>
-                            </label>
-                            <label class="theme-checkbox"><input type="checkbox" class="hidden">
-                                <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Logistics & Transport</span>
+                                    class="text-[11px] font-bold uppercase text-white/70">All / General</span>
                             </label>
                         </div>
                     </div>
@@ -583,6 +629,47 @@
                         class="w-full bg-neon-purple text-white font-black py-5 rounded-[1.5rem] hover:scale-[1.02] transition-all shadow-xl shadow-neon-purple/30 text-lg uppercase tracking-[0.2em] active:scale-95">Register
                         Section Head</button>
                 </form>
+
+                <script>
+                    document.getElementById('sh-registration-form').addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        const btn = e.target.querySelector('button[type="submit"]');
+                        const originalText = btn.innerText;
+                        btn.disabled = true;
+                        btn.innerText = "Processing...";
+
+                        // Collect Checked Tracks
+                        const tracks = Array.from(e.target.querySelectorAll('input[name="tracks"]:checked')).map(cb => cb.value).join(', ');
+
+                        const data = {
+                            action: 'register_user',
+                            name: e.target.name.value,
+                            email: e.target.email.value,
+                            password: e.target.password.value,
+                            role: 'section-head',
+                            tracks: tracks
+                        };
+
+                        try {
+                            const response = await fetch(SCRIPT_URL, {
+                                method: 'POST',
+                                body: JSON.stringify(data)
+                            });
+                            const result = await response.json();
+                            if (result.status === 'success') {
+                                alert('Section Head Registered Successfully!');
+                                e.target.reset();
+                            } else {
+                                alert('Error: ' + result.message);
+                            }
+                        } catch (err) {
+                            console.error(err);
+                            alert('Registration Failed');
+                        }
+                        btn.disabled = false;
+                        btn.innerText = originalText;
+                    });
+                </script>
             </div>
         </div>
 
@@ -613,6 +700,30 @@
                         <i data-lucide="bell-off" class="w-20 h-20 text-white"></i>
                         <p class="text-lg font-black uppercase tracking-[0.5em] text-white">No notices posted yet</p>
                     </div>
+                </div>
+            </div>
+        </div>
+        <!-- ASSIGNMENT MODAL -->
+        <div id="assignment-modal"
+            class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/80 backdrop-blur-sm">
+            <div
+                class="bg-[#0a0a0a] border border-white/10 p-8 rounded-[2rem] max-w-2xl w-full mx-4 relative shadow-2xl shadow-neon-blue/20">
+                <h3 class="text-2xl font-orbitron font-black text-white italic tracking-tighter uppercase mb-2">Manage
+                    Assignments</h3>
+                <p class="text-neon-blue text-xs font-bold uppercase tracking-widest mb-6" id="modal-evaluator-name">
+                    Assigning to: Evaluator</p>
+
+                <div class="max-h-[60vh] overflow-y-auto pr-2 grid grid-cols-1 md:grid-cols-2 gap-3"
+                    id="modal-tracks-container">
+                    <!-- Checkboxes injected here -->
+                </div>
+
+                <div class="flex gap-4 mt-8 pt-6 border-t border-white/5 justify-end">
+                    <button onclick="closeAssignmentModal()"
+                        class="px-6 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/5 text-xs font-black uppercase tracking-widest transition-all">Cancel</button>
+                    <button id="save-assignments-btn" onclick="saveAssignments()"
+                        class="px-8 py-3 rounded-xl bg-neon-blue text-dark hover:bg-white hover:scale-105 text-xs font-black uppercase tracking-widest transition-all shadow-lg shadow-neon-blue/20">Save
+                        Changes</button>
                 </div>
             </div>
         </div>
@@ -653,6 +764,322 @@
         document.querySelectorAll('.sidebar-link').forEach(l => {
             l.onclick = () => showView(l.dataset.view);
         });
+    </script>
+
+    <script>
+        // The Script URL must match the one deployed by the user
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrrJntHcuFwJ8IaHWmNc6NWld1chAttYCgIsiuF_uzXXnRnwVRXF6_FL_D9ocCAZmOVw/exec';
+
+        // Load Data on Start
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchRegistrations();
+            fetchUsers();
+        });
+
+        async function fetchUsers() {
+            try {
+                const response = await fetch(SCRIPT_URL + '?action=get_users');
+                const result = await response.json();
+                if (result.status === 'success') {
+                    const evaluators = result.data.filter(u => u.Role === 'evaluator');
+                    renderEvaluators(evaluators);
+                }
+            } catch (error) {
+                console.error("Error fetching users:", error);
+            }
+        }
+
+        async function fetchRegistrations() {
+            console.log("Fetching registrations...");
+            const tableBody = document.querySelector('#view-registrations tbody');
+            if (tableBody) tableBody.innerHTML = '<tr><td colspan="5" class="text-center py-8 text-white/50">Loading registrations...</td></tr>';
+
+            try {
+                // To fetch from GAS, we need CORS enabled (which return ContentService does)
+                const response = await fetch(SCRIPT_URL + '?action=get_registrations');
+                const result = await response.json();
+                console.log("Data fetched:", result);
+
+                if (result.status === 'success') {
+                    renderRegistrations(result.data);
+                    updateStats(result.data);
+                } else {
+                    if (tableBody) tableBody.innerHTML = '<tr><td colspan="5" class="text-center py-8 text-red-500">Failed to load data: ' + result.message + '</td></tr>';
+                }
+            } catch (error) {
+                console.error("Fetch Error:", error);
+                if (tableBody) tableBody.innerHTML = '<tr><td colspan="5" class="text-center py-8 text-red-500">Error connecting to database. Please check console.</td></tr>';
+            }
+        }
+
+        function renderRegistrations(data) {
+            const tableBody = document.querySelector('#view-registrations tbody');
+            if (!tableBody) return;
+            tableBody.innerHTML = '';
+
+            if (!data || data.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-8 py-32 text-center">
+                            <div class="flex flex-col items-center gap-4 opacity-30">
+                                <i data-lucide="inbox" class="w-16 h-16 text-white"></i>
+                                <p class="text-sm font-black uppercase tracking-[0.5em] text-white">No registrations found</p>
+                            </div>
+                        </td>
+                    </tr>`;
+                lucide.createIcons();
+                return;
+            }
+
+            data.forEach(team => {
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-white/5 hover:bg-white/[0.02] transition-colors';
+
+                const statusSpan = document.createElement('span');
+                const actionsDiv = document.createElement('div');
+                actionsDiv.className = 'flex items-center justify-center gap-2';
+
+                if (team['Approval Status'] === 'Approved') {
+                    statusSpan.className = 'px-3 py-1 rounded-full bg-green-500/10 text-green-500 border border-green-500/20 text-[10px] font-black uppercase tracking-widest';
+                    statusSpan.innerText = 'Approved';
+                } else {
+                    statusSpan.className = 'px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 text-[10px] font-black uppercase tracking-widest';
+                    statusSpan.innerText = 'Pending';
+
+                    // Approve Action
+                    const approveBtn = document.createElement('button');
+                    approveBtn.className = 'w-8 h-8 rounded-lg bg-green-500/10 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-dark transition-all';
+                    approveBtn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>';
+                    approveBtn.onclick = () => approveTeam(team['_rowIndex'], team['Team Name']); // Pass Row Index
+                    actionsDiv.appendChild(approveBtn);
+                }
+
+                const viewBtn = document.createElement('button');
+                viewBtn.className = 'w-8 h-8 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center hover:bg-blue-500 hover:text-dark transition-all';
+                viewBtn.innerHTML = '<i data-lucide="eye" class="w-4 h-4"></i>';
+                viewBtn.onclick = () => {
+                    const link = team['Screenshot Drive Link'];
+                    if (link && link.includes('http')) {
+                        window.open(link, '_blank');
+                    } else {
+                        alert('No screenshot available');
+                    }
+                };
+
+                actionsDiv.appendChild(viewBtn);
+
+                tr.innerHTML = `
+                    <td class="px-8 py-5">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-white">${team['Team Name'] || 'Unknown Team'}</span>
+                            <span class="text-xs text-white/50">${team['Institution'] || '-'}</span>
+                        </div>
+                    </td>
+                    <td class="px-8 py-5">
+                        <div class="flex flex-col">
+                            <span class="text-sm text-white">${team['Team Leader Name'] || '-'}</span>
+                            <span class="text-xs text-white/50">${team['Leader Email'] || '-'}</span>
+                        </div>
+                    </td>
+                    <td class="px-8 py-5 text-sm text-white/70">${team['Innovation Track'] || '-'}</td>
+                    <td class="px-8 py-5"></td> <!-- Status placeholder -->
+                    <td class="px-8 py-5 text-center"></td> <!-- Actions placeholder -->
+                `;
+
+                tableBody.appendChild(tr);
+            });
+            lucide.createIcons();
+        }
+
+        function renderEvaluators(evaluators) {
+            const grid = document.getElementById('evaluators-grid');
+            const countSpan = document.getElementById('evaluators-count');
+
+            if (countSpan) countSpan.innerText = evaluators.length;
+            if (!grid) return;
+
+            if (evaluators.length === 0) {
+                grid.innerHTML = `
+                <div class="col-span-full py-32 text-center border-2 border-dashed border-white/5 rounded-[3rem]">
+                    <div class="flex flex-col items-center gap-6 opacity-20">
+                        <i data-lucide="user-check" class="w-20 h-20 text-white"></i>
+                        <p class="text-lg font-black uppercase tracking-[0.5em] text-white">No approved evaluators available</p>
+                    </div>
+                </div>`;
+                lucide.createIcons();
+                return;
+            }
+
+            grid.innerHTML = '';
+            evaluators.forEach(user => {
+                const card = document.createElement('div');
+                card.className = 'portal-card bg-white/[0.02] border-white/5 p-6 space-y-4 hover:border-neon-blue/30 transition-all group';
+
+                const initials = user.Name ? user.Name.slice(0, 2).toUpperCase() : 'EV';
+
+                const button = document.createElement('button');
+                button.className = "w-full py-3 mt-2 rounded-xl bg-white/5 hover:bg-white/10 text-[10px] font-black uppercase tracking-widest text-white transition-all flex items-center justify-center gap-2";
+                button.innerHTML = '<i data-lucide="edit-2" class="w-3 h-3"></i> Manage Assignments';
+                button.onclick = () => openAssignmentModal(user.Email, user.Name, user.Assigned_Tracks);
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-neon-blue to-neon-purple flex items-center justify-center text-white font-black">
+                            ${initials}
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-500 border border-green-500/20 text-[10px] font-black uppercase tracking-widest">Active</span>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-neon-blue transition-colors">${user.Name || 'Unknown Evaluator'}</h4>
+                        <p class="text-xs text-white/40 font-mono mt-1">${user.Email}</p>
+                    </div>
+                    <div class="pt-4 border-t border-white/5">
+                        <span class="text-[10px] font-black text-white/30 uppercase tracking-widest block mb-2">Assigned Tracks</span>
+                        <p class="text-sm font-bold text-white">${user.Assigned_Tracks || 'None'}</p>
+                    </div>
+                `;
+                card.appendChild(button);
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // --- ASSIGNMENT MODAL LOGIC ---
+        const ALL_TRACKS = [
+            'Clean & Green Technology', 'Smart Education', 'Disaster Management',
+            'Smart Automation', 'Heritage & Culture', 'MedTech / BioTech',
+            'Agriculture & Rural Development', 'Smart Vehicles', 'Robotics & Drones',
+            'Renewable Energy', 'Blockchain & Cyber Security', 'Miscellaneous',
+            'Transportation & Logistics', 'Fitness & Sports', 'Toys', 'Other'
+        ];
+
+        let currentEditingEmail = null;
+
+        function openAssignmentModal(email, name, currentTracks) {
+            currentEditingEmail = email;
+            const modal = document.getElementById('assignment-modal');
+            const title = document.getElementById('modal-evaluator-name');
+            const container = document.getElementById('modal-tracks-container');
+
+            title.innerText = `Assigning to: ${name} `;
+            modal.classList.remove('hidden');
+
+            // Populate Tracks
+            container.innerHTML = '';
+            const assigned = currentTracks ? currentTracks.split(',').map(t => t.trim()) : [];
+
+            ALL_TRACKS.forEach(track => {
+                const label = document.createElement('label');
+                label.className = 'flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer transition-all border border-transparent hover:border-neon-blue/30';
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.value = track;
+                checkbox.checked = assigned.includes(track) || assigned.includes('All') || assigned.includes('All Experts');
+                checkbox.className = 'w-4 h-4 rounded accent-neon-blue bg-dark border-white/20';
+
+                const span = document.createElement('span');
+                span.className = 'text-xs font-bold text-white/80';
+                span.innerText = track;
+
+                label.appendChild(checkbox);
+                label.appendChild(span);
+                container.appendChild(label);
+            });
+        }
+
+        function closeAssignmentModal() {
+            document.getElementById('assignment-modal').classList.add('hidden');
+            currentEditingEmail = null;
+        }
+
+        async function saveAssignments() {
+            if (!currentEditingEmail) return;
+
+            const btn = document.getElementById('save-assignments-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "Saving...";
+            btn.disabled = true;
+
+            // Collect selected tracks
+            const checkboxes = document.querySelectorAll('#modal-tracks-container input[type="checkbox"]:checked');
+            const selectedTracks = Array.from(checkboxes).map(cb => cb.value).join(', ');
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        action: 'update_evaluator',
+                        email: currentEditingEmail,
+                        tracks: selectedTracks || 'None'
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    alert('Assignments Updated Successfully!');
+                    closeAssignmentModal();
+                    fetchUsers(); // Refresh list
+                } else {
+                    alert('Error: ' + result.message);
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Connection Failed');
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }
+
+
+
+        async function approveTeam(rowIndex, teamName) {
+            if (!confirm(`Are you sure you want to approve team "${teamName}" ? `)) return;
+
+            document.body.style.cursor = 'wait';
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        action: 'approve',
+                        rowIndex: rowIndex,
+                        teamName: teamName
+                    })
+                });
+
+                const result = await response.json();
+                document.body.style.cursor = 'default';
+
+                if (result.status === 'success') {
+                    alert(`Team "${teamName}" Approved Successfully! Email sent.`);
+                    fetchRegistrations(); // Refresh list
+                } else {
+                    alert('Error: ' + result.message);
+                }
+            } catch (error) {
+                console.error(error);
+                document.body.style.cursor = 'default';
+                alert('Connection Failed');
+            }
+        }
+
+        function updateStats(data) {
+            const total = data.length;
+            const approved = data.filter(d => d['Approval Status'] === 'Approved').length;
+            const pending = data.filter(d => d['Approval Status'] === 'Pending').length;
+
+            // Update Dashboard Counters (by finding texts, effectively hardcoded selectors based on previous file content)
+            const cards = document.querySelectorAll('#view-dashboard .portal-card .text-4xl');
+            // Assuming order: Total Teams, Total Apps, Pending, Selected, Rejected...
+            if (cards.length > 0) cards[0].innerText = total;
+            if (cards.length > 1) cards[1].innerText = total;
+            if (cards.length > 2) cards[2].innerText = pending;
+            if (cards.length > 3) cards[3].innerText = approved;
+        }
+
     </script>
 </body>
 

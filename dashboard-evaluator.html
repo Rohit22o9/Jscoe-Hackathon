@@ -171,9 +171,11 @@
             <div
                 class="flex items-center gap-5 px-6 py-3 bg-white/5 border border-white/10 rounded-[2rem] hover:border-neon-blue/30 transition-all group">
                 <div class="flex flex-col text-right">
-                    <span class="text-xs font-black text-white group-hover:text-neon-blue transition-colors">Dr.
+                    <span class="text-xs font-black text-white group-hover:text-neon-blue transition-colors"
+                        id="header-evaluator-name">Dr.
                         Evaluator Name</span>
-                    <span class="text-[9px] text-white/40 font-bold uppercase tracking-widest">Innovation Track: AI &
+                    <span class="text-[9px] text-white/40 font-bold uppercase tracking-widest"
+                        id="header-evaluator-track">Innovation Track: AI &
                         ML</span>
                 </div>
                 <div
@@ -293,11 +295,390 @@
             </div>
         </div>
 
+        <!-- EVALUATION MODAL -->
+        <div id="evaluation-modal"
+            class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md">
+            <div
+                class="bg-[#0a0a0a] border border-white/10 p-8 rounded-[2rem] max-w-3xl w-full mx-4 relative shadow-2xl shadow-neon-blue/20 max-h-[90vh] overflow-y-auto custom-scrollbar">
+
+                <div class="flex justify-between items-start mb-8">
+                    <div>
+                        <h3 class="text-2xl font-orbitron font-black text-white italic tracking-tighter uppercase"
+                            id="eval-team-name">Team Name</h3>
+                        <p class="text-neon-blue text-xs font-bold uppercase tracking-widest mt-1" id="eval-team-id">ID:
+                            12345</p>
+                    </div>
+                    <button onclick="closeEvaluationModal()"
+                        class="p-2 rounded-full hover:bg-white/10 transition-colors">
+                        <i data-lucide="x" class="w-6 h-6 text-white"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Project Details -->
+                    <div class="space-y-4">
+                        <div>
+                            <span
+                                class="text-[10px] font-black text-white/40 uppercase tracking-widest block mb-2">Project
+                                Title</span>
+                            <h4 class="text-xl font-bold text-white" id="eval-project-title">Project Title Here</h4>
+                        </div>
+                        <div>
+                            <span
+                                class="text-[10px] font-black text-white/40 uppercase tracking-widest block mb-2">Abstract</span>
+                            <p class="text-sm text-white/70 leading-relaxed p-4 bg-white/5 rounded-xl border border-white/5"
+                                id="eval-abstract">
+                                Project abstract goes here...
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Links -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div
+                            class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between group hover:border-neon-blue/30 transition-all">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-500">
+                                    <i data-lucide="presentation" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-[9px] font-black text-white/40 uppercase tracking-widest block">Presentation</span>
+                                    <span class="text-xs font-bold text-white">PowerPoint Slide</span>
+                                </div>
+                            </div>
+                            <a href="#" target="_blank" id="eval-ppt-link"
+                                class="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+
+                        <div
+                            class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between group hover:border-neon-blue/30 transition-all">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-500">
+                                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <span
+                                        class="text-[9px] font-black text-white/40 uppercase tracking-widest block">Demonstration</span>
+                                    <span class="text-xs font-bold text-white">Video Link</span>
+                                </div>
+                            </div>
+                            <a href="#" target="_blank" id="eval-video-link"
+                                class="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Action Area -->
+                    <div class="pt-8 border-t border-white/10 flex justify-end gap-4">
+                        <button onclick="closeEvaluationModal()"
+                            class="px-6 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/5 text-xs font-black uppercase tracking-widest transition-all">Close
+                            Review</button>
+                        <button id="mark-complete-btn"
+                            class="px-8 py-3 rounded-xl bg-green-500 text-dark hover:bg-white hover:scale-105 text-xs font-black uppercase tracking-widest transition-all shadow-lg shadow-green-500/20 flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Mark as Completed
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         lucide.createIcons();
+
+        // Configuration
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrrJntHcuFwJ8IaHWmNc6NWld1chAttYCgIsiuF_uzXXnRnwVRXF6_FL_D9ocCAZmOVw/exec';
+
+        let myAssignedTracks = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            checkLogin();
+            fetchEvaluatorData();
+        });
+
+        function checkLogin() {
+            const role = localStorage.getItem('userRole');
+            const email = localStorage.getItem('userEmail');
+
+            if (role !== 'evaluator' || !email) {
+                window.location.href = 'login.html';
+            }
+        }
+
+        async function fetchEvaluatorData() {
+            const userEmail = localStorage.getItem('userEmail');
+            if (!userEmail) {
+                console.error("No user email found in localStorage");
+                return;
+            }
+
+            try {
+                const response = await fetch(SCRIPT_URL + '?action=get_users');
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    // Log for debugging
+                    console.log("All Users:", result.data);
+
+                    const myProfile = result.data.find(u =>
+                        (u.Email && u.Email.toLowerCase().trim() === userEmail.toLowerCase().trim())
+                    );
+
+                    if (myProfile) {
+                        console.log("My Profile Found:", myProfile);
+
+                        // Update UI Header
+                        const nameEl = document.getElementById('header-evaluator-name');
+                        const trackEl = document.getElementById('header-evaluator-track');
+
+                        if (nameEl) nameEl.innerText = myProfile.Name || 'Evaluator';
+                        if (trackEl) trackEl.innerText = `Track: ${myProfile.Assigned_Tracks || 'None'}`;
+
+                        // Parse Tracks
+                        if (myProfile.Assigned_Tracks) {
+                            if (myProfile.Assigned_Tracks.includes('All') || myProfile.Assigned_Tracks.includes('All Experts')) {
+                                myAssignedTracks = ['All'];
+                            } else {
+                                myAssignedTracks = myProfile.Assigned_Tracks.split(',').map(t => t.trim().toLowerCase());
+                            }
+                        }
+                        console.log("My Assigned Tracks:", myAssignedTracks);
+
+                        // Now Fetch Teams
+                        fetchAssignedTeams();
+                    } else {
+                        console.warn("Evaluator profile not found for email:", userEmail);
+                        alert("Error: Evaluator profile not found. Please contact Admin.");
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching profile:", error);
+            }
+        }
+
+        async function fetchAssignedTeams() {
+            // Find containers
+            const activeQuotaEl = document.querySelector('.portal-card.bg-neon-blue\\/\\[0\\.02\\] .text-6xl');
+            const reviewedSyncEl = document.querySelector('.portal-card.bg-green-500\\/\\[0\\.02\\] .text-6xl');
+            const pendingReviewEl = document.querySelector('.portal-card.bg-orange-500\\/\\[0\\.02\\] .text-6xl');
+            const dashboardPlaceholder = document.querySelector('#view-dashboard .portal-card.p-12');
+
+            try {
+                // Add timestamp to prevent caching
+                const response = await fetch(SCRIPT_URL + '?action=get_registrations&_t=' + Date.now());
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    const allTeams = result.data;
+                    console.log("All Teams:", allTeams);
+
+                    // Filter Teams by Track
+                    currentAssignedTeams = allTeams.filter(team => {
+                        if (myAssignedTracks.includes('All')) return true;
+
+                        // Check 'Innovation Track' from team
+                        const teamTrack = (team['Innovation Track'] || team['Track'] || '').trim().toLowerCase();
+                        if (!teamTrack) return false;
+
+                        // Check if any of my assigned tracks match (contains) the team track
+                        return myAssignedTracks.some(assigned => teamTrack.includes(assigned) || assigned.includes(teamTrack));
+                    });
+
+                    console.log("Filtered Teams:", currentAssignedTeams);
+                    updateDashboardCounts(); // Helper to update counts
+
+                    // Update Dashboard Placeholder
+                    if (currentAssignedTeams.length > 0 && dashboardPlaceholder) {
+                        dashboardPlaceholder.style.display = 'none';
+                    } else if (dashboardPlaceholder) {
+                        dashboardPlaceholder.style.display = 'block';
+                        dashboardPlaceholder.querySelector('p').innerText = "No teams assigned to your tracks yet.";
+                    }
+
+                    // Render Table
+                    renderTeamsTable(currentAssignedTeams);
+                }
+            } catch (error) {
+                console.error("Error fetching teams:", error);
+            }
+        }
+
+        function updateDashboardCounts() {
+            const activeQuotaEl = document.querySelector('.portal-card.bg-neon-blue\\/\\[0\\.02\\] .text-6xl');
+            const reviewedSyncEl = document.querySelector('.portal-card.bg-green-500\\/\\[0\\.02\\] .text-6xl');
+            const pendingReviewEl = document.querySelector('.portal-card.bg-orange-500\\/\\[0\\.02\\] .text-6xl');
+
+            if (activeQuotaEl) activeQuotaEl.innerText = currentAssignedTeams.length;
+
+            const reviewedCount = currentAssignedTeams.filter(t => {
+                const status = (t['Evaluation Status'] || '').toString().trim().toLowerCase();
+                return status === 'completed' || status === 'evaluated';
+            }).length;
+
+            if (reviewedSyncEl) reviewedSyncEl.innerText = reviewedCount;
+            if (pendingReviewEl) pendingReviewEl.innerText = currentAssignedTeams.length - reviewedCount;
+        }
+
+        function renderTeamsTable(teams) {
+            const tableBody = document.querySelector('#view-teams tbody');
+            if (!tableBody) return;
+            tableBody.innerHTML = '';
+
+            if (teams.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="4" class="px-8 py-32 text-center text-white/30">No teams found for your assigned tracks.</td></tr>`;
+                return;
+            }
+
+            teams.forEach((team, index) => {
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-white/5 hover:bg-white/[0.02] transition-colors';
+
+                const isIdeaSubmitted = (team['Idea Submission Status'] || '').toLowerCase() === 'submitted';
+
+                // Robust Check for Evaluation Status
+                const rawStatus = (team['Evaluation Status'] || '').toString().trim();
+                const evalStatus = rawStatus.toLowerCase();
+                const isEvaluated = evalStatus === 'completed' || evalStatus === 'evaluated';
+
+                // Debug log for troubleshooting
+                console.log(`Team: ${team['Team Name']}, Raw Status: '${rawStatus}', IsEvaluated: ${isEvaluated}`);
+
+                let statusBadge;
+                if (isEvaluated) {
+                    statusBadge = '<span class="text-neon-blue bg-neon-blue/10 px-2 py-1 rounded text-[10px] font-bold">Evaluated</span>';
+                } else if (isIdeaSubmitted) {
+                    statusBadge = '<span class="text-green-500 bg-green-500/10 px-2 py-1 rounded text-[10px] font-bold">Concept Submitted</span>';
+                } else {
+                    statusBadge = '<span class="text-yellow-500 bg-yellow-500/10 px-2 py-1 rounded text-[10px] font-bold">Pending</span>';
+                }
+
+                const actionButton = isEvaluated
+                    ? `<button disabled class="px-4 py-2 rounded-lg bg-white/5 text-white/30 cursor-not-allowed text-xs font-black uppercase tracking-widest">Done</button>`
+                    : `<button onclick="openEvaluationModal(${index})" class="px-4 py-2 rounded-lg bg-neon-blue/10 text-neon-blue hover:bg-neon-blue hover:text-dark transition-all text-xs font-black uppercase tracking-widest">Evaluate</button>`;
+
+                tr.innerHTML = `
+                    <td class="px-8 py-5 text-white/70">${team['Transaction ID'] || 'N/A'}</td>
+                    <td class="px-8 py-5 font-bold text-white">${team['Team Name']}</td>
+                    <td class="px-8 py-5">${statusBadge}</td>
+                    <td class="px-8 py-5 text-center">
+                        ${actionButton}
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        function openEvaluationModal(index) {
+            const team = currentAssignedTeams[index];
+            if (!team) return;
+
+            // Populate Modal
+            document.getElementById('eval-team-name').innerText = team['Team Name'];
+            document.getElementById('eval-team-id').innerText = `ID: ${team['Transaction ID'] || 'N/A'}`;
+            document.getElementById('eval-project-title').innerText = team['Project Title'] || 'Not Submitted';
+            document.getElementById('eval-abstract').innerText = team['Project Description'] || 'No abstract submitted yet.';
+
+            // Links
+            const pptLink = team['PPT Link'];
+            const videoLink = team['Video Link'];
+
+            const pptBtn = document.getElementById('eval-ppt-link');
+            const videoBtn = document.getElementById('eval-video-link');
+
+            // Handle PPT Link
+            if (pptLink) {
+                pptBtn.href = pptLink;
+                pptBtn.classList.remove('opacity-50', 'pointer-events-none');
+                pptBtn.innerHTML = '<i data-lucide="external-link" class="w-4 h-4"></i>';
+            } else {
+                pptBtn.href = '#';
+                pptBtn.classList.add('opacity-50', 'pointer-events-none');
+                pptBtn.innerHTML = '<i data-lucide="ban" class="w-4 h-4"></i>';
+            }
+
+            // Handle Video Link
+            if (videoLink) {
+                videoBtn.href = videoLink;
+                videoBtn.classList.remove('opacity-50', 'pointer-events-none');
+                videoBtn.innerHTML = '<i data-lucide="external-link" class="w-4 h-4"></i>';
+            } else {
+                videoBtn.href = '#';
+                videoBtn.classList.add('opacity-50', 'pointer-events-none');
+                videoBtn.innerHTML = '<i data-lucide="ban" class="w-4 h-4"></i>';
+            }
+
+            const completeBtn = document.getElementById('mark-complete-btn');
+            const isEvaluated = (team['Evaluation Status'] || '').includes('Completed');
+
+            if (isEvaluated) {
+                completeBtn.style.display = 'none';
+            } else {
+                completeBtn.style.display = 'flex';
+                completeBtn.onclick = () => markEvaluationComplete(team['Transaction ID']);
+            }
+
+            document.getElementById('evaluation-modal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        async function markEvaluationComplete(teamId) {
+            const btn = document.getElementById('mark-complete-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Updating...';
+            btn.disabled = true;
+
+            const userEmail = localStorage.getItem('userEmail');
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        action: 'complete_evaluation',
+                        teamId: teamId,
+                        evaluatorEmail: userEmail
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    alert('Evaluation Marked as Completed!');
+
+                    // Optimistic Update
+                    const team = currentAssignedTeams.find(t => String(t['Transaction ID']) === String(teamId));
+                    if (team) {
+                        team['Evaluation Status'] = 'Completed';
+                    }
+                    updateDashboardCounts();
+                    renderTeamsTable(currentAssignedTeams);
+
+                    closeEvaluationModal();
+
+                    // Re-fetch in background to ensure sync
+                    fetchAssignedTeams();
+                } else {
+                    alert('Error: ' + result.message);
+                }
+            } catch (error) {
+                console.error("Error completing evaluation:", error);
+                alert("Failed to update status.");
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        function closeEvaluationModal() {
+            document.getElementById('evaluation-modal').classList.add('hidden');
+        }
 
         function showView(viewId) {
             document.querySelectorAll('.content-view').forEach(v => v.classList.add('hidden'));

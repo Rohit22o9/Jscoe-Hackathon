@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // POST to Google Apps Script
                 // REPLACE THIS URL with your deployed web app URL
-                const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUHnsoThhKmnvW9h70tsNtT68sqvhwH-gMYYEolBFRv4ndvw05l28nBDgHjQW04lODxA/exec';
+                const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrrJntHcuFwJ8IaHWmNc6NWld1chAttYCgIsiuF_uzXXnRnwVRXF6_FL_D9ocCAZmOVw/exec';
 
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',

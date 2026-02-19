@@ -188,9 +188,11 @@
             <div
                 class="flex items-center gap-5 px-6 py-3 bg-white/5 border border-white/10 rounded-[2rem] hover:border-neon-blue/30 transition-all group">
                 <div class="flex flex-col text-right">
-                    <span class="text-xs font-black text-white group-hover:text-neon-blue transition-colors">Team Leader
+                    <span class="text-xs font-black text-white group-hover:text-neon-blue transition-colors"
+                        id="header-leader-name">Team Leader
                         Name</span>
-                    <span class="text-[9px] text-white/40 font-bold uppercase tracking-widest">Team ID:
+                    <span class="text-[9px] text-white/40 font-bold uppercase tracking-widest" id="header-team-id">Team
+                        ID:
                         IIC26-XXXX</span>
                 </div>
                 <div
@@ -219,15 +221,16 @@
                 </div>
                 <!-- Idea Submission Status -->
                 <div class="portal-card border-none bg-white/[0.02] flex items-center gap-6">
-                    <div
+                    <div id="idea-status-icon-box"
                         class="w-16 h-16 bg-yellow-400/10 rounded-2xl flex items-center justify-center text-yellow-500 border border-yellow-400/20">
                         <i data-lucide="lightbulb" class="w-8 h-8"></i>
                     </div>
                     <div>
                         <span class="text-[10px] font-black text-white/40 uppercase tracking-widest">Idea
                             Submission</span>
-                        <h4 class="text-xl font-bold">PENDING</h4>
-                        <span class="text-[10px] text-white/40 font-bold uppercase tracking-widest mt-1">Action
+                        <h4 class="text-xl font-bold" id="idea-status-text">PENDING</h4>
+                        <span class="text-[10px] text-white/40 font-bold uppercase tracking-widest mt-1"
+                            id="idea-status-subtext">Action
                             Required</span>
                     </div>
                 </div>
@@ -257,33 +260,34 @@
                         <div class="flex justify-between border-b border-white/5 pb-4">
                             <span class="text-white/40 font-bold uppercase text-[10px] tracking-widest">Leader
                                 Name</span>
-                            <span class="font-bold">Team Leader Name</span>
+                            <span class="font-bold" id="overview-leader-name">Team Leader Name</span>
                         </div>
                         <div class="flex justify-between border-b border-white/5 pb-4">
                             <span class="text-white/40 font-bold uppercase text-[10px] tracking-widest">Primary
                                 Email</span>
-                            <span class="font-bold">leader@example.com</span>
+                            <span class="font-bold" id="overview-leader-email">leader@example.com</span>
                         </div>
                         <div class="flex justify-between border-b border-white/5 pb-4">
                             <span class="text-white/40 font-bold uppercase text-[10px] tracking-widest">Contact
                                 Phone</span>
-                            <span class="font-bold">+91 XXXXXXXXXX</span>
+                            <span class="font-bold" id="overview-leader-phone">+91 XXXXXXXXXX</span>
                         </div>
                     </div>
                     <div class="space-y-6">
                         <div class="flex justify-between border-b border-white/5 pb-4">
                             <span class="text-white/40 font-bold uppercase text-[10px] tracking-widest">Innovation
                                 Theme</span>
-                            <span class="font-bold">IOT & Automation</span>
+                            <span class="font-bold" id="overview-track">IOT & Automation</span>
                         </div>
                         <div class="flex justify-between border-b border-white/5 pb-4">
                             <span
                                 class="text-white/40 font-bold uppercase text-[10px] tracking-widest">Institution</span>
-                            <span class="font-bold text-right">JSPM Global Engineering College</span>
+                            <span class="font-bold text-right" id="overview-institution">JSPM Global Engineering
+                                College</span>
                         </div>
                         <div class="flex justify-between border-b border-white/5 pb-4">
                             <span class="text-white/40 font-bold uppercase text-[10px] tracking-widest">Team Size</span>
-                            <span class="font-bold">4 Members</span>
+                            <span class="font-bold" id="overview-size">4 Members</span>
                         </div>
                     </div>
                 </div>
@@ -296,42 +300,87 @@
                 <div class="text-center mb-12 space-y-4">
                     <div
                         class="inline-flex p-4 rounded-3xl bg-neon-blue/10 text-neon-blue border border-neon-blue/20 mb-4">
-                        <i data-lucide="lightbulb" class="w-10 h-10"></i></div>
+                        <i data-lucide="lightbulb" class="w-10 h-10"></i>
+                    </div>
                     <h3 class="text-3xl font-orbitron font-black text-white italic tracking-tighter uppercase">
                         Techno-Concept Submission</h3>
                     <p class="text-white/40 text-sm font-medium">Transmit your innovation abstract for expert
                         evaluation.</p>
                 </div>
 
-                <form class="space-y-8">
+                <form id="idea-form" class="space-y-8">
                     <div class="space-y-2">
                         <label class="text-[10px] font-black text-white/40 uppercase tracking-widest ml-4">Project
                             Title</label>
-                        <input type="text" placeholder="Enter concise and impactful project name">
+                        <input type="text" name="projectTitle" required
+                            placeholder="Enter concise and impactful project name">
                     </div>
                     <div class="space-y-2">
                         <label class="text-[10px] font-black text-white/40 uppercase tracking-widest ml-4">Abstract (Max
                             500 words)</label>
-                        <textarea class="w-full h-48"
+                        <textarea name="abstract" required class="w-full h-48"
                             placeholder="Describe the problem statement, proposed solution, and technology stack..."></textarea>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="space-y-2">
                             <label class="text-[10px] font-black text-white/40 uppercase tracking-widest ml-4">PPT Link
                                 (Drive/Dropbox)</label>
-                            <input type="url" placeholder="https://drive.google.com/...">
+                            <input type="url" name="pptLink" required placeholder="https://drive.google.com/...">
                         </div>
                         <div class="space-y-2">
                             <label class="text-[10px] font-black text-white/40 uppercase tracking-widest ml-4">Product
                                 Video Link (Optional)</label>
-                            <input type="url" placeholder="https://youtube.com/...">
+                            <input type="url" name="videoLink" placeholder="https://youtube.com/...">
                         </div>
                     </div>
-                    <button type="submit"
-                        class="w-full bg-neon-blue text-dark font-black py-5 rounded-2xl hover:scale-[1.02] transition-all shadow-xl shadow-neon-blue/30 text-lg uppercase tracking-widest active:scale-95">
+                    <button type="submit" id="submit-idea-btn"
+                        class="w-full bg-neon-blue text-dark font-black py-5 rounded-2xl hover:scale-[1.02] transition-all shadow-xl shadow-neon-blue/30 text-lg uppercase tracking-widest active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
                         Submit Abstract
                     </button>
                 </form>
+
+                <script>
+                    document.getElementById('idea-form').addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        const btn = document.getElementById('submit-idea-btn');
+                        const originalText = btn.innerText;
+                        btn.disabled = true;
+                        btn.innerText = "Transmitting...";
+
+                        const formData = new FormData(e.target);
+                        const data = Object.fromEntries(formData.entries());
+                        data.action = 'submit_idea';
+                        data.email = localStorage.getItem('userEmail');
+
+                        if (!data.email) {
+                            alert("Session expired. Please login again.");
+                            window.location.href = 'login.html';
+                            return;
+                        }
+
+                        try {
+                            const response = await fetch(SCRIPT_URL, {
+                                method: 'POST',
+                                body: JSON.stringify(data)
+                            });
+                            const result = await response.json();
+
+                            if (result.status === 'success') {
+                                alert('Idea Submitted Successfully!');
+                                e.target.reset();
+                                loadTeamData(); // Refresh UI
+                            } else {
+                                alert('Submission Failed: ' + result.message);
+                            }
+                        } catch (err) {
+                            console.error(err);
+                            alert('Network Error');
+                        } finally {
+                            btn.disabled = false;
+                            btn.innerText = originalText;
+                        }
+                    });
+                </script>
             </div>
         </div>
 
@@ -388,7 +437,167 @@
     <script>
         lucide.createIcons();
 
+        // Configuration
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrrJntHcuFwJ8IaHWmNc6NWld1chAttYCgIsiuF_uzXXnRnwVRXF6_FL_D9ocCAZmOVw/exec';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            checkLogin();
+            loadTeamData();
+        });
+
+        function checkLogin() {
+            const userEmail = localStorage.getItem('userEmail');
+            const userRole = localStorage.getItem('userRole');
+
+            if (!userEmail || userRole !== 'team-leader') {
+                window.location.href = 'login.html';
+            }
+        }
+
+        async function loadTeamData() {
+            const userEmail = localStorage.getItem('userEmail');
+
+            try {
+                // Reuse the 'get_registrations' action - it returns all teams. 
+                // In a production app with sensitive data, we should have a specific 'get_my_team' endpoint.
+                // For this hackathon scope, filtering client-side is acceptable if RLS isn't critical.
+
+                const response = await fetch(SCRIPT_URL + '?action=get_registrations');
+                const result = await response.json();
+
+                let teamsData = [];
+                if (Array.isArray(result)) {
+                    teamsData = result;
+                } else if (result.data && Array.isArray(result.data)) {
+                    teamsData = result.data;
+                }
+
+                // Find My Team
+                const myTeam = teamsData.find(team => {
+                    // Try to match Leader Email or Team Leader Email
+                    const email = team['Leader Email'] || team['Team Leader Email'];
+                    return email && email.toLowerCase().trim() === userEmail.toLowerCase().trim();
+                });
+
+                if (myTeam) {
+                    renderDashboard(myTeam);
+                    renderMembers(myTeam);
+                } else {
+                    console.warn("My Team Not Found. User Email:", userEmail);
+                    alert('Team data could not be retrieved. Please ensure you are logged in with the registered email.');
+                }
+
+            } catch (error) {
+                console.error("Error loading team data:", error);
+            }
+        }
+
+        function renderDashboard(team) {
+            // Helper to get value with fallback keys
+            const getVal = (keys) => {
+                for (let key of keys) {
+                    if (team[key] !== undefined && team[key] !== '') return team[key];
+                }
+                return 'N/A';
+            };
+
+            const leaderName = getVal(['Leader Name', 'Team Leader Name']);
+            const leaderEmail = getVal(['Leader Email', 'Team Leader Email']);
+            const leaderPhone = getVal(['Leader Phone', 'Team Leader Phone']);
+            const teamID = getVal(['Transaction ID']); // Or generate/fallback if needed
+            const track = getVal(['Innovation Track', 'Track']);
+            const institution = getVal(['Institution', 'College']);
+            // Calculate Team Size Dynamically
+            let calculatedSize = 1;
+            const checkMember = (val) => val && val !== '-' && val.trim() !== '';
+            if (checkMember(team['Member 2 Name']) || checkMember(team['m2Name'])) calculatedSize++;
+            if (checkMember(team['Member 3 Name']) || checkMember(team['m3Name'])) calculatedSize++;
+            if (checkMember(team['Member 4 Name']) || checkMember(team['m4Name'])) calculatedSize++;
+
+            // Update UI using IDs
+            const setSafe = (id, val) => {
+                const el = document.getElementById(id);
+                if (el) el.innerText = val;
+                else console.warn(`Element #${id} not found.`);
+            };
+
+            setSafe('header-leader-name', leaderName);
+            setSafe('header-team-id', `Team ID: ${teamID}`);
+
+            setSafe('overview-leader-name', leaderName);
+            setSafe('overview-leader-email', leaderEmail);
+            setSafe('overview-leader-phone', leaderPhone);
+
+            setSafe('overview-track', track);
+            setSafe('overview-institution', institution);
+            setSafe('overview-size', `${calculatedSize} Members`);
+
+            // Check Idea Submission Status
+            const ideaStatus = getVal(['Idea Submission Status']) || 'Pending';
+            const statusTextEl = document.getElementById('idea-status-text');
+            const statusSubEl = document.getElementById('idea-status-subtext');
+            const statusBoxEl = document.getElementById('idea-status-icon-box');
+
+            if (ideaStatus.toLowerCase() === 'submitted') {
+                if (statusTextEl) {
+                    statusTextEl.innerText = "SUBMITTED";
+                    statusTextEl.classList.remove('text-white'); // Assuming default might be white/variable
+                    statusTextEl.classList.add('text-neon-blue');
+                }
+                if (statusSubEl) {
+                    statusSubEl.innerText = "Under Review";
+                    statusSubEl.classList.add('text-neon-blue');
+                }
+                if (statusBoxEl) {
+                    // Remove Yellow
+                    statusBoxEl.classList.remove('bg-yellow-400/10', 'text-yellow-500', 'border-yellow-400/20');
+                    // Add Neon Blue/Green Theme
+                    statusBoxEl.classList.add('bg-neon-blue/10', 'text-neon-blue', 'border-neon-blue/20');
+                    // Update Icon (optional, if using Lucide we need to re-render or just leave bulb)
+                }
+            }
+        }
+
+        function renderMembers(team) {
+            const tbody = document.querySelector('#view-members tbody');
+            tbody.innerHTML = ''; // Clear demo data
+
+            // Leader
+            addMemberRow(tbody, 'Team Leader', team['Leader Name'] || team['Team Leader Name'], team['Leader Email'], 'Active');
+
+            // Member 2
+            if (team['Member 2 Name'] && team['Member 2 Name'] !== '-') {
+                addMemberRow(tbody, 'Member', team['Member 2 Name'], team['Member 2 Email'], 'Active');
+            }
+            // Member 3
+            if (team['Member 3 Name'] && team['Member 3 Name'] !== '-') {
+                addMemberRow(tbody, 'Member', team['Member 3 Name'], team['Member 3 Email'], 'Active');
+            }
+            // Member 4
+            if (team['Member 4 Name'] && team['Member 4 Name'] !== '-') {
+                addMemberRow(tbody, 'Member', team['Member 4 Name'], team['Member 4 Email'], 'Active');
+            }
+        }
+
+        function addMemberRow(tbody, role, name, email, status) {
+            const tr = document.createElement('tr');
+            tr.className = 'border-b border-white/5 hover:bg-white/[0.04]';
+
+            let roleBadge = role === 'Team Leader'
+                ? '<span class="px-3 py-1 bg-neon-blue/10 text-neon-blue text-[9px] font-black uppercase tracking-widest border border-neon-blue/20 rounded-md">Team Leader</span>'
+                : '<span class="text-white/40 font-bold text-xs uppercase tracking-widest">Member</span>';
+
+            tr.innerHTML = `
+                <td class="px-8 py-6">${roleBadge}</td>
+                <td class="px-8 py-6 font-bold text-white">${name}</td>
+                <td class="px-8 py-6 text-white/60">${email}</td>
+                <td class="px-8 py-6 text-center"><span class="status-badge bg-green-500/10 text-green-500 border border-green-500/10">${status}</span></td>
+            `;
+            tbody.appendChild(tr);
+        }
+
         function showView(viewId) {
+            window.location.hash = viewId;
             document.querySelectorAll('.content-view').forEach(v => v.classList.add('hidden'));
             const target = document.getElementById('view-' + viewId);
             if (target) target.classList.remove('hidden');
@@ -415,6 +624,12 @@
         document.querySelectorAll('.sidebar-link').forEach(l => {
             l.onclick = () => showView(l.dataset.view);
         });
+
+        // Handle Hash Navigation
+        if (window.location.hash) {
+            const hash = window.location.hash.substring(1);
+            showView(hash);
+        }
     </script>
 </body>
 

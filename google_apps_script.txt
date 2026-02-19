@@ -1,15 +1,79 @@
 /**
- * Google Apps Script Backend for IIC 2K26 Registration
+ * Google Apps Script Backend for IIC 2K26 Registration & Auth
+ * version: 3.0
  * 
  * Features:
- * - Stores form data in Google Sheets
+ * - Stores Student Team Data (Registrations)
+ * - Manages Staff/Admin Users (Users Sheet)
  * - Uploads Base64 images to Google Drive
  * - Auto-generates timestamps and status
+ * - Serves data to Admin Panel (doGet)
+ * - Handles Approval & Email Sending
+ * - Authentication (Login/Register_User)
  */
 
-const SHEET_NAME = 'Registrations';
-const DRIVE_FOLDER_ID = '1Wz5fN30iV6jbNh0CpjN8DFA75jDz4fPq'; 
+const SHEET_NAME = 'IIC_2K26_Registrations';
+const USERS_SHEET_NAME = 'Users';
+const DRIVE_FOLDER_ID = '1mtJXV2aIoozW9j44m-iaDYIh5PM-Luqv'; 
 
+// Helper: Normalize JSON Output
+function jsonResponse(data) {
+  return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
+}
+
+// HANDLE GET REQUESTS (Fetch Data for Admin Panel)
+// HANDLE GET REQUESTS (Fetch Data for Admin Panel)
+function doGet(e) {
+  const lock = LockService.getScriptLock();
+  lock.tryLock(10000);
+  
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    
+    // Check Action
+    const action = (e && e.parameter) ? e.parameter.action : 'get_registrations';
+    let sheetName = SHEET_NAME;
+    
+    if (action === 'get_users') {
+        sheetName = USERS_SHEET_NAME;
+    }
+    
+    let sheet = ss.getSheetByName(sheetName);
+    
+    // If Users sheet doesn't exist yet, return empty
+    if (!sheet) {
+        if(action === 'get_users') return jsonResponse({ status: 'success', data: [] });
+        return jsonResponse({ status: 'error', message: 'Sheet not found' });
+    }
+    
+    const dataRange = sheet.getDataRange();
+    const values = dataRange.getValues();
+    
+    if (values.length < 2) return jsonResponse({ status: 'success', data: [] });
+
+    const headers = values[0];
+    const rows = values.slice(1);
+    
+    // Convert to Array of Objects
+    const result = rows.map((row, index) => {
+      let obj = {};
+      headers.forEach((header, i) => {
+        obj[header] = row[i];
+      });
+      obj['_rowIndex'] = index + 2; 
+      return obj;
+    });
+    
+    return jsonResponse({ status: 'success', data: result });
+    
+  } catch (error) {
+    return jsonResponse({ status: 'error', message: error.toString() });
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+// HANDLE POST REQUESTS
 function doPost(e) {
   const lock = LockService.getScriptLock();
   lock.tryLock(10000); 
@@ -20,104 +84,421 @@ function doPost(e) {
   }
 
   try {
-    log("Started execution");
+    if (!e.postData || !e.postData.contents) {
+        throw new Error("No post data received");
+    }
+
     const data = JSON.parse(e.postData.contents);
+    const action = data.action || 'register'; 
     
-    // Get Active Spreadsheet (The one this script is attached to)
     const ss = SpreadsheetApp.getActiveSpreadsheet();
-    if (!ss) throw new Error("Script is not attached to a Spreadsheet. Please check the container.");
-    
-    log("Accessed Spreadsheet: " + ss.getName());
-    log("Spreadsheet URL: " + ss.getUrl()); // CLICK THIS IN LOGS TO FIND DATA
+    if (!ss) throw new Error("Script is not attached to a Spreadsheet.");
 
-    // Get Sheet
-    let sheet = ss.getSheetByName(SHEET_NAME);
-    if (!sheet) {
-      log("Sheet 'Registrations' not found, creating it...");
-      sheet = ss.insertSheet(SHEET_NAME);
-    } else {
-      log("Found existing sheet: " + SHEET_NAME);
+    // --- CASE: LOGIN ---
+    if (action === 'login') {
+        const email = data.email;
+        const password = data.password;
+        const role = data.role; // 'admin', 'evaluator', 'section-head', 'team-leader'
+
+        if (!email || !password) throw new Error("Email and Password required");
+
+        let targetSheetName = (role === 'team-leader') ? SHEET_NAME : USERS_SHEET_NAME;
+        let sheet = ss.getSheetByName(targetSheetName);
+        
+        if (!sheet) {
+            // Auto-create Users sheet if missing and role is staff
+            if (role !== 'team-leader') {
+                sheet = ss.insertSheet(USERS_SHEET_NAME);
+                sheet.appendRow(['Timestamp', 'Name', 'Email', 'Password', 'Role', 'Assigned_Tracks']);
+                return jsonResponse({ status: 'error', message: 'User database empty' });
+            } else {
+                return jsonResponse({ status: 'error', message: 'No teams registered yet' });
+            }
+        }
+        
+        const values = sheet.getDataRange().getValues();
+        if (values.length < 2) return jsonResponse({ status: 'error', message: 'User not found' });
+        
+        const headers = values[0]; // Header row
+
+        // Column Mapping
+        let emailIdx = -1;
+        let passwordIdx = -1; // We will look for this
+        let roleIdx = -1; // For Users sheet
+
+        if (role === 'team-leader') {
+             emailIdx = headers.indexOf('Leader Email');
+             passwordIdx = headers.indexOf('Password');
+        } else {
+             emailIdx = headers.indexOf('Email');
+             passwordIdx = headers.indexOf('Password');
+             roleIdx = headers.indexOf('Role');
+        }
+
+        if (emailIdx === -1) return jsonResponse({ status: 'error', message: 'Database Error: Email column missing' });
+
+        // Search User
+        let userFound = false;
+        let userData = {};
+
+        for (let i = 1; i < values.length; i++) {
+            const row = values[i];
+            if (String(row[emailIdx]).trim().toLowerCase() === String(email).trim().toLowerCase()) {
+                // Check Password
+                let storedPass = (passwordIdx !== -1) ? row[passwordIdx] : '';
+                
+                // Simple string comparison for hackathon level
+                if (String(storedPass) === String(password)) {
+                    // Check Role for Staff
+                    if (role !== 'team-leader') {
+                         if (roleIdx !== -1 && String(row[roleIdx]).trim().toLowerCase() !== String(role).trim().toLowerCase()) {
+                             continue; // Role mismatch
+                         }
+                    }
+                    userFound = true;
+                    userData = {
+                        name: (role === 'team-leader') ? row[headers.indexOf('Team Leader Name')] : row[headers.indexOf('Name')],
+                        email: email,
+                        role: role
+                    };
+                    break;
+                }
+            }
+        }
+
+        if (userFound) {
+            return jsonResponse({ status: 'success', message: 'Login Successful', user: userData });
+        } else {
+            return jsonResponse({ status: 'error', message: 'Invalid Credentials' });
+        }
+    }
+
+    // --- CASE: REGISTER STAFF (Admin/SH/Evaluator) ---
+    if (action === 'register_user') {
+        let sheet = ss.getSheetByName(USERS_SHEET_NAME);
+        if (!sheet) {
+            sheet = ss.insertSheet(USERS_SHEET_NAME);
+            sheet.appendRow(['Timestamp', 'Name', 'Email', 'Password', 'Role', 'Assigned_Tracks']);
+        }
+
+        const email = data.email;
+        const password = data.password;
+        const name = data.name;
+        const role = data.role; 
+
+        // Check duplicates
+        const values = sheet.getDataRange().getValues();
+        if (values.length > 1) {
+             const emailCol = values[0].indexOf('Email');
+             for (let i = 1; i < values.length; i++) {
+                 if (String(values[i][emailCol]).toLowerCase() === String(email).toLowerCase()) {
+                     return jsonResponse({ status: 'error', message: 'User already exists' });
+                 }
+             }
+        }
+
+        sheet.appendRow([new Date(), name, email, password, role, data.tracks || '']);
+        return jsonResponse({ status: 'success', message: 'User registered successfully' });
+    }
+
+    // --- CASE: REGISTER TEAM (Student) ---
+    if (action === 'register') {
+        let sheet = ss.getSheetByName(SHEET_NAME);
+        if (!sheet) {
+            sheet = ss.insertSheet(SHEET_NAME);
+            const headers = [
+              'Timestamp', 'Team Name', 'Institution', 'Institution Type', 'Country', 'State', 'PIN', 
+              'Team Leader Name', 'Leader Email', 'Leader Phone', 'Team Size',
+              'Member 2 Name', 'Member 2 Email', 'Member 3 Name', 'Member 3 Email', 
+              'Member 4 Name', 'Member 4 Email', 'Innovation Track', 'Project Title', 
+              'Project Description', 'GitHub Link', 'Transaction ID', 'Screenshot Drive Link', 'Approval Status', 'Password'
+            ];
+            sheet.appendRow(headers);
+        } else {
+             // Check if Password column exists, if not add it
+            const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+            let passwordColIndex = headers.indexOf('Password');
+            if (passwordColIndex === -1) {
+                // Append Password Header
+                sheet.getRange(1, headers.length + 1).setValue('Password');
+            }
+        }
+
+        // File Upload
+        let fileUrl = "No Screenshot";
+        try {
+            if (data.screenshot && data.screenshot.base64) {
+             const folder = DriveApp.getFolderById(DRIVE_FOLDER_ID);
+             const contentType = data.screenshot.type || 'image/png';
+             const teamNameSafe = data.teamName ? data.teamName.replace(/\s+/g, '_') : 'Unknown';
+             const fileName = `Payment_${teamNameSafe}_${Date.now()}`;
+             const decodedData = Utilities.base64Decode(data.screenshot.base64.split(',')[1]);
+             const blob = Utilities.newBlob(decodedData, contentType, fileName);
+             const file = folder.createFile(blob);
+             file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+             fileUrl = file.getUrl();
+            }
+        } catch (e) { fileUrl = "Error: " + e.toString(); }
+
+        const row = [
+            new Date(),
+            data.teamName || '',
+            data.college || '',
+            data.collegeType || '-',
+            data.country || '',
+            data.state || '',
+            data.pin || '',
+            data.leaderName || '',
+            data.leaderEmail || '',
+            data.leaderPhone || '',
+            data.teamSize || '1',
+            data.m2Name || '-',
+            data.m2Email || '-',
+            data.m3Name || '-',
+            data.m3Email || '-',
+            data.m4Name || '-',
+            data.m4Email || '-',
+            data.track || '',
+            data.projectTitle || '',
+            data.projectDesc || '',
+            data.githubLink || '-',
+            data.transactionId || '',
+            fileUrl,
+            'Pending',
+            ''  // No password on registration
+        ];
+        
+        sheet.appendRow(row);
+        SpreadsheetApp.flush();
+        return jsonResponse({ status: 'success', message: 'Registration recorded' });
+    }
+
+    // --- CASE: APPROVE ---
+    if (action === 'approve') {
+       let sheet = ss.getSheetByName(SHEET_NAME);
+       if (!sheet) return jsonResponse({ status: 'error', message: 'Sheet not found' });
+       
+       // Use Row Index directly if available (sent from Admin Panel)
+       let rowIndex = data.rowIndex;
+       let teamName = data.teamName || "Team";
+
+       const values = sheet.getDataRange().getValues();
+       const headers = values[0];
+       
+       const statusCol = headers.indexOf('Approval Status');
+       const passwordCol = headers.indexOf('Password');
+       const emailCol = headers.indexOf('Leader Email');
+       
+       if (statusCol === -1 || passwordCol === -1 || emailCol === -1) 
+           return jsonResponse({ status: 'error', message: 'Invalid Sheet Structure' });
+       
+       // Validate Row Index
+       if (rowIndex && rowIndex > 1 && rowIndex <= values.length) {
+            // Check if already approved
+            const currentStatus = sheet.getRange(rowIndex, statusCol + 1).getValue();
+            if (currentStatus === 'Approved') {
+                return jsonResponse({ status: 'error', message: 'Team already approved' });
+            }
+
+            const leaderEmail = sheet.getRange(rowIndex, emailCol + 1).getValue();
+            
+            // Generate System Password
+            const randomCode = Math.floor(1000 + Math.random() * 9000);
+            const generatedPassword = `IIC26@${randomCode}`;
+
+            // Update Status and Password
+            sheet.getRange(rowIndex, statusCol + 1).setValue("Approved");
+            sheet.getRange(rowIndex, passwordCol + 1).setValue(generatedPassword);
+            
+            SpreadsheetApp.flush();
+
+            // Send Email
+            if (leaderEmail) {
+                try {
+                MailApp.sendEmail({
+                    to: leaderEmail,
+                    subject: "Approved: IIC 2K26 Registration & Login Credentials",
+                    htmlBody: `
+                        <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; border: 1px solid #eee; padding: 20px;">
+                            <h2 style="color: #00d4ff;">Welcome to IIC 2K26!</h2>
+                            <p>Dear <strong>${teamName}</strong>,</p>
+                            <p>Your registration has been successfully verified and <strong>APPROVED</strong>.</p>
+                            <br>
+                            <div style="background: #f0fdf4; padding: 20px; border-left: 4px solid #4ade80; margin: 20px 0;">
+                                <h3 style="margin-top: 0; color: #166534;">Portal Login Credentials</h3>
+                                <p>Please use the following credentials to access your dashboard:</p>
+                                <p><strong>URL:</strong> <a href="http://localhost:8000/login.html" style="color: #00d4ff;">Click to Login</a></p>
+                                <p><strong>Member ID (Email):</strong> ${leaderEmail}</p>
+                                <p><strong>System Password:</strong> <span style="font-family: monospace; font-size: 1.2em; background: #fff; padding: 2px 6px;">${generatedPassword}</span></p>
+                                <p style="font-size: 0.8em; color: #666;">(Please keep this password safe.)</p>
+                            </div>
+                            <br>
+                            <p>Regards,<br><strong>IIC 2K26 Team</strong></p>
+                        </div>
+                    `
+                });
+                } catch(ex) { log("Email failed: " + ex.toString()); }
+            }
+            return jsonResponse({ status: 'success', message: 'Approved' });
+       }
+       
+       return jsonResponse({ status: 'error', message: 'Invalid Row Index' });
+    }
+
+    // --- CASE: SUBMIT IDEA ---
+    if (action === 'submit_idea') {
+        let sheet = ss.getSheetByName(SHEET_NAME);
+        if (!sheet) return jsonResponse({ status: 'error', message: 'Sheet not found' });
+
+        const email = data.email;
+        if (!email) return jsonResponse({ status: 'error', message: 'User Email required' });
+
+        // Ensure Columns Exist
+        const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+        
+        const ensureColumn = (headerName) => {
+             let idx = headers.indexOf(headerName);
+             if (idx === -1) {
+                 sheet.getRange(1, sheet.getLastColumn() + 1).setValue(headerName);
+                 return sheet.getLastColumn() - 1; // 0-indexed
+             }
+             return idx;
+        };
+
+        const titleCol = ensureColumn('Project Title');
+        const descCol = ensureColumn('Project Description'); // Abstract
+        const pptCol = ensureColumn('PPT Link');
+        const videoCol = ensureColumn('Video Link');
+        const ideaStatusCol = ensureColumn('Idea Submission Status');
+        const emailCol = headers.indexOf('Leader Email');
+
+        if (emailCol === -1) return jsonResponse({ status: 'error', message: 'Sheet invalid' });
+
+        // Find Team by Email
+        const values = sheet.getDataRange().getValues();
+        let rowIndex = -1;
+        
+        for(let i=1; i<values.length; i++) {
+            if(String(values[i][emailCol]).trim().toLowerCase() === String(email).trim().toLowerCase()) {
+                rowIndex = i + 1; // 1-based
+                break;
+            }
+        }
+
+        if (rowIndex === -1) return jsonResponse({ status: 'error', message: 'Team not found' });
+
+        // Update Values
+        if (data.projectTitle) sheet.getRange(rowIndex, titleCol + 1).setValue(data.projectTitle);
+        if (data.abstract) sheet.getRange(rowIndex, descCol + 1).setValue(data.abstract);
+        if (data.pptLink) sheet.getRange(rowIndex, pptCol + 1).setValue(data.pptLink);
+        if (data.videoLink) sheet.getRange(rowIndex, videoCol + 1).setValue(data.videoLink);
+        
+        sheet.getRange(rowIndex, ideaStatusCol + 1).setValue('Submitted');
+
+        return jsonResponse({ status: 'success', message: 'Idea Submitted Successfully' });
+    }
+
+    // --- CASE: UPDATE EVALUATOR TRACKS ---
+    if (action === 'update_evaluator') {
+        let sheet = ss.getSheetByName(USERS_SHEET_NAME);
+        if (!sheet) return jsonResponse({ status: 'error', message: 'Users sheet not found' });
+        
+        const email = data.email;
+        const newTracks = data.tracks;
+        
+        if (!email) return jsonResponse({ status: 'error', message: 'Email required' });
+        
+        const values = sheet.getDataRange().getValues();
+        const headers = values[0];
+        const emailCol = headers.indexOf('Email');
+        const tracksCol = headers.indexOf('Assigned_Tracks');
+        
+        if (emailCol === -1 || tracksCol === -1) return jsonResponse({ status: 'error', message: 'Invalid Sheet Structure' });
+        
+        let rowIndex = -1;
+        for (let i = 1; i < values.length; i++) {
+            if (String(values[i][emailCol]).trim().toLowerCase() === String(email).trim().toLowerCase()) {
+                rowIndex = i + 1; // 1-based
+                break;
+            }
+        }
+        
+        if (rowIndex === -1) return jsonResponse({ status: 'error', message: 'User not found' });
+        
+        sheet.getRange(rowIndex, tracksCol + 1).setValue(newTracks);
+        return jsonResponse({ status: 'success', message: 'Tracks Updated' });
+    }
+
+    // --- CASE: COMPLETE EVALUATION ---
+    if (action === 'complete_evaluation') {
+        let sheet = ss.getSheetByName(SHEET_NAME);
+        if (!sheet) return jsonResponse({ status: 'error', message: 'Sheet not found' });
+
+        const teamId = data.teamId;
+        const evaluatorEmail = data.evaluatorEmail;
+
+        if (!teamId) return jsonResponse({ status: 'error', message: 'Team ID required' });
+
+        // Refresh Data Range to ensure we have latest headers
+        const lastCol = sheet.getLastColumn();
+        if (lastCol === 0) return jsonResponse({ status: 'error', message: 'Sheet is empty' });
+
+        const headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0].map(h => String(h).trim());
+        
+        const ensureColumn = (headerName) => {
+             let idx = headers.indexOf(headerName);
+             if (idx === -1) {
+                 const newCol = sheet.getLastColumn() + 1;
+                 sheet.getRange(1, newCol).setValue(headerName);
+                 // We don't update local 'headers' array because we just need the index
+                 return newCol - 1; // 0-indexed
+             }
+             return idx;
+        };
+
+        const statusCol = ensureColumn('Evaluation Status');
+        const evaluatorCol = ensureColumn('Evaluated By');
+        const idCol = headers.indexOf('Transaction ID');
+
+        if (idCol === -1) return jsonResponse({ status: 'error', message: 'Sheet invalid: No Transaction ID column' });
+
+        // Find Team by ID
+        const values = sheet.getDataRange().getValues();
+        let rowIndex = -1;
+        
+        // Loop through rows (skip header)
+        for(let i=1; i<values.length; i++) {
+            // Robust ID Comparison
+            if(String(values[i][idCol]).trim() === String(teamId).trim()) {
+                rowIndex = i + 1; // 1-based
+                break;
+            }
+        }
+
+        if (rowIndex === -1) return jsonResponse({ status: 'error', message: 'Team not found with ID: ' + teamId });
+
+        // Update Values
+        sheet.getRange(rowIndex, statusCol + 1).setValue('Completed');
+        
+        // Append Evaluator
+        let currentEvaluators = values[rowIndex-1][evaluatorCol] || '';
+        // Check if evaluator email is already there (case-insensitive)
+        if (!String(currentEvaluators).toLowerCase().includes(String(evaluatorEmail).toLowerCase())) {
+             currentEvaluators = currentEvaluators ? currentEvaluators + ', ' + evaluatorEmail : evaluatorEmail;
+             sheet.getRange(rowIndex, evaluatorCol + 1).setValue(currentEvaluators);
+        }
+
+        // FORCE SAVE
+        SpreadsheetApp.flush();
+
+        return jsonResponse({ status: 'success', message: 'Evaluation Completed', teamId: teamId, updatedRow: rowIndex });
     }
     
-    // Headers
-    if (sheet.getLastRow() === 0) {
-      const headers = [
-        'Timestamp', 'Team Name', 'Institution', 'Institution Type', 'Country', 'State', 'PIN', 
-        'Team Leader Name', 'Leader Email', 'Leader Phone', 'Team Size',
-        'Member 2 Name', 'Member 2 Email', 'Member 3 Name', 'Member 3 Email', 
-        'Member 4 Name', 'Member 4 Email', 'Innovation Track', 'Project Title', 
-        'Project Description', 'GitHub Link', 'Transaction ID', 'Screenshot Drive Link', 'Approval Status'
-      ];
-      sheet.appendRow(headers);
-      sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold').setBackground('#f3f3f3');
-    }
-
-    // File Upload
-    let fileUrl = "No Screenshot";
-    try {
-      if (data.screenshot && data.screenshot.base64) {
-        log("Uploading file...");
-        const folder = DriveApp.getFolderById(DRIVE_FOLDER_ID);
-        const contentType = data.screenshot.type || 'image/png';
-        const fileName = `Payment_${data.teamName.replace(/\s+/g, '_')}_${Date.now()}`;
-        const decodedData = Utilities.base64Decode(data.screenshot.base64.split(',')[1]);
-        const blob = Utilities.newBlob(decodedData, contentType, fileName);
-        const file = folder.createFile(blob);
-        fileUrl = file.getUrl();
-        log("File uploaded: " + fileUrl);
-      }
-    } catch (driveError) {
-      log("Drive Error: " + driveError.toString());
-      fileUrl = "Error: " + driveError.toString(); // Don't fail the whole registration
-    }
-
-    // Row Data
-    const row = [
-      new Date(),
-      data.teamName,
-      data.college,
-      data.collegeType || '-',
-      data.country,
-      data.state,
-      data.pin,
-      data.leaderName,
-      data.leaderEmail,
-      data.leaderPhone,
-      data.teamSize || (data.m2Name ? (data.m3Name ? (data.m4Name ? 4 : 3) : 2) : 1),
-      data.m2Name || '-',
-      data.m2Email || '-',
-      data.m3Name || '-',
-      data.m3Email || '-',
-      data.m4Name || '-',
-      data.m4Email || '-',
-      data.track,
-      data.projectTitle,
-      data.projectDesc,
-      data.githubLink || '-',
-      data.transactionId,
-      fileUrl,
-      'Pending'
-    ];
-
-    sheet.appendRow(row);
-    SpreadsheetApp.flush(); 
-    log("Row saved successfully.");
-
-    return ContentService.createTextOutput(JSON.stringify({
-      status: 'success',
-      message: 'Registration recorded successfully',
-      spreadsheetName: ss.getName(),
-      spreadsheetUrl: ss.getUrl(), // Return URL to frontend
-      logs: debugLogs
-    })).setMimeType(ContentService.MimeType.JSON);
+    return jsonResponse({ status: 'error', message: 'Invalid Action' });
 
   } catch (error) {
     log("CRITICAL ERROR: " + error.toString());
-    return ContentService.createTextOutput(JSON.stringify({
-      status: 'error',
-      message: error.toString(),
-      logs: debugLogs
-    })).setMimeType(ContentService.MimeType.JSON);
+    return jsonResponse({ status: 'error', message: error.toString(), logs: debugLogs });
   } finally {
     lock.releaseLock();
   }

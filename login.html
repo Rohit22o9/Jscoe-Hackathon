@@ -245,8 +245,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         lucide.createIcons();
-
-        // Handle form submission
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrrJntHcuFwJ8IaHWmNc6NWld1chAttYCgIsiuF_uzXXnRnwVRXF6_FL_D9ocCAZmOVw/exec';
         let currentRole = 'team-leader'; // Default
 
         function setLoginType(type) {
@@ -254,33 +253,82 @@
             document.querySelectorAll('.login-type-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-
-            event.currentTarget.classList.add('active');
+            // Use querySelector to find the button that was clicked based on its onclick attribute
+            // Or simpler: just find the button with that text or index. 
+            // But since 'event' is available in inline handlers in most contexts, we'll try a safer approach
+            // by iterating buttons and checking which one matches the type we just set.
+            // Actually, the cleanest way without changing HTML onclick is relying on the fact that the clicks trigger this.
+            // Let's assume the user clicked the button.
+            const buttons = document.querySelectorAll('.login-type-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick').includes(type)) {
+                    btn.classList.add('active');
+                }
+            });
 
             const subtitle = document.getElementById('portal-subtitle');
             const titles = {
                 'admin': 'Master Administration Portal',
+                'team-leader': 'Internal Innovation Network',
                 'evaluator': 'Expert Evaluation Matrix',
-                'section-head': 'Domain Management Core',
-                'team-leader': 'Internal Innovation Network'
+                'section-head': 'Domain Management Core'
             };
-
-            if (titles[type]) {
-                subtitle.innerText = titles[type];
-            }
+            if (titles[type]) subtitle.innerText = titles[type];
         }
 
-        document.getElementById('login-form').addEventListener('submit', (e) => {
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const routes = {
-                'admin': 'dashboard-admin.html',
-                'team-leader': 'dashboard-team.html',
-                'evaluator': 'dashboard-evaluator.html',
-                'section-head': 'dashboard-sh.html'
-            };
+            const submitBtn = e.target.querySelector('.submit-btn');
+            const originalText = submitBtn.innerText;
+            const email = e.target.querySelector('input[type="email"]').value;
+            const password = e.target.querySelector('input[type="password"]').value;
 
-            window.location.href = routes[currentRole] || 'dashboard-team.html';
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Authenticating...";
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        action: 'login',
+                        email: email,
+                        password: password,
+                        role: currentRole
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    // Save Session - Using Keys expected by Dashboards
+                    localStorage.setItem('userRole', currentRole);
+                    localStorage.setItem('userEmail', result.user.email);
+                    localStorage.setItem('userName', result.user.name);
+
+                    // Legacy/Backup keys
+                    localStorage.setItem('iic_user_data', JSON.stringify(result.user));
+
+                    const routes = {
+                        'admin': 'dashboard-admin.html',
+                        'team-leader': 'dashboard-team.html',
+                        'evaluator': 'dashboard-evaluator.html',
+                        'section-head': 'dashboard-sh.html'
+                    };
+
+                    // Force redirect
+                    window.location.href = routes[currentRole] || 'index.html';
+                } else {
+                    alert('Login Failed: ' + result.message);
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = originalText;
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Connection Error. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalText;
+            }
         });
     </script>
 </body>
