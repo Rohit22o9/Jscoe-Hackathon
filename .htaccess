@@ -1,0 +1,23 @@
+# Fix for PPTX/Binary File Corruption on Hosted Servers (Hostinger/LiteSpeed/Apache)
+
+<IfModule mod_mime.c>
+    # Explicitly set the MIME type for PPTX
+    AddType application/vnd.openxmlformats-officedocument.presentationml.presentation .pptx
+</IfModule>
+
+# Disable GZIP/Brotli compression for binary files that are already compressed
+# This prevents the server from re-compressing them and causing corruption
+<IfModule mod_deflate.c>
+    SetEnvIfNoCase Request_URI \.(pptx|docx|xlsx|zip|pdf|png|jpg|jpeg|gif)$ no-gzip dont-vary
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(pptx|docx|xlsx|zip)$">
+        # Force the browser to treat it as a download and not try to parse it
+        Header set Content-Disposition "attachment"
+        # Prevent the browser from "sniffing" the content type
+        Header set X-Content-Type-Options "nosniff"
+        # Ensure it's treated as a binary stream if MIME type falls through
+        Header set Content-Type "application/octet-stream"
+    </FilesMatch>
+</IfModule>
