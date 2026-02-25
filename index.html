@@ -160,27 +160,16 @@
         <div class="absolute inset-0 grid-bg opacity-30"></div>
         <div id="particles-js" class="absolute inset-0"></div>
 
-        <!-- Tech Orbital Logos -->
-        <div class="hidden lg:flex tech-orbit-container top-20 left-2" data-aos="zoom-in">
-            <div class="tech-orbit-ring"></div>
-            <div class="hologram-card">
-                <div class="tech-bracket bracket-tl"></div>
-                <div class="tech-bracket bracket-tr"></div>
-                <div class="tech-bracket bracket-bl"></div>
-                <div class="tech-bracket bracket-br"></div>
-                <img src="jspm-logo.png" alt="JSPM Logo" class="w-28 h-28 object-contain relative z-10 brightness-110">
+        <!-- College Logos -->
+        <div class="hidden lg:block absolute top-28 left-12 z-20 animate-float pointer-events-none">
+            <div class="p-3 bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl">
+                <img src="jspm-logo.png" alt="JSPM Logo" class="h-16 w-auto object-contain">
             </div>
         </div>
-
-        <div class="hidden lg:flex tech-orbit-container top-20 right-2" data-aos="zoom-in">
-            <div class="tech-orbit-ring" style="animation-direction: reverse;"></div>
-            <div class="hologram-card">
-                <div class="tech-bracket bracket-tl"></div>
-                <div class="tech-bracket bracket-tr"></div>
-                <div class="tech-bracket bracket-bl"></div>
-                <div class="tech-bracket bracket-br"></div>
-                <img src="jscoe-logo.png" alt="JSCOE Logo"
-                    class="w-28 h-28 object-contain relative z-10 brightness-110">
+        <div class="hidden lg:block absolute top-28 right-12 z-20 animate-float pointer-events-none"
+            style="animation-delay: 1s;">
+            <div class="p-3 bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl">
+                <img src="jscoe-logo.png" alt="JSCOE Logo" class="h-16 w-auto object-contain">
             </div>
         </div>
 
@@ -516,44 +505,80 @@
 
             <div class="relative py-12">
                 <!-- High-Tech Flex Layout -->
-                <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
+                <div class="flex flex-wrap items-center justify-center gap-x-12 md:gap-x-24 gap-y-16 md:gap-y-24">
                     <!-- Partner 1: PNB Bali -->
-                    <div class="partner-tech-card" data-aos="fade-up">
-                        <div class="partner-inner group">
+                    <div data-aos="zoom-in" class="relative group">
+                        <div
+                            class="absolute inset-x-0 -inset-y-4 bg-neon-blue/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        </div>
+                        <div
+                            class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4">
                             <img src="pnb-logo.png" alt="Politeknik Negeri Bali"
-                                class="h-28 md:h-44 w-auto object-contain brightness-90 group-hover:brightness-110 grayscale group-hover:grayscale-0 transition-all duration-500">
+                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.2)]">
+                            <!-- Reflection Effect -->
+                            <div
+                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
+                            </div>
                         </div>
                     </div>
 
                     <!-- Partner 2: Petra University -->
-                    <div class="partner-tech-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="partner-inner group">
+                    <div data-aos="zoom-in" data-aos-delay="100" class="relative group">
+                        <div
+                            class="absolute inset-x-0 -inset-y-4 bg-neon-purple/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        </div>
+                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
+                            style="animation-delay: 0.5s;">
                             <img src="petra-logo.png" alt="Universitas Kristen Petra"
-                                class="h-28 md:h-44 w-auto object-contain brightness-90 group-hover:brightness-110 grayscale group-hover:grayscale-0 transition-all duration-500">
+                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(155,93,229,0.2)]">
+                            <div
+                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
+                            </div>
                         </div>
                     </div>
 
                     <!-- Partner 3: IIC -->
-                    <div class="partner-tech-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="partner-inner group">
+                    <div data-aos="zoom-in" data-aos-delay="200" class="relative group">
+                        <div
+                            class="absolute inset-x-0 -inset-y-4 bg-yellow-400/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        </div>
+                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
+                            style="animation-delay: 1s;">
                             <img src="iic-logo.png" alt="Institution's Innovation Council"
-                                class="h-32 md:h-48 w-auto object-contain brightness-90 group-hover:brightness-110 grayscale group-hover:grayscale-0 transition-all duration-500">
+                                class="h-20 md:h-32 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(250,204,21,0.1)]">
+                            <div
+                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
+                            </div>
                         </div>
                     </div>
 
                     <!-- Partner 4: STIKOM Bali -->
-                    <div class="partner-tech-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="partner-inner group">
+                    <div data-aos="zoom-in" data-aos-delay="300" class="relative group">
+                        <div
+                            class="absolute inset-x-0 -inset-y-4 bg-neon-blue/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        </div>
+                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
+                            style="animation-delay: 1.5s;">
                             <img src="stikom-logo.png" alt="STIKOM Bali"
-                                class="h-28 md:h-44 w-auto object-contain brightness-90 group-hover:brightness-110 grayscale group-hover:grayscale-0 transition-all duration-500">
+                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.2)]">
+                            <div
+                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
+                            </div>
                         </div>
                     </div>
 
                     <!-- Partner 5: RVSCET -->
-                    <div class="partner-tech-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="partner-inner group">
+                    <div data-aos="zoom-in" data-aos-delay="400" class="relative group">
+                        <div
+                            class="absolute inset-x-0 -inset-y-4 bg-neon-purple/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        </div>
+                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
+                            style="animation-delay: 2s;">
                             <img src="rvscet-logo.png" alt="RVSCET"
-                                class="h-28 md:h-44 w-auto object-contain brightness-90 group-hover:brightness-110 grayscale group-hover:grayscale-0 transition-all duration-500">
+                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(155,93,229,0.2)]">
+                            <div
+                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
+                            </div>
                         </div>
                     </div>
                 </div>
