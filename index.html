@@ -147,15 +147,15 @@
         <div id="particles-js" class="absolute inset-0"></div>
 
         <!-- College Logos -->
-        <div class="absolute top-28 left-6 md:left-12 z-20 animate-float pointer-events-none">
+        <div class="hidden lg:block absolute top-28 left-12 z-20 animate-float pointer-events-none">
             <div class="p-3 bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl">
-                <img src="jspm-logo.png" alt="JSPM Logo" class="h-12 md:h-20 w-auto object-contain">
+                <img src="jspm-logo.png" alt="JSPM Logo" class="h-16 w-auto object-contain">
             </div>
         </div>
-        <div class="absolute top-28 right-6 md:right-12 z-20 animate-float pointer-events-none"
+        <div class="hidden lg:block absolute top-28 right-12 z-20 animate-float pointer-events-none"
             style="animation-delay: 1s;">
             <div class="p-3 bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl">
-                <img src="jscoe-logo.png" alt="JSCOE Logo" class="h-12 md:h-20 w-auto object-contain">
+                <img src="jscoe-logo.png" alt="JSCOE Logo" class="h-16 w-auto object-contain">
             </div>
         </div>
 
@@ -182,9 +182,9 @@
                 </div>
 
                 <!-- Main Heading (Centered & Highlighted) -->
-                <div class="hero-title-highlight mb-10" data-aos="zoom-out" data-aos-delay="100">
+                <div class="hero-title-highlight mb-10 w-full" data-aos="zoom-out" data-aos-delay="100">
                     <h1
-                        class="text-5xl md:text-[4.5rem] lg:text-[6rem] xl:text-[7.5rem] font-orbitron font-black leading-[1] tracking-tighter group">
+                        class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-orbitron font-black leading-[1.1] md:leading-[1] tracking-tighter group">
                         <span class="block text-mask">INTERNATIONAL</span>
                         <span
                             class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-white to-neon-purple">INNOVATION</span>
@@ -229,73 +229,79 @@
                 <div class="space-y-10" data-aos="fade-right" data-aos-delay="400">
 
 
-                    <div class="grid grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                         <div
-                            class="glass p-6 rounded-[32px] border-white/10 group hover:border-neon-blue/40 transition-all">
+                            class="glass p-5 md:p-6 rounded-[32px] border-white/10 group hover:border-neon-blue/40 transition-all">
                             <div
-                                class="w-12 h-12 rounded-2xl bg-neon-blue/10 flex items-center justify-center text-neon-blue mb-4">
-                                <i data-lucide="layers" class="w-6 h-6"></i>
+                                class="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-neon-blue/10 flex items-center justify-center text-neon-blue mb-3 md:mb-4">
+                                <i data-lucide="layers" class="w-5 h-5 md:w-6 md:h-6"></i>
                             </div>
-                            <h4 class="text-xs uppercase font-black text-white/30 tracking-widest mb-1">Themes</h4>
-                            <p class="text-xl font-bold">16 Tracks</p>
+                            <h4 class="text-[10px] md:text-xs uppercase font-black text-white/30 tracking-widest mb-1">
+                                Themes</h4>
+                            <p class="text-lg md:text-xl font-bold">16 Tracks</p>
                         </div>
                         <div
-                            class="glass p-6 rounded-[32px] border-white/10 group hover:border-neon-purple/40 transition-all">
+                            class="glass p-5 md:p-6 rounded-[32px] border-white/10 group hover:border-neon-purple/40 transition-all">
                             <div
-                                class="w-12 h-12 rounded-2xl bg-neon-purple/10 flex items-center justify-center text-neon-purple mb-4">
-                                <i data-lucide="users" class="w-6 h-6"></i>
+                                class="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-neon-purple/10 flex items-center justify-center text-neon-purple mb-3 md:mb-4">
+                                <i data-lucide="users" class="w-5 h-5 md:w-6 md:h-6"></i>
                             </div>
-                            <h4 class="text-xs uppercase font-black text-white/30 tracking-widest mb-1">Reach</h4>
-                            <p class="text-xl font-bold">Global Impact</p>
+                            <h4 class="text-[10px] md:text-xs uppercase font-black text-white/30 tracking-widest mb-1">
+                                Reach</h4>
+                            <p class="text-lg md:text-xl font-bold">Global Impact</p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Countdown & Venue -->
-                <div class="lg:pl-12" data-aos="fade-left" data-aos-delay="500">
-                    <div class="glass p-10 rounded-[48px] border-white/10 relative overflow-hidden group">
-                        <div
-                            class="absolute -top-10 -right-10 w-40 h-40 bg-neon-blue/10 rounded-full blur-3xl group-hover:bg-neon-blue/20 transition-all">
+            <!-- Countdown & Venue -->
+            <div class="lg:pl-12" data-aos="fade-left" data-aos-delay="500">
+                <div class="glass p-10 rounded-[48px] border-white/10 relative overflow-hidden group">
+                    <div
+                        class="absolute -top-10 -right-10 w-40 h-40 bg-neon-blue/10 rounded-full blur-3xl group-hover:bg-neon-blue/20 transition-all">
+                    </div>
+
+                    <div class="relative z-10 space-y-8 md:space-y-10 text-center">
+                        <h4
+                            class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] md:tracking-[0.6em] text-white/20 mb-6 md:mb-8">
+                            Event Starts In
+                        </h4>
+                        <div class="grid grid-cols-4 gap-2 md:gap-4">
+                            <div class="flex flex-col">
+                                <span id="days"
+                                    class="text-2xl md:text-5xl font-orbitron font-black text-neon-blue text-digital">00</span>
+                                <span
+                                    class="text-[8px] md:text-[9px] uppercase font-bold text-white/30 mt-2">Days</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span id="hours"
+                                    class="text-2xl md:text-5xl font-orbitron font-black text-white text-digital">00</span>
+                                <span class="text-[8px] md:text-[9px] uppercase font-bold text-white/30 mt-2">Hrs</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span id="minutes"
+                                    class="text-2xl md:text-5xl font-orbitron font-black text-white text-digital">00</span>
+                                <span class="text-[8px] md:text-[9px] uppercase font-bold text-white/30 mt-2">Min</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span id="seconds"
+                                    class="text-2xl md:text-5xl font-orbitron font-black text-white text-digital">00</span>
+                                <span class="text-[8px] md:text-[9px] uppercase font-bold text-white/30 mt-2">Sec</span>
+                            </div>
                         </div>
 
-                        <div class="relative z-10 space-y-10 text-center">
-                            <h4 class="text-xs font-black uppercase tracking-[0.6em] text-white/20 mb-8">Event Starts In
-                            </h4>
-                            <div class="grid grid-cols-4 gap-4">
-                                <div class="flex flex-col">
-                                    <span id="days"
-                                        class="text-3xl md:text-5xl font-orbitron font-black text-neon-blue text-digital">00</span>
-                                    <span class="text-[9px] uppercase font-bold text-white/30 mt-2">Days</span>
-                                </div>
-                                <div class="flex flex-col">
-                                    <span id="hours"
-                                        class="text-3xl md:text-5xl font-orbitron font-black text-white text-digital">00</span>
-                                    <span class="text-[9px] uppercase font-bold text-white/30 mt-2">Hrs</span>
-                                </div>
-                                <div class="flex flex-col">
-                                    <span id="minutes"
-                                        class="text-3xl md:text-5xl font-orbitron font-black text-white text-digital">00</span>
-                                    <span class="text-[9px] uppercase font-bold text-white/30 mt-2">Min</span>
-                                </div>
-                                <div class="flex flex-col">
-                                    <span id="seconds"
-                                        class="text-3xl md:text-5xl font-orbitron font-black text-white text-digital">00</span>
-                                    <span class="text-[9px] uppercase font-bold text-white/30 mt-2">Sec</span>
-                                </div>
-                            </div>
-
-                            <div class="pt-8 border-t border-white/5">
-                                <div
-                                    class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 hover:border-neon-blue/30 transition-all group/v">
-                                    <i data-lucide="map-pin"
-                                        class="w-5 h-5 text-neon-blue group-hover/v:animate-bounce"></i>
-                                    <span class="text-sm font-bold text-white/80">Hybrid Mode (Online/Offline)</span>
-                                </div>
+                        <div class="pt-8 border-t border-white/5">
+                            <div
+                                class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 hover:border-neon-blue/30 transition-all group/v">
+                                <i data-lucide="map-pin"
+                                    class="w-5 h-5 text-neon-blue group-hover/v:animate-bounce"></i>
+                                <span class="text-sm font-bold text-white/80">Hybrid Mode (Online/Offline)</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -394,11 +400,12 @@
 
                 <div class="space-y-12">
                     <!-- Step 1 -->
-                    <div data-aos="fade-right" class="relative flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-                            <h3 class="text-2xl font-bold text-neon-blue">Registrations Open</h3>
-                            <p class="text-white/50 mt-1">Feb 5, 2026</p>
-                            <p class="mt-2 text-sm text-white/40">Secure your spot in the most awaited innovation
+                    <div data-aos="fade-right" class="relative flex flex-col md:flex-row items-start md:items-center">
+                        <div class="w-full md:w-1/2 pl-12 md:pl-0 md:pr-12 md:text-right mb-6 md:mb-0">
+                            <h3 class="text-xl md:text-2xl font-bold text-neon-blue">Registrations Open</h3>
+                            <p class="text-white/50 text-xs md:text-base mt-1">Feb 5, 2026</p>
+                            <p class="mt-2 text-[13px] md:text-sm text-white/40">Secure your spot in the most awaited
+                                innovation
                                 challenge of the year.</p>
                         </div>
                         <div
@@ -408,43 +415,46 @@
                     </div>
 
                     <!-- Step 2 -->
-                    <div data-aos="fade-left" class="relative flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 md:pr-12"></div>
+                    <div data-aos="fade-left" class="relative flex flex-col md:flex-row items-start md:items-center">
+                        <div class="hidden md:block md:w-1/2 md:pr-12"></div>
                         <div
                             class="absolute left-4 md:left-1/2 w-8 h-8 bg-neon-purple rounded-full transform -translate-x-1/2 shadow-[0_0_20px_rgba(155,93,229,0.6)] z-10 border-4 border-dark">
                         </div>
-                        <div class="md:w-1/2 md:pl-12">
-                            <h3 class="text-2xl font-bold text-neon-purple">Registrations Close</h3>
-                            <p class="text-white/50 mt-1">March 5, 2026</p>
-                            <p class="mt-2 text-sm text-white/40">Last chance to submit your team details and project
+                        <div class="w-full md:w-1/2 pl-12 md:pl-12">
+                            <h3 class="text-xl md:text-2xl font-bold text-neon-purple">Registrations Close</h3>
+                            <p class="text-white/50 text-xs md:text-base mt-1">March 5, 2026</p>
+                            <p class="mt-2 text-[13px] md:text-sm text-white/40">Last chance to submit your team details
+                                and project
                                 abstract.</p>
                         </div>
                     </div>
 
                     <!-- Step 3 -->
-                    <div data-aos="fade-right" class="relative flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-                            <h3 class="text-2xl font-bold text-neon-blue">Shortlisting (Round 1 & 2)</h3>
-                            <p class="text-white/50 mt-1">March 20, 2026</p>
-                            <p class="mt-2 text-sm text-white/40">Our expert panel evaluates abstracts and announces the
+                    <div data-aos="fade-right" class="relative flex flex-col md:flex-row items-start md:items-center">
+                        <div class="w-full md:w-1/2 pl-12 md:pl-0 md:pr-12 md:text-right mb-6 md:mb-0">
+                            <h3 class="text-xl md:text-2xl font-bold text-neon-blue">Shortlisting (Round 1 & 2)</h3>
+                            <p class="text-white/50 text-xs md:text-base mt-1">March 20, 2026</p>
+                            <p class="mt-2 text-[13px] md:text-sm text-white/40">Our expert panel evaluates abstracts
+                                and announces the
                                 finalists for the next stages.</p>
                         </div>
                         <div
                             class="absolute left-4 md:left-1/2 w-8 h-8 bg-neon-blue rounded-full transform -translate-x-1/2 shadow-[0_0_20px_rgba(0,212,255,0.6)] z-10 border-4 border-dark">
                         </div>
-                        <div class="md:w-1/2 md:pl-12"></div>
+                        <div class="hidden md:block md:w-1/2 md:pl-12"></div>
                     </div>
 
                     <!-- Step 4 -->
-                    <div data-aos="fade-up" class="relative flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/2 md:pr-12"></div>
+                    <div data-aos="fade-up" class="relative flex flex-col md:flex-row items-start md:items-center">
+                        <div class="hidden md:block md:w-1/2 md:pr-12"></div>
                         <div
                             class="absolute left-4 md:left-1/2 w-8 h-8 bg-yellow-400 rounded-full transform -translate-x-1/2 shadow-[0_0_30px_rgba(250,204,21,0.8)] z-10 border-4 border-dark">
                         </div>
-                        <div class="md:w-1/2 md:pl-12">
-                            <h3 class="text-2xl font-bold text-yellow-400">Grand Finale</h3>
-                            <p class="text-white/50 mt-1">April 4-5, 2026</p>
-                            <p class="mt-2 text-sm text-white/40">Final presentation, judging, and the prestigious award
+                        <div class="w-full md:w-1/2 pl-12 md:pl-12">
+                            <h3 class="text-xl md:text-2xl font-bold text-yellow-400">Grand Finale</h3>
+                            <p class="text-white/50 text-xs md:text-base mt-1">April 4-5, 2026</p>
+                            <p class="mt-2 text-[13px] md:text-sm text-white/40">Final presentation, judging, and the
+                                prestigious award
                                 ceremony at Pune campus.</p>
                         </div>
                     </div>
@@ -481,19 +491,19 @@
 
             <div class="relative py-12">
                 <!-- High-Tech Flex Layout -->
-                <div class="flex flex-wrap items-center justify-center gap-x-12 md:gap-x-24 gap-y-24">
+                <div class="flex flex-wrap items-center justify-center gap-x-12 md:gap-x-24 gap-y-16 md:gap-y-24">
                     <!-- Partner 1: PNB Bali -->
                     <div data-aos="zoom-in" class="relative group">
                         <div
                             class="absolute inset-x-0 -inset-y-4 bg-neon-blue/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                         </div>
                         <div
-                            class="relative animate-float transition-all duration-500 hover:scale-125 hover:-translate-y-4">
+                            class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4">
                             <img src="pnb-logo.png" alt="Politeknik Negeri Bali"
-                                class="h-20 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.2)]">
+                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.2)]">
                             <!-- Reflection Effect -->
                             <div
-                                class="absolute -bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
+                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
                             </div>
                         </div>
                     </div>
@@ -503,12 +513,12 @@
                         <div
                             class="absolute inset-x-0 -inset-y-4 bg-neon-purple/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                         </div>
-                        <div class="relative animate-float transition-all duration-500 hover:scale-125 hover:-translate-y-4"
+                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
                             style="animation-delay: 0.5s;">
                             <img src="petra-logo.png" alt="Universitas Kristen Petra"
-                                class="h-20 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(155,93,229,0.2)]">
+                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(155,93,229,0.2)]">
                             <div
-                                class="absolute -bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
+                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
                             </div>
                         </div>
                     </div>
@@ -518,12 +528,12 @@
                         <div
                             class="absolute inset-x-0 -inset-y-4 bg-yellow-400/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                         </div>
-                        <div class="relative animate-float transition-all duration-500 hover:scale-125 hover:-translate-y-4"
+                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
                             style="animation-delay: 1s;">
                             <img src="iic-logo.png" alt="Institution's Innovation Council"
-                                class="h-24 md:h-32 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(250,204,21,0.1)]">
+                                class="h-20 md:h-32 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(250,204,21,0.1)]">
                             <div
-                                class="absolute -bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
+                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
                             </div>
                         </div>
                     </div>
@@ -533,12 +543,12 @@
                         <div
                             class="absolute inset-x-0 -inset-y-4 bg-neon-blue/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                         </div>
-                        <div class="relative animate-float transition-all duration-500 hover:scale-125 hover:-translate-y-4"
+                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
                             style="animation-delay: 1.5s;">
                             <img src="stikom-logo.png" alt="STIKOM Bali"
-                                class="h-20 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.2)]">
+                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.2)]">
                             <div
-                                class="absolute -bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
+                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
                             </div>
                         </div>
                     </div>
@@ -548,12 +558,12 @@
                         <div
                             class="absolute inset-x-0 -inset-y-4 bg-neon-purple/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                         </div>
-                        <div class="relative animate-float transition-all duration-500 hover:scale-125 hover:-translate-y-4"
+                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
                             style="animation-delay: 2s;">
                             <img src="rvscet-logo.png" alt="RVSCET"
-                                class="h-20 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(155,93,229,0.2)]">
+                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(155,93,229,0.2)]">
                             <div
-                                class="absolute -bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
+                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
                             </div>
                         </div>
                     </div>
@@ -565,18 +575,18 @@
     <!-- Modal -->
     <div id="track-modal"
         class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-300">
-        <div class="glass max-w-2xl w-full p-10 rounded-[40px] border-neon-blue/30 relative scale-90 transition-transform duration-300"
+        <div class="glass max-w-2xl w-full p-6 md:p-10 rounded-[40px] border-neon-blue/30 relative scale-90 transition-transform duration-300"
             id="modal-content">
             <button onclick="closeModal()"
-                class="absolute top-8 right-8 text-white/50 hover:text-white transition-colors">
-                <i data-lucide="x" class="w-8 h-8"></i>
+                class="absolute top-6 right-6 md:top-8 md:right-8 text-white/50 hover:text-white transition-colors">
+                <i data-lucide="x" class="w-6 h-6 md:w-8 md:h-8"></i>
             </button>
-            <div class="w-20 h-20 bg-neon-blue/20 rounded-3xl flex items-center justify-center text-neon-blue mb-8"
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-neon-blue/20 rounded-2xl md:rounded-3xl flex items-center justify-center text-neon-blue mb-6 md:mb-8"
                 id="modal-icon-container">
-                <i id="modal-icon-elem" data-lucide="cpu" class="w-10 h-10"></i>
+                <i id="modal-icon-elem" data-lucide="cpu" class="w-8 h-8 md:w-10 md:h-10"></i>
             </div>
-            <h3 class="text-4xl font-orbitron font-bold mb-6" id="modal-title">Track Title</h3>
-            <p class="text-white/60 text-lg leading-relaxed mb-10" id="modal-desc">
+            <h3 class="text-2xl md:text-4xl font-orbitron font-bold mb-4 md:mb-6" id="modal-title">Track Title</h3>
+            <p class="text-white/60 text-base md:text-lg leading-relaxed mb-8 md:mb-10" id="modal-desc">
                 Extended description of the innovation track goes here. This section provides more detail about the
                 problems aimed to be solved and the potential impact of the projects in this domain.
             </p>
@@ -597,7 +607,7 @@
     <section id="register" class="py-24 relative overflow-hidden bg-gradient-to-b from-dark to-[#0a0a0a]">
         <div class="container mx-auto px-6 relative z-10">
             <!-- Multi-Step Form Container -->
-            <div class="max-w-4xl mx-auto glass p-8 md:p-12 rounded-[40px] border-neon-blue/20">
+            <div class="max-w-4xl mx-auto glass p-6 md:p-12 rounded-[32px] md:rounded-[40px] border-neon-blue/20">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-orbitron font-bold mb-2">🌍 International Innovation Challenge
                         2K26</h2>
@@ -668,20 +678,20 @@
                             <div class="space-y-2">
                                 <label class="text-xs font-bold uppercase text-white/40 ml-2">Team Name *</label>
                                 <input type="text" required name="teamName"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
                                     placeholder="Letters & Spaces Only">
                             </div>
                             <div class="space-y-2">
                                 <label class="text-xs font-bold uppercase text-white/40 ml-2">College / Institution Name
                                     *</label>
                                 <input type="text" required name="college"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
                                     placeholder="Full name of institution">
                             </div>
                             <div class="space-y-2">
                                 <label class="text-xs font-bold uppercase text-white/40 ml-2">Institution Type *</label>
                                 <select required name="collegeType"
-                                    class="w-full bg-[#0d0d0d] border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all appearance-none cursor-pointer">
+                                    class="w-full bg-[#0d0d0d] border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all appearance-none cursor-pointer">
                                     <option value="" disabled selected>Select Type</option>
                                     <option>Government / Semi-Gov</option>
                                     <option>Private University</option>
@@ -692,20 +702,20 @@
                             <div class="space-y-2">
                                 <label class="text-xs font-bold uppercase text-white/40 ml-2">Country *</label>
                                 <input type="text" required name="country"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
                                     placeholder="e.g. India">
                             </div>
                             <div class="space-y-2">
                                 <label class="text-xs font-bold uppercase text-white/40 ml-2">State / Province *</label>
                                 <input type="text" required name="state"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
                                     placeholder="e.g. Maharashtra">
                             </div>
                             <div class="space-y-2">
                                 <label class="text-xs font-bold uppercase text-white/40 ml-2">PIN / Postal Code
                                     *</label>
                                 <input type="text" required name="pin"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
                                     placeholder="XXXXXX">
                             </div>
                         </div>
@@ -787,7 +797,7 @@
                                     <label class="text-xs font-bold uppercase text-white/40 ml-2">Innovation Track
                                         *</label>
                                     <select required name="track"
-                                        class="w-full bg-[#0d0d0d] border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue appearance-none cursor-pointer">
+                                        class="w-full bg-[#0d0d0d] border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue appearance-none cursor-pointer">
                                         <option value="" disabled selected>Select a track</option>
                                         <option>Smart Automation (SDG 9)</option>
                                         <option>Smart Education (SDG 4)</option>
@@ -812,7 +822,7 @@
                                     <label class="text-xs font-bold uppercase text-white/40 ml-2">Project Title
                                         *</label>
                                     <input type="text" required name="projectTitle"
-                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
                                         placeholder="Enter catch project title">
                                 </div>
                             </div>
@@ -820,7 +830,7 @@
                                 <label class="text-xs font-bold uppercase text-white/40 ml-2">Short Project Description
                                     *</label>
                                 <textarea required name="projectDesc"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all h-40"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all h-32 md:h-40"
                                     placeholder="Describe your solution..."></textarea>
                                 <p class="text-[10px] text-white/30 ml-2">Briefly explain your idea in 150–250 words.
                                 </p>
@@ -829,7 +839,7 @@
                                 <label class="text-xs font-bold uppercase text-white/40 ml-2">GitHub / Portfolio Link
                                     (Optional)</label>
                                 <input type="url" name="githubLink"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
                                     placeholder="https://github.com/...">
                             </div>
                         </div>
@@ -868,14 +878,14 @@
                                     <label class="text-xs font-bold uppercase text-white/40 ml-2">UPI Transaction ID
                                         *</label>
                                     <input type="text" required name="transactionId"
-                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all"
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
                                         placeholder="Enter 12-digit UPI ID">
                                 </div>
                                 <div class="space-y-2">
                                     <label class="text-xs font-bold uppercase text-white/40 ml-2">Upload Payment
                                         Screenshot *</label>
                                     <input type="file" required name="screenshot" accept="image/*,.pdf"
-                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-neon-blue transition-all text-sm file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-black file:bg-neon-blue file:text-dark cursor-pointer text-white/40">
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all text-sm file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-black file:bg-neon-blue file:text-dark cursor-pointer text-white/40">
                                     <div class="flex items-start gap-3 ml-2 pt-2">
                                         <input type="checkbox" required
                                             class="mt-1 w-4 h-4 rounded accent-neon-blue cursor-pointer">
@@ -992,23 +1002,23 @@
 
             <div class="space-y-4">
                 <div class="glass rounded-2xl overflow-hidden">
-                    <button class="w-full px-8 py-6 text-left flex justify-between items-center group"
+                    <button class="w-full px-6 md:px-8 py-5 md:py-6 text-left flex justify-between items-center group"
                         onclick="toggleFaq(this)">
-                        <span class="font-bold text-lg">Who can participate?</span>
+                        <span class="font-bold text-base md:text-lg">Who can participate?</span>
                         <i data-lucide="chevron-down" class="transition-transform duration-300"></i>
                     </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-8 pb-0">
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 md:px-8 pb-0">
                         <p class="pb-6 text-white/60">Any university student or recent graduate from any college
                             globally can participate. Teams can have 2 to 4 members.</p>
                     </div>
                 </div>
                 <div class="glass rounded-2xl overflow-hidden">
-                    <button class="w-full px-8 py-6 text-left flex justify-between items-center group"
+                    <button class="w-full px-6 md:px-8 py-5 md:py-6 text-left flex justify-between items-center group"
                         onclick="toggleFaq(this)">
-                        <span class="font-bold text-lg">Is there any registration fee?</span>
+                        <span class="font-bold text-base md:text-lg">Is there any registration fee?</span>
                         <i data-lucide="chevron-down" class="transition-transform duration-300"></i>
                     </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-8 pb-0">
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 md:px-8 pb-0">
                         <p class="pb-6 text-white/60">Yes, there is a mandatory registration fee of ₹500 per team. This
                             fee covers basic coordination and ensures serious participation. <strong>Note: Registration
                                 fee is non-refundable.</strong> Teams must upload the
@@ -1016,35 +1026,35 @@
                     </div>
                 </div>
                 <div class="glass rounded-2xl overflow-hidden">
-                    <button class="w-full px-8 py-6 text-left flex justify-between items-center group"
+                    <button class="w-full px-6 md:px-8 py-5 md:py-6 text-left flex justify-between items-center group"
                         onclick="toggleFaq(this)">
-                        <span class="font-bold text-lg">How many teams will be selected?</span>
+                        <span class="font-bold text-base md:text-lg">How many teams will be selected?</span>
                         <i data-lucide="chevron-down" class="transition-transform duration-300"></i>
                     </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-8 pb-0">
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 md:px-8 pb-0">
                         <p class="pb-6 text-white/60">In Round 1 - 100 teams will be selected, Round 2 - 50 teams will
                             be selected and grand finale - Top 30 teams will be selected. Selection may vary as per jury
                             panel evaluating the ideas.</p>
                     </div>
                 </div>
                 <div class="glass rounded-2xl overflow-hidden">
-                    <button class="w-full px-8 py-6 text-left flex justify-between items-center group"
+                    <button class="w-full px-6 md:px-8 py-5 md:py-6 text-left flex justify-between items-center group"
                         onclick="toggleFaq(this)">
-                        <span class="font-bold text-lg">Are online teams allowed?</span>
+                        <span class="font-bold text-base md:text-lg">Are online teams allowed?</span>
                         <i data-lucide="chevron-down" class="transition-transform duration-300"></i>
                     </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-8 pb-0">
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 md:px-8 pb-0">
                         <p class="pb-6 text-white/60">This is a hybrid event. Initial rounds are online, but the grand
                             finale will be held on-site at our campus.</p>
                     </div>
                 </div>
                 <div class="glass rounded-2xl overflow-hidden">
-                    <button class="w-full px-8 py-6 text-left flex justify-between items-center group"
+                    <button class="w-full px-6 md:px-8 py-5 md:py-6 text-left flex justify-between items-center group"
                         onclick="toggleFaq(this)">
-                        <span class="font-bold text-lg">What is the judging criteria?</span>
+                        <span class="font-bold text-base md:text-lg">What is the judging criteria?</span>
                         <i data-lucide="chevron-down" class="transition-transform duration-300"></i>
                     </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-8 pb-0">
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 md:px-8 pb-0">
                         <p class="pb-6 text-white/60">Projects are judged based on innovation, technical implementation,
                             social impact, and viability of the solution.</p>
                     </div>

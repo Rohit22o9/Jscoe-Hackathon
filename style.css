@@ -14,6 +14,23 @@ body {
   scroll-behavior: smooth;
 }
 
+/* Responsive Typography Control */
+@media (max-width: 640px) {
+  .font-orbitron {
+    word-break: break-word;
+    hyphens: auto;
+  }
+}
+
+/* Dashboard Layout Utilities */
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.main-content {
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

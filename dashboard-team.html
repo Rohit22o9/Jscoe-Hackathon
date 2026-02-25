@@ -43,35 +43,30 @@
             position: fixed;
             left: 0;
             top: 0;
-            z-index: 50;
+            z-index: 100;
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .sidebar-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.5rem;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 1rem;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 280px;
+            }
 
-        .sidebar-link:hover {
-            color: #00d4ff;
-            background: rgba(0, 212, 255, 0.05);
-            border-color: rgba(0, 212, 255, 0.1);
-        }
+            .sidebar.active {
+                transform: translateX(0);
+            }
 
-        .sidebar-link.active {
-            background: #eab308;
-            color: #050505;
-            box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+            .main-content {
+                margin-left: 0 !important;
+                padding: 1.5rem !important;
+            }
+
+            .mobile-header {
+                display: flex !important;
+            }
         }
 
         .main-content {
@@ -80,6 +75,22 @@
             padding: 2.5rem;
             background: #050505;
             position: relative;
+        }
+
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(0, 8, 20, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 90;
+            padding: 0 1.5rem;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .content-view.hidden {
@@ -144,8 +155,19 @@
 <body class="font-inter text-white bg-dark">
     <div class="fixed inset-0 grid-bg opacity-20 pointer-events-none"></div>
 
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="flex items-center gap-3">
+            <img src="logo.jpeg" alt="Logo" class="w-8 h-8 rounded-lg">
+            <span class="font-orbitron font-black text-lg tracking-tighter">IIC 2K26</span>
+        </div>
+        <button id="sidebar-toggle" class="p-2 bg-white/5 rounded-xl border border-white/10 text-white">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+    </div>
+
     <!-- Sidebar -->
-    <aside class="sidebar p-8">
+    <aside class="sidebar p-8" id="dashboard-sidebar">
         <div class="flex items-center gap-4 mb-12 px-2">
             <img src="logo.jpeg" alt="Logo"
                 class="w-12 h-12 rounded-xl border border-white/10 shadow-lg shadow-neon-blue/20">
@@ -172,23 +194,25 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content relative">
+    <main class="main-content relative pt-[100px] lg:pt-10">
         <!-- Floating College Logos -->
-        <div class="absolute top-2 left-6 z-10 opacity-50 hover:opacity-100 transition-opacity">
-            <img src="jspm-logo.png" alt="JSPM" class="h-12 w-auto object-contain">
-        </div>
-        <div class="absolute top-2 right-6 z-10 opacity-50 hover:opacity-100 transition-opacity">
-            <img src="jscoe-logo.png" alt="JSCOE" class="h-12 w-auto object-contain">
+        <div
+            class="hidden sm:block absolute top-2 right-6 lg:right-12 z-10 opacity-30 hover:opacity-100 transition-opacity flex items-center gap-4">
+            <img src="jspm-logo.png" alt="JSPM" class="h-8 md:h-12 w-auto object-contain">
+            <img src="jscoe-logo.png" alt="JSCOE" class="h-8 md:h-12 w-auto object-contain">
         </div>
 
         <!-- Header -->
-        <header class="flex justify-between items-center mb-12 glass p-6 border-white/5 rounded-[2rem]">
+        <header
+            class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-12 glass p-6 border-white/5 rounded-[2rem]">
             <div class="flex flex-col">
-                <h2 class="text-3xl font-orbitron font-black text-white uppercase tracking-tight" id="section-title">
+                <h2 class="text-2xl md:text-3xl font-orbitron font-black text-white uppercase tracking-tight"
+                    id="section-title">
                     Team Status</h2>
                 <div class="flex items-center gap-2 mt-1">
                     <span class="w-2 h-2 rounded-full bg-neon-blue animate-pulse"></span>
-                    <p class="text-neon-blue text-[11px] font-bold uppercase tracking-[0.2em]" id="section-subtitle">
+                    <p class="text-neon-blue text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em]"
+                        id="section-subtitle">
                         Innovation Journey Tracking</p>
                 </div>
             </div>
@@ -664,6 +688,35 @@
                 document.getElementById('section-subtitle').innerText = titles[viewId][1];
             }
             window.scrollTo(0, 0);
+        }
+
+        // Sidebar Toggle for Mobile
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebar = document.getElementById('dashboard-sidebar');
+
+        if (sidebarToggle && sidebar) {
+            sidebarToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+                const icon = sidebarToggle.querySelector('i');
+                if (sidebar.classList.contains('active')) {
+                    icon.setAttribute('data-lucide', 'x');
+                } else {
+                    icon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons();
+            });
+
+            // Close sidebar when clicking a link on mobile
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 1024) {
+                        sidebar.classList.remove('active');
+                        const icon = sidebarToggle.querySelector('i');
+                        icon.setAttribute('data-lucide', 'menu');
+                        lucide.createIcons();
+                    }
+                });
+            });
         }
 
         document.querySelectorAll('.sidebar-link').forEach(l => {

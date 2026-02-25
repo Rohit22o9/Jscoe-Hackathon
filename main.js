@@ -380,19 +380,19 @@ const toBase64 = file => new Promise((resolve, reject) => {
 // Success Popup Helper
 function showSuccessPopup() {
     const successDiv = document.createElement('div');
-    successDiv.className = 'fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-xl p-6';
+    successDiv.className = 'fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 sm:p-6';
     successDiv.innerHTML = `
-        <div class="glass p-12 rounded-[40px] border-green-500/30 text-center max-w-lg scale-90 transition-all duration-500" id="success-popup">
-            <img src="logo.jpeg" alt="IIC Logo" class="w-20 h-20 rounded-2xl mx-auto mb-6 object-cover border border-white/10 shadow-2xl">
-            <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 text-green-500 text-glow">
-                <i data-lucide="check" class="w-8 h-8"></i>
+        <div class="glass p-8 md:p-12 rounded-[32px] md:rounded-[40px] border-green-500/30 text-center max-w-lg scale-90 transition-all duration-500" id="success-popup">
+            <img src="logo.jpeg" alt="IIC Logo" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl mx-auto mb-6 object-cover border border-white/10 shadow-2xl">
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6 md:mb-8 text-green-500 text-glow">
+                <i data-lucide="check" class="w-6 h-6 md:w-8 md:h-8"></i>
             </div>
-            <h2 class="text-3xl font-orbitron font-bold mb-4 uppercase">Registration Successful!</h2>
-            <p class="text-white/60 text-lg mb-8 leading-relaxed">
+            <h2 class="text-2xl md:text-3xl font-orbitron font-bold mb-4 uppercase">Registration Successful!</h2>
+            <p class="text-white/60 text-base md:text-lg mb-8 leading-relaxed">
                 Your submission is under verification.<br>
                 Confirmation email will be sent within 48 hours.
             </p>
-            <button onclick="location.reload()" class="bg-white text-dark font-black px-12 py-5 rounded-2xl hover:scale-105 active:scale-95 transition-all text-lg shadow-xl">
+            <button onclick="location.reload()" class="w-full sm:w-auto bg-white text-dark font-black px-8 md:px-12 py-4 md:py-5 rounded-2xl hover:scale-105 active:scale-95 transition-all text-base md:text-lg shadow-xl">
                 BACK TO HOME
             </button>
         </div>
