@@ -387,6 +387,12 @@ function doPost(e) {
 
         if (rowIndex === -1) return jsonResponse({ status: 'error', message: 'Team not found' });
 
+        // Check for Existing Submission
+        const existingStatus = values[rowIndex - 1][ideaStatusCol];
+        if (String(existingStatus).toLowerCase() === 'submitted') {
+            return jsonResponse({ status: 'error', message: 'Idea already submitted. Multiple submissions are not allowed.' });
+        }
+
         // Update Values
         if (data.projectTitle) sheet.getRange(rowIndex, titleCol + 1).setValue(data.projectTitle);
         if (data.abstract) sheet.getRange(rowIndex, descCol + 1).setValue(data.abstract);

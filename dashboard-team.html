@@ -316,6 +316,37 @@
                         evaluation.</p>
                 </div>
 
+                <!-- One-time Submission Warning -->
+                <div id="submission-warning"
+                    class="mb-8 p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-500 shrink-0">
+                        <i data-lucide="alert-circle" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-amber-500 font-bold text-sm uppercase tracking-wider mb-1">Crucial: One-Time
+                            Submission</h4>
+                        <p class="text-xs text-white/60 leading-relaxed">
+                            We accept idea submissions <span class="text-amber-400 font-bold italic">only once</span>.
+                            Once you click "Submit Abstract", your response is locked for evaluation and <span
+                                class="text-white font-bold">cannot be edited or resubmitted</span>. Please review all
+                            details thoroughly before proceeding.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="submitted-success-view" class="hidden text-center py-12 space-y-6">
+                    <div
+                        class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center text-green-500 mx-auto border-4 border-green-500/10">
+                        <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-orbitron font-bold text-white uppercase italic">Abstract Locked</h4>
+                        <p class="text-white/40 mt-2">Your innovation has been successfully transmitted and is now under
+                            review by the expert panel.</p>
+                    </div>
+                </div>
+
                 <form id="idea-form" class="space-y-8">
                     <div class="space-y-2">
                         <label class="text-[10px] font-black text-white/40 uppercase tracking-widest ml-4">Project
@@ -446,7 +477,7 @@
         lucide.createIcons();
 
         // Configuration
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx_ZrasU-3kiGfuMcQGkTTuOoUIiOLm5iJLRNq4Os-IHd5aJFcedvk-R1AvJnZ0XZPX-w/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby5KouhAElgoNBT48y0ms9Ll_UwGOo9YerzclzidWU3W33PUi5vZEx9y62kgcgGiLxO8Q/exec';
 
         document.addEventListener('DOMContentLoaded', () => {
             checkLogin();
@@ -549,7 +580,7 @@
             if (ideaStatus.toLowerCase() === 'submitted') {
                 if (statusTextEl) {
                     statusTextEl.innerText = "SUBMITTED";
-                    statusTextEl.classList.remove('text-white'); // Assuming default might be white/variable
+                    statusTextEl.classList.remove('text-white');
                     statusTextEl.classList.add('text-neon-blue');
                 }
                 if (statusSubEl) {
@@ -557,12 +588,18 @@
                     statusSubEl.classList.add('text-neon-blue');
                 }
                 if (statusBoxEl) {
-                    // Remove Yellow
                     statusBoxEl.classList.remove('bg-yellow-400/10', 'text-yellow-500', 'border-yellow-400/20');
-                    // Add Neon Blue/Green Theme
                     statusBoxEl.classList.add('bg-neon-blue/10', 'text-neon-blue', 'border-neon-blue/20');
-                    // Update Icon (optional, if using Lucide we need to re-render or just leave bulb)
                 }
+
+                // Hide Form and Show Success Message in Submission View
+                const ideaForm = document.getElementById('idea-form');
+                const warningBox = document.getElementById('submission-warning');
+                const successMsg = document.getElementById('submitted-success-view');
+
+                if (ideaForm) ideaForm.classList.add('hidden');
+                if (warningBox) warningBox.classList.add('hidden');
+                if (successMsg) successMsg.classList.remove('hidden');
             }
         }
 
