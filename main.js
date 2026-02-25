@@ -31,22 +31,22 @@ if (particlesEl) {
 
 // Innovation Tracks Data (17 Tracks)
 const tracks = [
-    { title: "Smart Automation", icon: "cpu", desc: "Intelligent systems for industries and home automation. (SDG 9)" },
-    { title: "Smart Education", icon: "graduation-cap", desc: "Revolutionizing learning with EdTech and digital tools. (SDG 4)" },
-    { title: "Space Technology", icon: "rocket", desc: "Exploring orbit and beyond with satellite tech. (SDG 13)" },
-    { title: "Tourism & Hospitality", icon: "map", desc: "Enhancing travel experiences with modern technology. (SDG 8)" },
-    { title: "Smart Vehicles", icon: "car", desc: "Autonomous driving, EV infra, and smart traffic. (SDG 7)" },
-    { title: "Heritage & Culture", icon: "landmark", desc: "Preserving history through digital innovation. (SDG 16)" },
-    { title: "Miscellaneous", icon: "lightbulb", desc: "Breakthrough ideas outside defined tracks. (SDG)" },
-    { title: "Robotics & Drones", icon: "bot", desc: "Autonomous aerial and ground robotic systems. (SDG 15)" },
-    { title: "Defense / Security", icon: "shield-check", desc: "National security and advanced defense innovations. (SDG 16)" },
-    { title: "Disaster Management", icon: "alert-triangle", desc: "Predicting and responding to natural calamities. (SDG 13)" },
-    { title: "Transportation & Logistics", icon: "truck", desc: "Next-gen supply chain and transport management. (SDG 11)" },
-    { title: "Social Good / Accessibility", icon: "users-2", desc: "Tech to solve community issues and improve accessibility. (SDG 10)" },
-    { title: "MedTech / BioTech / HealthTech", icon: "heart-pulse", desc: "Innovative solutions for healthcare and biotech. (SDG 3)" },
-    { title: "FinTech / Blockchain / Cybersecurity", icon: "lock", desc: "Secure digital transactions and data protection. (SDG 16)" },
-    { title: "Agriculture / FoodTech / Rural Development", icon: "sprout", desc: "Sustainable farming and rural growth solutions. (SDG 1, SDG 2)" },
-    { title: "Clean & Green Technology", icon: "leaf", desc: "Renewable energy and sustainability solutions. (SDG 7)" }
+    { title: "Smart Automation (SDG 9)", icon: "cpu", desc: "Intelligent systems for industries and home automation." },
+    { title: "Smart Education (SDG 4)", icon: "graduation-cap", desc: "Revolutionizing learning with EdTech and digital tools." },
+    { title: "Space Technology (SDG 13)", icon: "rocket", desc: "Exploring orbit and beyond with satellite tech." },
+    { title: "Tourism & Hospitality (SDG 8)", icon: "map", desc: "Enhancing travel experiences with modern technology." },
+    { title: "Smart Vehicles (SDG 7)", icon: "car", desc: "Autonomous driving, EV infra, and smart traffic." },
+    { title: "Heritage & Culture (SDG 16)", icon: "landmark", desc: "Preserving history through digital innovation." },
+    { title: "Miscellaneous (SDG)", icon: "lightbulb", desc: "Breakthrough ideas outside defined tracks." },
+    { title: "Robotics & Drones (SDG 15)", icon: "bot", desc: "Autonomous aerial and ground robotic systems." },
+    { title: "Defense / Security (SDG 16)", icon: "shield-check", desc: "National security and advanced defense innovations." },
+    { title: "Disaster Management (SDG 13)", icon: "alert-triangle", desc: "Predicting and responding to natural calamities." },
+    { title: "Transportation & Logistics (SDG 11)", icon: "truck", desc: "Next-gen supply chain and transport management." },
+    { title: "Social Good / Accessibility (SDG 10)", icon: "users-2", desc: "Tech to solve community issues and improve accessibility." },
+    { title: "MedTech / BioTech / HealthTech (SDG 3)", icon: "heart-pulse", desc: "Innovative solutions for healthcare and biotech." },
+    { title: "FinTech / Blockchain / Cybersecurity (SDG 16)", icon: "lock", desc: "Secure digital transactions and data protection." },
+    { title: "Agriculture / FoodTech / Rural Development (SDG 1, SDG 2)", icon: "sprout", desc: "Sustainable farming and rural growth solutions." },
+    { title: "Clean & Green Technology (Renewable Energy, Sustainability) (SDG 7)", icon: "leaf", desc: "Renewable energy and sustainability solutions." }
 ];
 
 const tracksGrid = document.getElementById('tracks-grid');
