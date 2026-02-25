@@ -76,6 +76,44 @@
     <div id="cursor-glow"></div>
     <div class="scrollbar-progress" id="scroll-progress"></div>
 
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu"
+        class="md:hidden hidden fixed inset-0 w-full h-full bg-black/95 backdrop-blur-3xl z-[999] flex flex-col justify-center px-10">
+        <div class="flex flex-col gap-2">
+            <a href="#about"
+                class="mobile-nav-link text-white/70 hover:text-neon-blue font-bold tracking-[0.2em] uppercase text-xl flex items-center gap-4">
+                <i data-lucide="info" class="w-6 h-6"></i> About
+            </a>
+
+            <a href="#tracks"
+                class="mobile-nav-link text-white/70 hover:text-neon-blue font-bold tracking-[0.2em] uppercase text-xl flex items-center gap-4">
+                <i data-lucide="grid" class="w-6 h-6"></i> Tracks
+            </a>
+            <a href="#timeline"
+                class="mobile-nav-link text-white/70 hover:text-neon-blue font-bold tracking-[0.2em] uppercase text-xl flex items-center gap-4">
+                <i data-lucide="calendar" class="w-6 h-6"></i> Timeline
+            </a>
+            <a href="guidelines.html"
+                class="mobile-nav-link text-white/70 hover:text-neon-blue font-bold tracking-[0.2em] uppercase text-xl flex items-center gap-4">
+                <i data-lucide="book-open" class="w-6 h-6"></i> Guidelines
+            </a>
+            <a href="#faq"
+                class="mobile-nav-link text-white/70 hover:text-neon-blue font-bold tracking-[0.2em] uppercase text-xl flex items-center gap-4">
+                <i data-lucide="help-circle" class="w-6 h-6"></i> FAQ
+            </a>
+            <div class="pt-8 flex flex-col gap-4">
+                <a href="guidelines.html#ppt-format"
+                    class="w-full bg-gradient-to-r from-neon-purple to-neon-blue text-white px-6 py-5 rounded-2xl text-center font-black uppercase tracking-widest text-sm shadow-xl shadow-neon-purple/20 flex items-center justify-center gap-3">
+                    <i data-lucide="download" class="w-5 h-5"></i> PPT FORMAT
+                </a>
+                <a href="#register"
+                    class="w-full bg-neon-blue text-dark font-black px-6 py-5 rounded-2xl text-center text-sm shadow-xl shadow-neon-blue/20 uppercase flex items-center justify-center gap-3">
+                    <i data-lucide="zap" class="w-5 h-5"></i> Register Now
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 nav-blur border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -110,33 +148,9 @@
                     Login
                 </a>
                 <button id="mobile-menu-toggle"
-                    class="md:hidden text-white p-2 focus:outline-none bg-white/5 rounded-lg border border-white/10">
+                    class="md:hidden text-white p-2 focus:outline-none bg-white/10 rounded-xl border border-white/20 relative z-[1000] transition-all active:scale-95">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
-            </div>
-        </div>
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu"
-            class="md:hidden hidden absolute top-full left-0 w-full bg-dark/98 backdrop-blur-3xl border-b border-white/10 py-8 px-6 space-y-6 shadow-2xl z-[100]">
-            <div class="flex flex-col gap-6">
-                <a href="#about"
-                    class="mobile-nav-link text-white/70 hover:text-neon-blue transition-colors font-bold tracking-widest uppercase text-base">About</a>
-
-                <a href="#tracks"
-                    class="mobile-nav-link text-white/70 hover:text-neon-blue transition-colors font-bold tracking-widest uppercase text-base">Innovation
-                    Tracks</a>
-                <a href="#timeline"
-                    class="mobile-nav-link text-white/70 hover:text-neon-blue transition-colors font-bold tracking-widest uppercase text-base">Timeline</a>
-                <a href="guidelines.html"
-                    class="mobile-nav-link text-white/70 hover:text-neon-blue transition-colors font-bold tracking-widest uppercase text-base">Guidelines</a>
-                <a href="#faq"
-                    class="mobile-nav-link text-white/70 hover:text-neon-blue transition-colors font-bold tracking-widest uppercase text-base">FAQ</a>
-                <a href="guidelines.html#ppt-format"
-                    class="inline-block bg-gradient-to-r from-neon-purple to-neon-blue text-white px-6 py-4 rounded-xl text-center font-black uppercase tracking-widest text-sm shadow-xl shadow-neon-purple/20">PPT
-                    FORMAT</a>
-                <a href="#register"
-                    class="sm:hidden block bg-neon-blue text-dark font-bold px-6 py-4 rounded-full text-center text-sm shadow-xl shadow-neon-blue/20">REGISTER
-                    NOW</a>
             </div>
         </div>
     </nav>
@@ -146,16 +160,27 @@
         <div class="absolute inset-0 grid-bg opacity-30"></div>
         <div id="particles-js" class="absolute inset-0"></div>
 
-        <!-- College Logos -->
-        <div class="hidden lg:block absolute top-28 left-12 z-20 animate-float pointer-events-none">
-            <div class="p-3 bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl">
-                <img src="jspm-logo.png" alt="JSPM Logo" class="h-16 w-auto object-contain">
+        <!-- Tech Orbital Logos -->
+        <div class="hidden lg:flex tech-orbit-container top-20 left-2" data-aos="zoom-in">
+            <div class="tech-orbit-ring"></div>
+            <div class="hologram-card">
+                <div class="tech-bracket bracket-tl"></div>
+                <div class="tech-bracket bracket-tr"></div>
+                <div class="tech-bracket bracket-bl"></div>
+                <div class="tech-bracket bracket-br"></div>
+                <img src="jspm-logo.png" alt="JSPM Logo" class="w-28 h-28 object-contain relative z-10 brightness-110">
             </div>
         </div>
-        <div class="hidden lg:block absolute top-28 right-12 z-20 animate-float pointer-events-none"
-            style="animation-delay: 1s;">
-            <div class="p-3 bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl">
-                <img src="jscoe-logo.png" alt="JSCOE Logo" class="h-16 w-auto object-contain">
+
+        <div class="hidden lg:flex tech-orbit-container top-20 right-2" data-aos="zoom-in">
+            <div class="tech-orbit-ring" style="animation-direction: reverse;"></div>
+            <div class="hologram-card">
+                <div class="tech-bracket bracket-tl"></div>
+                <div class="tech-bracket bracket-tr"></div>
+                <div class="tech-bracket bracket-bl"></div>
+                <div class="tech-bracket bracket-br"></div>
+                <img src="jscoe-logo.png" alt="JSCOE Logo"
+                    class="w-28 h-28 object-contain relative z-10 brightness-110">
             </div>
         </div>
 
@@ -491,80 +516,44 @@
 
             <div class="relative py-12">
                 <!-- High-Tech Flex Layout -->
-                <div class="flex flex-wrap items-center justify-center gap-x-12 md:gap-x-24 gap-y-16 md:gap-y-24">
+                <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
                     <!-- Partner 1: PNB Bali -->
-                    <div data-aos="zoom-in" class="relative group">
-                        <div
-                            class="absolute inset-x-0 -inset-y-4 bg-neon-blue/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                        </div>
-                        <div
-                            class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4">
+                    <div class="partner-tech-card" data-aos="fade-up">
+                        <div class="partner-inner group">
                             <img src="pnb-logo.png" alt="Politeknik Negeri Bali"
-                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.2)]">
-                            <!-- Reflection Effect -->
-                            <div
-                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
-                            </div>
+                                class="h-28 md:h-44 w-auto object-contain brightness-90 group-hover:brightness-110 grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                     </div>
 
                     <!-- Partner 2: Petra University -->
-                    <div data-aos="zoom-in" data-aos-delay="100" class="relative group">
-                        <div
-                            class="absolute inset-x-0 -inset-y-4 bg-neon-purple/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                        </div>
-                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
-                            style="animation-delay: 0.5s;">
+                    <div class="partner-tech-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="partner-inner group">
                             <img src="petra-logo.png" alt="Universitas Kristen Petra"
-                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(155,93,229,0.2)]">
-                            <div
-                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
-                            </div>
+                                class="h-28 md:h-44 w-auto object-contain brightness-90 group-hover:brightness-110 grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                     </div>
 
                     <!-- Partner 3: IIC -->
-                    <div data-aos="zoom-in" data-aos-delay="200" class="relative group">
-                        <div
-                            class="absolute inset-x-0 -inset-y-4 bg-yellow-400/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                        </div>
-                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
-                            style="animation-delay: 1s;">
+                    <div class="partner-tech-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="partner-inner group">
                             <img src="iic-logo.png" alt="Institution's Innovation Council"
-                                class="h-20 md:h-32 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(250,204,21,0.1)]">
-                            <div
-                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
-                            </div>
+                                class="h-32 md:h-48 w-auto object-contain brightness-90 group-hover:brightness-110 grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                     </div>
 
                     <!-- Partner 4: STIKOM Bali -->
-                    <div data-aos="zoom-in" data-aos-delay="300" class="relative group">
-                        <div
-                            class="absolute inset-x-0 -inset-y-4 bg-neon-blue/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                        </div>
-                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
-                            style="animation-delay: 1.5s;">
+                    <div class="partner-tech-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="partner-inner group">
                             <img src="stikom-logo.png" alt="STIKOM Bali"
-                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.2)]">
-                            <div
-                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
-                            </div>
+                                class="h-28 md:h-44 w-auto object-contain brightness-90 group-hover:brightness-110 grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                     </div>
 
                     <!-- Partner 5: RVSCET -->
-                    <div data-aos="zoom-in" data-aos-delay="400" class="relative group">
-                        <div
-                            class="absolute inset-x-0 -inset-y-4 bg-neon-purple/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                        </div>
-                        <div class="relative animate-float transition-all duration-500 hover:scale-110 md:hover:scale-125 hover:-translate-y-4"
-                            style="animation-delay: 2s;">
+                    <div class="partner-tech-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="partner-inner group">
                             <img src="rvscet-logo.png" alt="RVSCET"
-                                class="h-16 md:h-28 w-auto object-contain filter drop-shadow-[0_0_20px_rgba(155,93,229,0.2)]">
-                            <div
-                                class="absolute -bottom-16 md:-bottom-20 left-0 right-0 h-16 bg-gradient-to-t from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-20 blur-sm rounded-full transition-all duration-500">
-                            </div>
+                                class="h-28 md:h-44 w-auto object-contain brightness-90 group-hover:brightness-110 grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                     </div>
                 </div>

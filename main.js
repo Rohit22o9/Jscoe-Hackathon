@@ -411,12 +411,24 @@ const mobileMenu = document.getElementById('mobile-menu');
 
 if (mobileMenuToggle && mobileMenu) {
     mobileMenuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        const icon = mobileMenuToggle.querySelector('i');
-        if (mobileMenu.classList.contains('hidden')) {
-            icon.setAttribute('data-lucide', 'menu');
+        const isHidden = mobileMenu.classList.contains('hidden');
+
+        if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            // Small timeout to allow the browser to register the removal of 'hidden' before applying animation
+            setTimeout(() => {
+                mobileMenu.classList.add('active');
+            }, 10);
+            mobileMenuToggle.querySelector('i').setAttribute('data-lucide', 'x');
         } else {
-            icon.setAttribute('data-lucide', 'x');
+            mobileMenu.classList.remove('active');
+            mobileMenuToggle.querySelector('i').setAttribute('data-lucide', 'menu');
+            // Wait for transition to finish before adding hidden back
+            setTimeout(() => {
+                if (!mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }, 400);
         }
         lucide.createIcons();
     });
@@ -424,9 +436,11 @@ if (mobileMenuToggle && mobileMenu) {
     // Close menu when clicking a link
     mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            const icon = mobileMenuToggle.querySelector('i');
-            icon.setAttribute('data-lucide', 'menu');
+            mobileMenu.classList.remove('active');
+            mobileMenuToggle.querySelector('i').setAttribute('data-lucide', 'menu');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 400);
             lucide.createIcons();
         });
     });
