@@ -172,7 +172,15 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content relative">
+        <!-- Floating College Logos -->
+        <div class="absolute top-2 left-6 z-10 opacity-50 hover:opacity-100 transition-opacity">
+            <img src="jspm-logo.png" alt="JSPM" class="h-12 w-auto object-contain">
+        </div>
+        <div class="absolute top-2 right-6 z-10 opacity-50 hover:opacity-100 transition-opacity">
+            <img src="jscoe-logo.png" alt="JSCOE" class="h-12 w-auto object-contain">
+        </div>
+
         <!-- Header -->
         <header class="flex justify-between items-center mb-12 glass p-6 border-white/5 rounded-[2rem]">
             <div class="flex flex-col">
@@ -438,7 +446,7 @@
         lucide.createIcons();
 
         // Configuration
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrrJntHcuFwJ8IaHWmNc6NWld1chAttYCgIsiuF_uzXXnRnwVRXF6_FL_D9ocCAZmOVw/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx_ZrasU-3kiGfuMcQGkTTuOoUIiOLm5iJLRNq4Os-IHd5aJFcedvk-R1AvJnZ0XZPX-w/exec';
 
         document.addEventListener('DOMContentLoaded', () => {
             checkLogin();

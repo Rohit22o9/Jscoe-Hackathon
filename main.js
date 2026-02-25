@@ -31,23 +31,22 @@ if (particlesEl) {
 
 // Innovation Tracks Data (17 Tracks)
 const tracks = [
-    { title: "Agriculture & FoodTech", icon: "sprout", desc: "Tech solutions for sustainable farming and food security." },
-    { title: "Smart Automation", icon: "cpu", desc: "Building intelligent systems for home and industries." },
-    { title: "Smart Vehicles", icon: "car", desc: "Autonomous driving, EV infra, and smart traffic systems." },
-    { title: "HealthTech", icon: "heart-pulse", desc: "Innovative solutions for healthcare and medical devices." },
-    { title: "Social Good", icon: "users-2", desc: "Technology to solve pressing community & social issues." },
-    { title: "Logistics", icon: "truck", desc: "Next-gen transportation and supply chain management." },
-    { title: "Defense & Security", icon: "shield-check", desc: "AI-driven security and national defense innovations." },
-    { title: "Space Technology", icon: "rocket", desc: "Exploring orbit and beyond with satellite & propulsion tech." },
-    { title: "Heritage & Culture", icon: "landmark", desc: "Preserving history through digital transformation." },
-    { title: "Clean & Green Tech", icon: "leaf", desc: "Renewable energy and circular economy solutions." },
-    { title: "Smart Education", icon: "graduation-cap", desc: "Revolutionizing learning with EdTech and AI." },
-    { title: "Games & Toys", icon: "gamepad-2", desc: "Interactive entertainment and educational play-ware." },
-    { title: "Cybersecurity", icon: "lock", desc: "Protecting digital frontiers with blockchain & encryption." },
-    { title: "Robotics & Drones", icon: "bot", desc: "Autonomous aerial and ground robotic systems." },
-    { title: "Disaster Management", icon: "alert-triangle", desc: "Predicting and responding to natural calamities." },
-    { title: "Tourism & Hospitality", icon: "map", desc: "Enhancing global travel experiences with tech." },
-    { title: "Open Innovation", icon: "lightbulb", desc: "Miscellaneous breakthrough ideas outside defined tracks." }
+    { title: "Smart Automation", icon: "cpu", desc: "Intelligent systems for industries and home automation. (SDG 9)" },
+    { title: "Smart Education", icon: "graduation-cap", desc: "Revolutionizing learning with EdTech and digital tools. (SDG 4)" },
+    { title: "Space Technology", icon: "rocket", desc: "Exploring orbit and beyond with satellite tech. (SDG 13)" },
+    { title: "Tourism & Hospitality", icon: "map", desc: "Enhancing travel experiences with modern technology. (SDG 8)" },
+    { title: "Smart Vehicles", icon: "car", desc: "Autonomous driving, EV infra, and smart traffic. (SDG 7)" },
+    { title: "Heritage & Culture", icon: "landmark", desc: "Preserving history through digital innovation. (SDG 16)" },
+    { title: "Miscellaneous", icon: "lightbulb", desc: "Breakthrough ideas outside defined tracks. (SDG)" },
+    { title: "Robotics & Drones", icon: "bot", desc: "Autonomous aerial and ground robotic systems. (SDG 15)" },
+    { title: "Defense / Security", icon: "shield-check", desc: "National security and advanced defense innovations. (SDG 16)" },
+    { title: "Disaster Management", icon: "alert-triangle", desc: "Predicting and responding to natural calamities. (SDG 13)" },
+    { title: "Transportation & Logistics", icon: "truck", desc: "Next-gen supply chain and transport management. (SDG 11)" },
+    { title: "Social Good / Accessibility", icon: "users-2", desc: "Tech to solve community issues and improve accessibility. (SDG 10)" },
+    { title: "MedTech / BioTech / HealthTech", icon: "heart-pulse", desc: "Innovative solutions for healthcare and biotech. (SDG 3)" },
+    { title: "FinTech / Blockchain / Cybersecurity", icon: "lock", desc: "Secure digital transactions and data protection. (SDG 16)" },
+    { title: "Agriculture / FoodTech / Rural Development", icon: "sprout", desc: "Sustainable farming and rural growth solutions. (SDG 1, SDG 2)" },
+    { title: "Clean & Green Technology", icon: "leaf", desc: "Renewable energy and sustainability solutions. (SDG 7)" }
 ];
 
 const tracksGrid = document.getElementById('tracks-grid');
@@ -339,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // POST to Google Apps Script
                 // REPLACE THIS URL with your deployed web app URL
-                const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrrJntHcuFwJ8IaHWmNc6NWld1chAttYCgIsiuF_uzXXnRnwVRXF6_FL_D9ocCAZmOVw/exec';
+                const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx_ZrasU-3kiGfuMcQGkTTuOoUIiOLm5iJLRNq4Os-IHd5aJFcedvk-R1AvJnZ0XZPX-w/exec';
 
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',

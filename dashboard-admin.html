@@ -231,7 +231,15 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content relative">
+        <!-- Floating College Logos -->
+        <div class="absolute top-2 left-6 z-10 opacity-50 hover:opacity-100 transition-opacity">
+            <img src="jspm-logo.png" alt="JSPM" class="h-12 w-auto object-contain">
+        </div>
+        <div class="absolute top-2 right-6 z-10 opacity-50 hover:opacity-100 transition-opacity">
+            <img src="jscoe-logo.png" alt="JSCOE" class="h-12 w-auto object-contain">
+        </div>
+
         <!-- Header -->
         <header class="flex justify-between items-center mb-12 glass p-6 border-white/5 rounded-[2rem]">
             <div class="flex flex-col">
@@ -454,25 +462,86 @@
                                 <div class="box"><i data-lucide="check"></i></div><span
                                     class="text-[11px] font-bold uppercase text-white/70">Smart Automation</span>
                             </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Smart Education"
+                                    class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Smart Education</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Space Technology"
+                                    class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Space Technology</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Tourism & Hospitality" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Tourism & Hospitality</span>
+                            </label>
                             <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Smart Vehicles"
                                     class="hidden">
                                 <div class="box"><i data-lucide="check"></i></div><span
                                     class="text-[11px] font-bold uppercase text-white/70">Smart Vehicles</span>
                             </label>
-                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Clean Tech"
-                                    class="hidden">
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Heritage & Culture" class="hidden">
                                 <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Clean Tech</span>
+                                    class="text-[11px] font-bold uppercase text-white/70">Heritage & Culture</span>
                             </label>
-                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Robotics"
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Miscellaneous"
                                     class="hidden">
                                 <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Robotics</span>
+                                    class="text-[11px] font-bold uppercase text-white/70">Miscellaneous</span>
                             </label>
-                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Social Good"
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Robotics & Drones"
                                     class="hidden">
                                 <div class="box"><i data-lucide="check"></i></div><span
-                                    class="text-[11px] font-bold uppercase text-white/70">Social Good</span>
+                                    class="text-[11px] font-bold uppercase text-white/70">Robotics & Drones</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Defense / Security" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Defense / Security</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Disaster Management" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Disaster Management</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Transportation & Logistics" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Transportation &
+                                    Logistics</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Social Good / Accessibility" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Social Good /
+                                    Accessibility</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="MedTech / BioTech / HealthTech" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">MedTech / BioTech /
+                                    HealthTech</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="FinTech / Blockchain / Cybersecurity" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">FinTech / Blockchain /
+                                    Cybersecurity</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Agriculture / FoodTech / Rural Development" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Agriculture / FoodTech / Rural
+                                    Development</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Clean & Green Technology" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Clean & Green
+                                    Technology</span>
                             </label>
                         </div>
                     </div>
@@ -490,7 +559,6 @@
                         btn.disabled = true;
                         btn.innerText = "Processing...";
 
-                        // Collect Checked Tracks
                         const tracks = Array.from(e.target.querySelectorAll('input[name="tracks"]:checked')).map(cb => cb.value).join(', ');
 
                         const data = {
@@ -550,7 +618,6 @@
                 </div>
 
                 <div id="evaluators-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Dynamic Evaluator Cards will be injected here -->
                     <div class="col-span-full py-32 text-center border-2 border-dashed border-white/5 rounded-[3rem]">
                         <div class="flex flex-col items-center gap-6 opacity-20">
                             <i data-lucide="user-check" class="w-20 h-20 text-white"></i>
@@ -605,18 +672,92 @@
                         <label class="text-[10px] font-black text-neon-purple uppercase tracking-[0.3em] ml-4">Assign
                             Supervisory Themes</label>
                         <div class="checkbox-grid">
-                            <!-- Helper script will collect these -->
                             <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Smart Automation"
                                     class="hidden">
                                 <div class="box"><i data-lucide="check"></i></div><span
                                     class="text-[11px] font-bold uppercase text-white/70">Smart Automation</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Smart Education"
+                                    class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Smart Education</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Space Technology"
+                                    class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Space Technology</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Tourism & Hospitality" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Tourism & Hospitality</span>
                             </label>
                             <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Smart Vehicles"
                                     class="hidden">
                                 <div class="box"><i data-lucide="check"></i></div><span
                                     class="text-[11px] font-bold uppercase text-white/70">Smart Vehicles</span>
                             </label>
-                            <!-- ... (keeping some examples, user can expand) ... -->
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Heritage & Culture" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Heritage & Culture</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Miscellaneous"
+                                    class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Miscellaneous</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks" value="Robotics & Drones"
+                                    class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Robotics & Drones</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Defense / Security" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Defense / Security</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Disaster Management" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Disaster Management</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Transportation & Logistics" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Transportation &
+                                    Logistics</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Social Good / Accessibility" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Social Good /
+                                    Accessibility</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="MedTech / BioTech / HealthTech" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">MedTech / BioTech /
+                                    HealthTech</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="FinTech / Blockchain / Cybersecurity" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">FinTech / Blockchain /
+                                    Cybersecurity</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Agriculture / FoodTech / Rural Development" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Agriculture / FoodTech / Rural
+                                    Development</span>
+                            </label>
+                            <label class="theme-checkbox"><input type="checkbox" name="tracks"
+                                    value="Clean & Green Technology" class="hidden">
+                                <div class="box"><i data-lucide="check"></i></div><span
+                                    class="text-[11px] font-bold uppercase text-white/70">Clean & Green
+                                    Technology</span>
+                            </label>
                             <label class="theme-checkbox"><input type="checkbox" name="tracks" value="All Tracks"
                                     class="hidden">
                                 <div class="box"><i data-lucide="check"></i></div><span
@@ -638,7 +779,6 @@
                         btn.disabled = true;
                         btn.innerText = "Processing...";
 
-                        // Collect Checked Tracks
                         const tracks = Array.from(e.target.querySelectorAll('input[name="tracks"]:checked')).map(cb => cb.value).join(', ');
 
                         const data = {
@@ -768,7 +908,7 @@
 
     <script>
         // The Script URL must match the one deployed by the user
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrrJntHcuFwJ8IaHWmNc6NWld1chAttYCgIsiuF_uzXXnRnwVRXF6_FL_D9ocCAZmOVw/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx_ZrasU-3kiGfuMcQGkTTuOoUIiOLm5iJLRNq4Os-IHd5aJFcedvk-R1AvJnZ0XZPX-w/exec';
 
         // Load Data on Start
         document.addEventListener('DOMContentLoaded', () => {
