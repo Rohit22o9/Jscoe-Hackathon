@@ -34,93 +34,6 @@
         }
     </script>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .sidebar {
-            width: 300px;
-            background: #000814;
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 50;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .sidebar-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.5rem;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 1rem;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
-
-        .sidebar-link:hover {
-            color: #00d4ff;
-            background: rgba(0, 212, 255, 0.05);
-            border-color: rgba(0, 212, 255, 0.1);
-        }
-
-        .sidebar-link.active {
-            background: #ef4444;
-            color: white;
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
-        }
-
-        .main-content {
-            margin-left: 300px;
-            min-height: 100vh;
-            padding: 2.5rem;
-            background: #050505;
-            position: relative;
-        }
-
-        .content-view.hidden {
-            display: none;
-        }
-
-        .portal-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 2rem;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .portal-card:hover {
-            border-color: rgba(0, 212, 255, 0.2);
-        }
-
-        .status-badge {
-            padding: 0.35rem 0.85rem;
-            border-radius: 9999px;
-            font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-    </style>
 </head>
 
 <body class="font-inter text-white bg-dark">
@@ -128,12 +41,12 @@
 
     <!-- Sidebar -->
     <aside class="sidebar p-8">
-        <div class="flex items-center gap-4 mb-12 px-2">
-            <img src="logo.jpeg" alt="Logo"
-                class="w-12 h-12 rounded-xl border border-white/10 shadow-lg shadow-neon-blue/20">
+        <div class="mb-10 px-2">
             <div class="flex flex-col">
-                <span class="font-orbitron font-black text-xl tracking-tighter text-white uppercase">IIC 2K26</span>
-                <span class="text-[9px] uppercase tracking-[0.3em] text-neon-blue font-bold">Expert Matrix</span>
+                <span class="font-orbitron font-black text-2xl tracking-tighter text-white uppercase italic">IIC
+                    2K26</span>
+                <span class="text-[10px] uppercase tracking-[0.4em] text-neon-blue font-bold opacity-60">Evaluator
+                    Portal</span>
             </div>
         </div>
 
@@ -146,38 +59,34 @@
             <div class="sidebar-link" data-view="notices"><i data-lucide="bell" class="w-5 h-5"></i>System Notices</div>
         </nav>
 
-        <div class="mt-8 pt-6 border-t border-white/5">
-            <button onclick="window.location.href='login.html'"
-                class="w-full bg-accent-yellow text-dark font-black py-4 rounded-2xl flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-lg shadow-yellow-500/20 active:scale-95">
-                <i data-lucide="log-out" class="w-5 h-5"></i>LOGOUT
+        <div class="sidebar-logout">
+            <button onclick="window.location.href='login.html'" class="logout-btn">
+                <i data-lucide="log-out" class="w-5 h-5"></i>
+                <span>SIGN OUT</span>
             </button>
         </div>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content relative">
-        <!-- Floating College Logos -->
-        <div class="absolute top-2 left-6 z-10 opacity-50 hover:opacity-100 transition-opacity">
-            <img src="jspm-logo.png" alt="JSPM" class="h-12 w-auto object-contain">
-        </div>
-        <div class="absolute top-2 right-6 z-10 opacity-50 hover:opacity-100 transition-opacity">
-            <img src="jscoe-logo.png" alt="JSCOE" class="h-12 w-auto object-contain">
-        </div>
+
 
         <!-- Header -->
         <header class="flex justify-between items-center mb-12 glass p-6 border-white/5 rounded-[2rem]">
             <div class="flex flex-col">
-                <h2 class="text-3xl font-orbitron font-black text-white uppercase tracking-tight" id="section-title">
+                <h2 class="text-2xl md:text-3xl font-orbitron font-black text-white uppercase tracking-tight"
+                    id="section-title">
                     Evaluation Center</h2>
                 <div class="flex items-center gap-2 mt-1">
                     <span class="w-2 h-2 rounded-full bg-neon-purple animate-pulse"></span>
-                    <p class="text-neon-purple text-[11px] font-bold uppercase tracking-[0.2em]" id="section-subtitle">
+                    <p class="text-neon-purple text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em]"
+                        id="section-subtitle">
                         Real-Time Innovation Assessment Panel</p>
                 </div>
             </div>
 
             <div
-                class="flex items-center gap-5 px-6 py-3 bg-white/5 border border-white/10 rounded-[2rem] hover:border-neon-blue/30 transition-all group">
+                class="flex items-center gap-5 px-6 py-3 bg-white/5 border border-white/10 rounded-2xl hover:border-neon-blue/30 transition-all group shrink-0">
                 <div class="flex flex-col text-right">
                     <span class="text-xs font-black text-white group-hover:text-neon-blue transition-colors"
                         id="header-evaluator-name">Dr.

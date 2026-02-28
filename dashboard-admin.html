@@ -35,48 +35,6 @@
     </script>
     <link rel="stylesheet" href="style.css">
     <style>
-        .sidebar {
-            width: 300px;
-            background: #000814;
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @media (max-width: 1024px) {
-            .sidebar {
-                transform: translateX(-100%);
-                width: 280px;
-            }
-
-            .sidebar.active {
-                transform: translateX(0);
-            }
-
-            .main-content {
-                margin-left: 0 !important;
-                padding: 1.5rem !important;
-            }
-
-            .mobile-header {
-                display: flex !important;
-            }
-        }
-
-        .main-content {
-            margin-left: 300px;
-            min-height: 100vh;
-            padding: 2.5rem;
-            background: #050505;
-            position: relative;
-        }
-
         .mobile-header {
             display: none;
             position: fixed;
@@ -217,12 +175,12 @@
 
     <!-- Sidebar -->
     <aside class="sidebar p-8" id="dashboard-sidebar">
-        <div class="flex items-center gap-4 mb-12 px-2">
-            <img src="logo.jpeg" alt="Logo"
-                class="w-12 h-12 rounded-xl border border-white/10 shadow-lg shadow-neon-blue/20">
+        <div class="mb-10 px-2">
             <div class="flex flex-col">
-                <span class="font-orbitron font-black text-xl tracking-tighter text-white uppercase">IIC 2K26</span>
-                <span class="text-[9px] uppercase tracking-[0.3em] text-neon-blue font-bold">Innovation Panel</span>
+                <span class="font-orbitron font-black text-2xl tracking-tighter text-white uppercase italic">IIC
+                    2K26</span>
+                <span class="text-[10px] uppercase tracking-[0.4em] text-neon-blue font-bold opacity-60">Admin
+                    Portal</span>
             </div>
         </div>
 
@@ -244,22 +202,17 @@
             <div class="sidebar-link" data-view="notices"><i data-lucide="bell" class="w-5 h-5"></i>Notices</div>
         </nav>
 
-        <div class="mt-8 pt-6 border-t border-white/5">
-            <button onclick="window.location.href='login.html'"
-                class="w-full bg-accent-yellow text-dark font-black py-4 rounded-2xl flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-lg shadow-yellow-500/20 active:scale-95">
-                <i data-lucide="log-out" class="w-5 h-5"></i>LOGOUT
+        <div class="sidebar-logout">
+            <button onclick="window.location.href='login.html'" class="logout-btn">
+                <i data-lucide="log-out" class="w-5 h-5"></i>
+                <span>SIGN OUT</span>
             </button>
         </div>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content relative pt-[100px] lg:pt-10">
-        <!-- Floating College Logos -->
-        <div
-            class="hidden sm:block absolute top-2 right-6 lg:right-12 z-10 opacity-30 hover:opacity-100 transition-opacity flex items-center gap-4">
-            <img src="jspm-logo.png" alt="JSPM" class="h-8 md:h-12 w-auto object-contain">
-            <img src="jscoe-logo.png" alt="JSCOE" class="h-8 md:h-12 w-auto object-contain">
-        </div>
+
 
         <!-- Header -->
         <header
@@ -277,7 +230,7 @@
             </div>
 
             <div
-                class="flex items-center gap-5 px-6 py-3 bg-white/5 border border-white/10 rounded-[2rem] hover:border-neon-blue/30 transition-all group">
+                class="flex items-center gap-5 px-6 py-3 bg-white/5 border border-white/10 rounded-2xl hover:border-neon-blue/30 transition-all group shrink-0">
                 <div class="flex flex-col text-right">
                     <span class="text-xs font-black text-white group-hover:text-neon-blue transition-colors">Admin JSCOE
                         Waghole Sir</span>
@@ -294,7 +247,7 @@
 
         <!-- DASHBOARD VIEW -->
         <div id="view-dashboard" class="content-view space-y-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-6">
                 <div class="portal-card relative overflow-hidden group p-6">
                     <div class="flex justify-between items-baseline mb-6">
                         <span class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">Total Teams</span>
