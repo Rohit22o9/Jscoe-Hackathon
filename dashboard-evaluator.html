@@ -312,7 +312,7 @@
         lucide.createIcons();
 
         // Configuration
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby5KouhAElgoNBT48y0ms9Ll_UwGOo9YerzclzidWU3W33PUi5vZEx9y62kgcgGiLxO8Q/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwY7x-zXD7h7xbJkD2WSY1kasz5eTEIEW-d4nnCCxEOmLpgKssH6GQXqf9PptirQ87kmQ/exec';
 
         let myAssignedTracks = [];
 
@@ -482,7 +482,7 @@
                     : `<button onclick="openEvaluationModal(${index})" class="px-4 py-2 rounded-lg bg-neon-blue/10 text-neon-blue hover:bg-neon-blue hover:text-dark transition-all text-xs font-black uppercase tracking-widest">Evaluate</button>`;
 
                 tr.innerHTML = `
-                    <td class="px-8 py-5 text-white/70">${team['Transaction ID'] || 'N/A'}</td>
+                    <td class="px-8 py-5 text-white/70">${team['Team ID'] || 'N/A'}</td>
                     <td class="px-8 py-5 font-bold text-white">${team['Team Name']}</td>
                     <td class="px-8 py-5">${statusBadge}</td>
                     <td class="px-8 py-5 text-center">
@@ -499,7 +499,7 @@
 
             // Populate Modal
             document.getElementById('eval-team-name').innerText = team['Team Name'];
-            document.getElementById('eval-team-id').innerText = `ID: ${team['Transaction ID'] || 'N/A'}`;
+            document.getElementById('eval-team-id').innerText = `ID: ${team['Team ID'] || 'N/A'}`;
             document.getElementById('eval-project-title').innerText = team['Project Title'] || 'Not Submitted';
             document.getElementById('eval-abstract').innerText = team['Project Description'] || 'No abstract submitted yet.';
 
@@ -539,7 +539,7 @@
                 completeBtn.style.display = 'none';
             } else {
                 completeBtn.style.display = 'flex';
-                completeBtn.onclick = () => markEvaluationComplete(team['Transaction ID']);
+                completeBtn.onclick = () => markEvaluationComplete(team['Team ID']);
             }
 
             document.getElementById('evaluation-modal').classList.remove('hidden');
@@ -570,7 +570,7 @@
                     alert('Evaluation Marked as Completed!');
 
                     // Optimistic Update
-                    const team = currentAssignedTeams.find(t => String(t['Transaction ID']) === String(teamId));
+                    const team = currentAssignedTeams.find(t => String(t['Team ID']) === String(teamId));
                     if (team) {
                         team['Evaluation Status'] = 'Completed';
                     }

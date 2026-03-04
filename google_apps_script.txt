@@ -211,7 +211,7 @@ function doPost(e) {
               'Team Leader Name', 'Leader Email', 'Leader Phone', 'Team Size',
               'Member 2 Name', 'Member 2 Email', 'Member 3 Name', 'Member 3 Email', 
               'Member 4 Name', 'Member 4 Email', 'Innovation Track', 'Project Title', 
-              'Project Description', 'GitHub Link', 'Transaction ID', 'Screenshot Drive Link', 'Approval Status', 'Password'
+              'Project Description', 'GitHub Link', 'Team ID', 'Screenshot Drive Link', 'Approval Status', 'Password'
             ];
             sheet.appendRow(headers);
         } else {
@@ -262,7 +262,7 @@ function doPost(e) {
             data.projectTitle || '',
             data.projectDesc || '',
             data.githubLink || '-',
-            data.transactionId || '',
+            'IIC26-' + Math.floor(1000 + Math.random() * 9000),
             fileUrl,
             'Pending',
             ''  // No password on registration
@@ -464,9 +464,9 @@ function doPost(e) {
 
         const statusCol = ensureColumn('Evaluation Status');
         const evaluatorCol = ensureColumn('Evaluated By');
-        const idCol = headers.indexOf('Transaction ID');
+        const idCol = headers.indexOf('Team ID');
 
-        if (idCol === -1) return jsonResponse({ status: 'error', message: 'Sheet invalid: No Transaction ID column' });
+        if (idCol === -1) return jsonResponse({ status: 'error', message: 'Sheet invalid: No Team ID column' });
 
         // Find Team by ID
         const values = sheet.getDataRange().getValues();
