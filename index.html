@@ -106,10 +106,10 @@
                     class="w-full bg-gradient-to-r from-neon-purple to-neon-blue text-white px-6 py-5 rounded-2xl text-center font-black uppercase tracking-widest text-sm shadow-xl shadow-neon-purple/20 flex items-center justify-center gap-3">
                     <i data-lucide="download" class="w-5 h-5"></i> PPT FORMAT
                 </a>
-                <a href="#register"
-                    class="w-full bg-neon-blue text-dark font-black px-6 py-5 rounded-2xl text-center text-sm shadow-xl shadow-neon-blue/20 uppercase flex items-center justify-center gap-3">
-                    <i data-lucide="zap" class="w-5 h-5"></i> Register Now
-                </a>
+                <div
+                    class="w-full bg-white/10 text-white/40 cursor-not-allowed font-black uppercase tracking-widest text-sm rounded-2xl py-5 flex items-center justify-center gap-3">
+                    <i data-lucide="lock" class="w-5 h-5"></i> Registrations Closed
+                </div>
             </div>
         </div>
     </div>
@@ -139,10 +139,10 @@
                     FORMAT</a>
             </div>
             <div class="flex items-center gap-4">
-                <a href="#register"
-                    class="hidden sm:inline-block bg-neon-blue text-dark font-bold px-6 py-2 rounded-full hover:bg-white transition-all transform hover:scale-105 text-sm uppercase">
-                    Register
-                </a>
+                <div
+                    class="hidden sm:inline-block border border-white/10 text-white/30 font-bold px-6 py-2 rounded-full cursor-not-allowed text-xs uppercase bg-white/5">
+                    Closed
+                </div>
                 <a href="login.html"
                     class="hidden sm:inline-block border border-white/20 text-white font-bold px-6 py-2 rounded-full hover:bg-white/10 transition-all transform hover:scale-105 text-sm uppercase">
                     Login
@@ -218,17 +218,11 @@
                 <!-- Actions -->
                 <div data-aos="fade-up" data-aos-delay="300"
                     class="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
-                    <a href="#register"
-                        class="w-full sm:w-auto bg-gradient-to-r from-neon-blue to-neon-purple text-dark font-black px-14 py-6 rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_50px_rgba(0,212,255,0.4)] flex items-center justify-center gap-3 group relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                        </div>
-                        <span class="relative z-10 flex items-center gap-3 text-lg">
-                            🔥 REGISTER NOW
-                            <i data-lucide="zap"
-                                class="w-6 h-6 group-hover:scale-125 transition-transform text-white"></i>
-                        </span>
-                    </a>
+                    <div
+                        class="w-full sm:w-auto bg-white/5 border border-white/10 text-white/30 font-black px-14 py-6 rounded-2xl flex items-center justify-center gap-3 cursor-not-allowed text-lg uppercase tracking-widest">
+                        <i data-lucide="lock" class="w-6 h-6"></i>
+                        REGISTRATIONS CLOSED
+                    </div>
                     <a href="New ppt format.pptx?v=1.2" download="New ppt format.pptx"
                         class="w-full sm:w-auto glass px-14 py-6 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-white/10 transition-all text-white shadow-xl group border-white/20">
                         <i data-lucide="download" class="w-6 h-6 group-hover:-translate-y-1 transition-transform"></i>
@@ -437,11 +431,11 @@
                             class="absolute left-4 md:left-1/2 w-8 h-8 bg-neon-purple rounded-full transform -translate-x-1/2 shadow-[0_0_20px_rgba(155,93,229,0.6)] z-10 border-4 border-dark">
                         </div>
                         <div class="w-full md:w-1/2 pl-12 md:pl-12">
-                            <h3 class="text-xl md:text-2xl font-bold text-neon-purple">Registrations Close</h3>
-                            <p class="text-white/50 text-xs md:text-base mt-1">March 21, 2026</p>
-                            <p class="mt-2 text-[13px] md:text-sm text-white/40">Last chance to submit your team details
-                                and project
-                                abstract.</p>
+                            <h3 class="text-xl md:text-2xl font-bold text-white/50">Registrations Closed</h3>
+                            <p class="text-white/30 text-xs md:text-base mt-1">March 21, 2026</p>
+                            <p class="mt-2 text-[13px] md:text-sm text-white/20">The registration period has ended.
+                                Evaluation of
+                                submissions is in progress.</p>
                         </div>
                     </div>
 
@@ -607,10 +601,10 @@
                 problems aimed to be solved and the potential impact of the projects in this domain.
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#register" onclick="closeModal()"
-                    class="bg-neon-blue text-dark font-black px-8 py-4 rounded-2xl flex items-center justify-center gap-2 hover:scale-105 transition-all">
-                    BUILD IN THIS TRACK <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                </a>
+                <button onclick="closeModal()"
+                    class="bg-white/10 text-white/40 font-black px-8 py-4 rounded-2xl flex items-center justify-center gap-2 cursor-not-allowed">
+                    REGISTRATIONS CLOSED <i data-lucide="lock" class="w-5 h-5"></i>
+                </button>
                 <button onclick="closeModal()"
                     class="glass px-8 py-4 rounded-2xl font-bold hover:bg-white/5 transition-all">
                     DISMISS
@@ -621,327 +615,70 @@
 
     <!-- Registration Section -->
     <section id="register" class="py-24 relative overflow-hidden bg-gradient-to-b from-dark to-[#0a0a0a]">
+        <!-- Dynamic Background Elements -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute inset-0 grid-bg opacity-[0.03]"></div>
+
         <div class="container mx-auto px-6 relative z-10">
-            <!-- Multi-Step Form Container -->
-            <div class="max-w-4xl mx-auto glass p-6 md:p-12 rounded-[32px] md:rounded-[40px] border-neon-blue/20">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-orbitron font-bold mb-2">🌍 International Innovation Challenge
-                        2K26</h2>
-                    <h3 class="text-xl text-white/50">Student Team Registration Form</h3>
-                    <div class="h-1 w-24 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto mt-4 rounded-full">
-                    </div>
+            <div class="max-w-4xl mx-auto glass p-12 md:p-20 rounded-[40px] border-red-500/20 text-center relative overflow-hidden group" data-aos="zoom-in">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 text-[10px] font-black uppercase tracking-[0.3em] mb-10">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                    </span>
+                    Admission Period Ended
                 </div>
 
-                <!-- Progress Stepper -->
-                <div class="mb-12 relative overflow-x-auto pb-4">
-                    <div class="flex justify-between items-center min-w-[600px] relative z-10 px-4">
-                        <!-- Step 1 -->
-                        <div class="flex flex-col items-center step-item active" data-step="1">
-                            <div
-                                class="w-12 h-12 rounded-full glass border-2 flex items-center justify-center mb-2 transition-all duration-300 step-circle">
-                                <i data-lucide="info" class="w-6 h-6"></i>
-                            </div>
-                            <span class="text-[10px] md:text-xs uppercase tracking-widest font-bold opacity-50">Basic
-                                Info</span>
-                        </div>
-                        <!-- Step 2 -->
-                        <div class="flex flex-col items-center step-item" data-step="2">
-                            <div
-                                class="w-12 h-12 rounded-full glass border-2 flex items-center justify-center mb-2 transition-all duration-300 step-circle">
-                                <i data-lucide="users" class="w-6 h-6"></i>
-                            </div>
-                            <span
-                                class="text-[10px] md:text-xs uppercase tracking-widest font-bold opacity-50">Members</span>
-                        </div>
-                        <!-- Step 3 -->
-                        <div class="flex flex-col items-center step-item" data-step="3">
-                            <div
-                                class="w-12 h-12 rounded-full glass border-2 flex items-center justify-center mb-2 transition-all duration-300 step-circle">
-                                <i data-lucide="lightbulb" class="w-6 h-6"></i>
-                            </div>
-                            <span
-                                class="text-[10px] md:text-xs uppercase tracking-widest font-bold opacity-50">Project</span>
-                        </div>
-                        <!-- Step 4 -->
-                        <div class="flex flex-col items-center step-item" data-step="4">
-                            <div
-                                class="w-12 h-12 rounded-full glass border-2 flex items-center justify-center mb-2 transition-all duration-300 step-circle">
-                                <i data-lucide="credit-card" class="w-6 h-6"></i>
-                            </div>
-                            <span
-                                class="text-[10px] md:text-xs uppercase tracking-widest font-bold opacity-50">Payment</span>
-                        </div>
+                <div class="relative z-10">
+                    <div class="w-20 h-20 bg-gradient-to-br from-red-500/20 to-red-600/10 rounded-3xl flex items-center justify-center mx-auto mb-8 text-red-500 shadow-[0_0_50px_rgba(239,68,68,0.2)] border border-red-500/20">
+                        <i data-lucide="lock" class="w-10 h-10"></i>
                     </div>
-                    <!-- Progress Line -->
-                    <div class="absolute top-6 left-[10%] right-[10%] h-[2px] bg-white/10 -z-0 min-w-[500px]">
-                        <div id="step-progress-line"
-                            class="h-full bg-gradient-to-r from-neon-blue to-neon-purple transition-all duration-500 w-0">
+                    
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-orbitron font-black mb-6 tracking-tighter">
+                        REGISTRATIONS <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-white to-red-600">OFFICIALLY CLOSED</span>
+                    </h2>
+                    
+                    <p class="text-white/50 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+                        The registration portal for the <span class="text-white font-medium">International Innovation Challenge 2K26</span> has now been closed. We appreciate the immense interest and high-quality submissions from teams across the globe.
+                    </p>
+
+                    <!-- Next steps cards -->
+                    <div class="grid md:grid-cols-2 gap-6 text-left">
+                        <div class="glass p-8 rounded-[32px] border-white/5 hover:border-neon-blue/20 transition-all group/card relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-neon-blue/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover/card:bg-neon-blue/10 transition-all"></div>
+                            <div class="w-12 h-12 rounded-2xl bg-neon-blue/10 flex items-center justify-center text-neon-blue mb-6">
+                                <i data-lucide="search" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-bold text-xl text-white mb-3">Evaluation Underway</h4>
+                            <p class="text-sm text-white/40 leading-relaxed italic">Our expert jury is diligently reviewing every abstract. Selection results for the next round will be released soon.</p>
+                            <div class="mt-6 flex items-center gap-2 text-neon-blue text-xs font-bold uppercase tracking-widest">
+                                <i data-lucide="calendar" class="w-4 h-4"></i> March 25, 2026
+                            </div>
+                        </div>
+
+                        <div class="glass p-8 rounded-[32px] border-white/5 hover:border-neon-purple/20 transition-all group/card relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-neon-purple/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover/card:bg-neon-purple/10 transition-all"></div>
+                            <div class="w-12 h-12 rounded-2xl bg-neon-purple/10 flex items-center justify-center text-neon-purple mb-6">
+                                <i data-lucide="help-circle" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-bold text-xl text-white mb-3">Support & Queries</h4>
+                            <p class="text-sm text-white/40 leading-relaxed italic">Registered teams with urgent concerns regarding their submission status can reach out to our helpdesk.</p>
+                            <div class="mt-6 flex items-center gap-2 text-neon-purple text-xs font-bold uppercase tracking-widest">
+                                <i data-lucide="mail" class="w-4 h-4"></i> iotclub2018@gmail.com
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <form id="registration-wizard" class="space-y-8">
-                    <!-- STEP 1: Basic Info -->
-                    <div class="form-step active" id="step-1">
-                        <h4 class="text-xl font-bold mb-8 flex items-center gap-3">
-                            <span
-                                class="w-8 h-8 rounded-lg bg-neon-blue/20 text-neon-blue flex items-center justify-center text-sm font-black">1</span>
-                            Team & Institution Information
-                        </h4>
-                        <!-- Anti-bot field -->
-                        <input type="text" name="_honey" style="display:none">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-white/40 ml-2">Team Name *</label>
-                                <input type="text" required name="teamName"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
-                                    placeholder="Letters & Spaces Only">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-white/40 ml-2">College / Institution Name
-                                    *</label>
-                                <input type="text" required name="college"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
-                                    placeholder="Full name of institution">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-white/40 ml-2">Institution Type *</label>
-                                <select required name="collegeType"
-                                    class="w-full bg-[#0d0d0d] border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all appearance-none cursor-pointer">
-                                    <option value="" disabled selected>Select Type</option>
-                                    <option>Government / Semi-Gov</option>
-                                    <option>Private University</option>
-                                    <option>Autonomous Institute</option>
-                                    <option>International School/College</option>
-                                </select>
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-white/40 ml-2">Country *</label>
-                                <input type="text" required name="country"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
-                                    placeholder="e.g. India">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-white/40 ml-2">State / Province *</label>
-                                <input type="text" required name="state"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
-                                    placeholder="e.g. Maharashtra">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-white/40 ml-2">PIN / Postal Code
-                                    *</label>
-                                <input type="text" required name="pin"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
-                                    placeholder="XXXXXX">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- STEP 2: Members -->
-                    <div class="form-step hidden" id="step-2">
-                        <h4 class="text-xl font-bold mb-8 flex items-center gap-3">
-                            <span
-                                class="w-8 h-8 rounded-lg bg-neon-purple/20 text-neon-purple flex items-center justify-center text-sm font-black">2</span>
-                            Team Members (2–4 Members)
-                        </h4>
-                        <div class="space-y-8">
-                            <div class="p-6 rounded-3xl bg-white/5 border border-white/5">
-                                <h5 class="text-sm font-bold text-neon-blue mb-4 uppercase tracking-widest">Team Leader
-                                </h5>
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <input type="text" required name="leaderName"
-                                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-blue text-sm"
-                                        placeholder="Full Name *">
-                                    <input type="email" required name="leaderEmail"
-                                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-blue text-sm"
-                                        placeholder="Email *">
-                                    <input type="tel" required name="leaderPhone"
-                                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-blue text-sm"
-                                        placeholder="Phone Number *">
-                                </div>
-                            </div>
-                            <div class="p-6 rounded-3xl bg-white/5 border border-white/5">
-                                <h5 class="text-sm font-bold text-white/40 mb-4 uppercase tracking-widest">Member 2</h5>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <input type="text" required name="m2Name"
-                                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
-                                        placeholder="Full Name *">
-                                    <input type="email" required name="m2Email"
-                                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
-                                        placeholder="Email *">
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="p-6 rounded-3xl bg-white/5 border border-white/5">
-                                    <h5 class="text-sm font-bold text-white/40 mb-4 uppercase tracking-widest">Member 3
-                                        (Optional)</h5>
-                                    <div class="space-y-4">
-                                        <input type="text" name="m3Name"
-                                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
-                                            placeholder="Full Name">
-                                        <input type="email" name="m3Email"
-                                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
-                                            placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="p-6 rounded-3xl bg-white/5 border border-white/5">
-                                    <h5 class="text-sm font-bold text-white/40 mb-4 uppercase tracking-widest">Member 4
-                                        (Optional)</h5>
-                                    <div class="space-y-4">
-                                        <input type="text" name="m4Name"
-                                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
-                                            placeholder="Full Name">
-                                        <input type="email" name="m4Email"
-                                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-neon-purple text-sm"
-                                            placeholder="Email">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- STEP 3: Project -->
-                    <div class="form-step hidden" id="step-3">
-                        <h4 class="text-xl font-bold mb-8 flex items-center gap-3">
-                            <span
-                                class="w-8 h-8 rounded-lg bg-yellow-400/20 text-yellow-500 flex items-center justify-center text-sm font-black">3</span>
-                            Project & Innovation Track
-                        </h4>
-                        <div class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="space-y-2">
-                                    <label class="text-xs font-bold uppercase text-white/40 ml-2">Innovation Track
-                                        *</label>
-                                    <select required name="track"
-                                        class="w-full bg-[#0d0d0d] border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue appearance-none cursor-pointer">
-                                        <option value="" disabled selected>Select a track</option>
-                                        <option>Smart Automation (SDG 9)</option>
-                                        <option>Smart Education (SDG 4)</option>
-                                        <option>Space Technology (SDG 13)</option>
-                                        <option>Tourism & Hospitality (SDG 8)</option>
-                                        <option>Smart Vehicles (SDG 7)</option>
-                                        <option>Heritage & Culture (SDG 16)</option>
-                                        <option>Miscellaneous (SDG)</option>
-                                        <option>Robotics & Drones (SDG 15)</option>
-                                        <option>Defense / Security (SDG 16)</option>
-                                        <option>Disaster Management (SDG 13)</option>
-                                        <option>Transportation & Logistics (SDG 11)</option>
-                                        <option>Social Good / Accessibility (SDG 10)</option>
-                                        <option>MedTech / BioTech / HealthTech (SDG 3)</option>
-                                        <option>FinTech / Blockchain / Cybersecurity (SDG 16)</option>
-                                        <option>Agriculture / FoodTech / Rural Development (SDG 1, SDG 2)</option>
-                                        <option>Clean & Green Technology (Renewable Energy, Sustainability) (SDG 7)
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="space-y-2">
-                                    <label class="text-xs font-bold uppercase text-white/40 ml-2">Project Title
-                                        *</label>
-                                    <input type="text" required name="projectTitle"
-                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
-                                        placeholder="Enter catch project title">
-                                </div>
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-white/40 ml-2">Short Project Description
-                                    *</label>
-                                <textarea required name="projectDesc"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all h-32 md:h-40"
-                                    placeholder="Describe your solution..."></textarea>
-                                <p class="text-[10px] text-white/30 ml-2">Briefly explain your idea in 150–250 words.
-                                </p>
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-white/40 ml-2">GitHub / Portfolio Link
-                                    (Optional)</label>
-                                <input type="url" name="githubLink"
-                                    class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all"
-                                    placeholder="https://github.com/...">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- STEP 4: Payment -->
-                    <div class="form-step hidden" id="step-4">
-                        <h4 class="text-xl font-bold mb-8 flex items-center gap-3">
-                            <span
-                                class="w-8 h-8 rounded-lg bg-green-500/20 text-green-500 flex items-center justify-center text-sm font-black">4</span>
-                            Registration Payment
-                        </h4>
-
-                        <div
-                            class="p-8 rounded-[32px] bg-gradient-to-r from-neon-blue/10 to-neon-purple/10 border border-white/5 text-center mb-8">
-                            <span
-                                class="text-white/60 uppercase tracking-widest text-xs font-bold mb-2 block">Registration
-                                Fee</span>
-                            <div class="text-4xl font-orbitron font-black text-white">₹500 <span
-                                    class="text-lg font-normal opacity-50">per Team</span></div>
-                            <p class="text-sm text-white/40 mt-2 italic">Complete payment before final submission.</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            <div class="space-y-6 flex flex-col items-center justify-center">
-                                <div
-                                    class="w-48 h-48 glass rounded-3xl p-2 flex items-center justify-center border border-white/10 bg-white">
-                                    <img src="payment-qr.png" alt="Payment QR Code"
-                                        class="w-full h-full object-contain rounded-2xl">
-                                </div>
-                                <p class="text-xs font-bold text-white/50 uppercase tracking-widest">Scan & Pay ₹500 via
-                                    UPI</p>
-                            </div>
-                            <div class="space-y-6">
-                                <div class="space-y-2">
-                                    <label class="text-xs font-bold uppercase text-white/40 ml-2">Upload Payment
-                                        Screenshot *</label>
-                                    <input type="file" required name="screenshot" accept="image/*,.pdf"
-                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-neon-blue transition-all text-sm file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-black file:bg-neon-blue file:text-dark cursor-pointer text-white/40">
-                                    <div class="flex items-start gap-3 ml-2 pt-2">
-                                        <input type="checkbox" required
-                                            class="mt-1 w-4 h-4 rounded accent-neon-blue cursor-pointer">
-                                        <span class="text-xs text-white/50 leading-relaxed">I confirm that the payment
-                                            details provided are accurate and understand that registration is
-                                            non-refundable.</span>
-                                    </div>
-                                    <p class="text-[10px] text-white/30 italic mt-4 ml-2">
-                                        📌 Note: Your registration will be verified within 48 hours after payment
-                                        confirmation.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Navigation Buttons -->
-                    <div
-                        class="flex flex-col md:flex-row justify-between items-center gap-4 pt-10 border-t border-white/5">
-                        <button type="button" id="prev-btn"
-                            class="w-full md:w-auto px-8 py-4 glass rounded-2xl font-bold text-white/30 cursor-not-allowed opacity-50 flex items-center justify-center gap-2 transition-all hover:bg-white/5"
-                            disabled>
-                            <i data-lucide="arrow-left" class="w-5 h-5"></i> PREVIOUS
-                        </button>
-                        <button type="button" id="next-btn"
-                            class="w-full md:w-auto px-10 py-5 bg-gradient-to-r from-neon-blue to-neon-purple text-dark font-black rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_30px_rgba(155,93,229,0.3)] flex items-center justify-center gap-2">
-                            NEXT STEP <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                        </button>
-                        <button type="submit" id="final-submit-btn"
-                            class="hidden w-full md:w-auto px-12 py-5 bg-gradient-to-r from-neon-blue to-neon-purple text-dark font-black rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_40px_rgba(0,212,255,0.4)] flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed">
-                            <span id="submit-text" class="flex items-center gap-3">
-                                <i data-lucide="zap"></i> COMPLETE REGISTRATION
-                            </span>
-                            <span id="submit-loader" class="hidden flex items-center gap-3">
-                                <i data-lucide="loader-2" class="animate-spin"></i> PROCESSING...
-                            </span>
-                        </button>
-                    </div>
-                </form>
             </div>
         </div>
     </section>
 
     <!-- Floating Action Button -->
-    <a href="#register"
-        class="fixed bottom-8 right-8 z-[90] bg-neon-blue text-dark font-black px-6 py-4 rounded-2xl flex items-center gap-3 shadow-[0_0_30px_rgba(0,212,255,0.5)] md:hidden hover:scale-105 transition-all">
-        <i data-lucide="zap"></i> REGISTER
+    <a href="#"
+        class="fixed bottom-8 right-8 z-[90] bg-white/10 backdrop-blur-md text-white/40 font-black px-6 py-4 rounded-2xl flex items-center gap-3 border border-white/10 shadow-2xl transition-all cursor-default">
+        <i data-lucide="lock"></i> CLOSED
     </a>
 
     <!-- Gallery Section -->
