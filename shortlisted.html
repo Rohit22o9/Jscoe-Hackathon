@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortlisted Teams | IIC 2K26</title>
+    <meta name="description" content="Official list of teams shortlisted for the International Innovation Challenge 2K26.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="logo.jpeg">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#050505',
+                        'navy-dark': '#000814',
+                        'neon-blue': '#00d4ff',
+                        'neon-purple': '#9b5de5',
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .team-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .team-card:hover {
+            background: rgba(0, 212, 255, 0.05);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0, 212, 255, 0.2);
+        }
+        .team-card i {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        .team-card:hover i {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body class="font-inter bg-dark text-white selection:bg-neon-blue/30 overflow-x-hidden">
+    <div id="cursor-glow"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="logo.jpeg" alt="IIC Logo" class="w-10 h-10 rounded-xl object-cover shadow-[0_0_20px_rgba(0,212,255,0.4)] border border-white/10">
+                <span class="font-orbitron font-bold text-xl tracking-tighter text-glow">IIC 2K26</span>
+            </a>
+            <a href="index.html" class="flex items-center gap-2 text-white/70 hover:text-white transition-colors font-bold uppercase tracking-widest text-xs">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-40 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 grid-bg opacity-20"></div>
+        <div class="absolute top-1/4 -left-20 w-96 h-96 bg-neon-blue/10 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-neon-purple/10 rounded-full blur-[120px] animate-pulse" style="animation-delay: 1s"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-green-500/10 border border-green-500/20 mb-8" data-aos="fade-down">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span class="text-green-500 text-[10px] font-black uppercase tracking-[0.3em]">Official Selection List</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-orbitron font-black mb-8 tracking-tighter" data-aos="fade-up">
+                SHORTLISTED <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">TEAMS</span>
+            </h1>
+            <p class="text-white/40 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-12" data-aos="fade-up" data-aos-delay="100">
+                Congratulations to the following innovators chosen for the next stage of the International Innovation Challenge 2K26.
+            </p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="pb-24">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="relative mb-16" data-aos="fade-up">
+                    <i data-lucide="search" class="absolute left-6 top-1/2 -translate-y-1/2 text-neon-blue w-6 h-6"></i>
+                    <input type="text" id="teamSearch" placeholder="Find your team by name..." 
+                        class="w-full bg-white/5 border border-white/10 rounded-[2rem] py-6 pl-16 pr-8 text-white text-lg placeholder:text-white/20 focus:outline-none focus:border-neon-blue/50 focus:bg-white/[0.08] transition-all shadow-2xl">
+                </div>
+
+                <!-- Teams Grid -->
+                <div id="teamsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Actual Teams List -->
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Biomulch Innovators</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">REGENESIS</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Team Kinetic Karma</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Hydro Sense</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Dushantpreet Singh</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Quantum Leapers</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">AUREVO</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">SKAY</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">AirLink</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">FarmFort</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">ZeroLeft</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Team Agrinova</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">CarBon CoDers</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">ClearFrame</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">DevCore VisionX</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Cooked Developers</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">InfiniteLoopers</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Circuit Breakers</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">PHONIEX</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Solar Linkers</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Crew shield</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Titan Tacticians</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Team Galactic</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">CodeX</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Team Error</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Brahma</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Electro Pulse</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">EdgesafeAI</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">BLANC</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">DevCore BionicHand</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">SHANYA VTOL</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Dr Bubs</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Tech Pioneers</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Team SecureQ</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">AlphaCoders</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">MechMinds</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">EarthShield</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">MECH WARRIORS</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Sakhi Saathi</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Vortex</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">AgriTadka</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">StockPulse</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">IPQuest quizzy</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">GenAcoustics</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">thriller</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Grid innovators</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">JARVIS</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Green Spokes</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Alpha</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">VOLTLOGIC</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">InnovateHer</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Mavrics</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Team Wattsup</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Path Guardians</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">AGRO TECH</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Voltage Warriors</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">DealNexus</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Tech Crusaders</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">AgriTechs</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">NEXUS</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Falcon</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">AgroIntel</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Nirnay</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Codeciphers</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">PhantomTrace</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Quad Blasters</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Smart charge squad</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Syntax squad</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Mahesh Aditya Shravani</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">GTT</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Falcon Defenders</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">The Bug Hunters</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Tech Bulls</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">CyberSquad</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">ICONIC</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Blastoise</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="team-card p-6 rounded-2xl flex items-center justify-between group">
+                        <span class="font-bold text-lg tracking-tight">Code Ninjas</span>
+                        <i data-lucide="award" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                </div>
+
+                <!-- No Results Message -->
+                <div id="noResults" class="hidden text-center py-24">
+                    <div class="w-24 h-24 bg-white/5 rounded-[2rem] flex items-center justify-center mx-auto mb-8 text-white/10">
+                        <i data-lucide="alert-circle" class="w-12 h-12"></i>
+                    </div>
+                    <h3 class="text-3xl font-orbitron font-black mb-4 uppercase italic tracking-tighter">Team Not Found</h3>
+                    <p class="text-white/30 text-lg">Double check the spelling or contact support.</p>
+                </div>
+
+                <div class="mt-20 text-center" data-aos="fade-up">
+                    <p class="text-white/20 text-[10px] font-black uppercase tracking-[0.5em] mb-8">Total Shortlisted: 77 Teams</p>
+                    <div class="inline-flex items-center gap-4 px-8 py-4 rounded-2xl bg-white/5 border border-white/10 text-white/50 text-sm hover:border-neon-blue/30 transition-colors">
+                        <i data-lucide="mail" class="text-neon-blue"></i>
+                        Next steps will be sent to registered team emails.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center">
+        <p class="text-white/20 text-[9px] font-black uppercase tracking-[0.6em]">© 2026 International Innovation Challenge</p>
+    </footer>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        lucide.createIcons();
+        AOS.init({ duration: 1000, once: true });
+
+        // Cursor Glow
+        document.addEventListener('mousemove', (e) => {
+            const glow = document.getElementById('cursor-glow');
+            if (glow) {
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('teamSearch');
+        const grid = document.getElementById('teamsGrid');
+        const cards = grid.querySelectorAll('.team-card');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const name = card.querySelector('span').innerText.toLowerCase();
+                if (name.includes(term)) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (visibleCount === 0) {
+                grid.classList.add('hidden');
+                noResults.classList.remove('hidden');
+            } else {
+                grid.classList.remove('hidden');
+                noResults.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+
+</html>
