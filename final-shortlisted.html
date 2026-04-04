@@ -141,24 +141,193 @@
         <div class="container mx-auto px-6">
             <div class="max-w-6xl mx-auto">
                 
-                <!-- Finalists Selection Placeholder -->
-                <div id="finalistsGrid" class="flex flex-col items-center justify-center py-20 text-center" data-aos="fade-up"
-                    data-aos-delay="200">
-                    <div class="w-24 h-24 bg-gold/10 rounded-[2rem] flex items-center justify-center text-gold mb-10 border border-gold/20 animate-pulse">
-                        <i data-lucide="award" class="w-12 h-12"></i>
+                <!-- Online Evaluation Teams -->
+                <div class="mb-20">
+                    <div class="flex items-center gap-4 mb-10" data-aos="fade-right">
+                        <div class="h-px flex-1 bg-gradient-to-r from-transparent to-gold/20"></div>
+                        <h2 class="text-2xl md:text-4xl font-orbitron font-black gold-glow tracking-tighter uppercase italic">
+                            Online Evaluation
+                        </h2>
+                        <div class="h-px flex-1 bg-gradient-to-l from-transparent to-gold/20"></div>
                     </div>
-                    <h2 class="text-4xl md:text-6xl font-orbitron font-black mb-6 tracking-tighter gold-glow italic">
-                        RESULTS <br> ANNOUNCING SOON
-                    </h2>
-                    <p class="text-white/40 text-lg max-w-lg mx-auto font-light leading-relaxed">
-                        The final round selection is currently being processed by our expert judging panel. Stay tuned for the official announcement of the IIC 2K26 Finalists.
-                    </p>
-                    <div class="mt-12 flex gap-4">
-                        <div class="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-widest text-white/60">
-                            Status: Expert Review
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up">
+                        <!-- Online Team 1 -->
+                        <div class="finalist-card p-8 rounded-[2rem] group relative">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-gold/10 rounded-2xl flex items-center justify-center text-gold border border-gold/20 group-hover:scale-110 transition-transform">
+                                    <span class="font-orbitron font-bold text-xl">01</span>
+                                </div>
+                                <span class="status-badge-final">Top Tier</span>
+                            </div>
+                            <h3 class="text-2xl font-orbitron font-bold mb-2 tracking-tight group-hover:text-gold transition-colors">Tung Tung Tung Sahur</h3>
+                            <p class="text-white/40 text-xs font-bold uppercase tracking-widest">Grand Finale Finalist</p>
                         </div>
-                        <div class="px-6 py-3 rounded-xl bg-gold/10 border border-gold/20 text-[10px] font-black uppercase tracking-widest text-gold animate-pulse">
-                            Live Update Pending
+
+                        <!-- Online Team 2 -->
+                        <div class="finalist-card p-8 rounded-[2rem] group relative">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-gold/10 rounded-2xl flex items-center justify-center text-gold border border-gold/20 group-hover:scale-110 transition-transform">
+                                    <span class="font-orbitron font-bold text-xl">02</span>
+                                </div>
+                                <span class="status-badge-final">Top Tier</span>
+                            </div>
+                            <h3 class="text-2xl font-orbitron font-bold mb-2 tracking-tight group-hover:text-gold transition-colors">OG Helix</h3>
+                            <p class="text-white/40 text-xs font-bold uppercase tracking-widest">Grand Finale Finalist</p>
+                        </div>
+
+                        <!-- Online Team 3 -->
+                        <div class="finalist-card p-8 rounded-[2rem] group relative">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-gold/10 rounded-2xl flex items-center justify-center text-gold border border-gold/20 group-hover:scale-110 transition-transform">
+                                    <span class="font-orbitron font-bold text-xl">03</span>
+                                </div>
+                                <span class="status-badge-final">Top Tier</span>
+                            </div>
+                            <h3 class="text-2xl font-orbitron font-bold mb-2 tracking-tight group-hover:text-gold transition-colors">The Debugger</h3>
+                            <p class="text-white/40 text-xs font-bold uppercase tracking-widest">Grand Finale Finalist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Offline Evaluation Teams -->
+                <div>
+                    <div class="flex items-center gap-4 mb-10" data-aos="fade-right">
+                        <div class="h-px flex-1 bg-gradient-to-r from-transparent to-gold/20"></div>
+                        <h2 class="text-2xl md:text-4xl font-orbitron font-black gold-glow tracking-tighter uppercase italic">
+                            Offline Evaluation
+                        </h2>
+                        <div class="h-px flex-1 bg-gradient-to-l from-transparent to-gold/20"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up">
+                        <!-- Offline Teams -->
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">04</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">EchoMulch</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">05</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Green Spokes</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">06</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Circuit Breakers</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">07</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Blanc</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">11</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Hydrosense</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">11</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Falcon Defenders</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">17</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">DevCore Visionx</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">18</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Innovate Her</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">19</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Agritadka</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">20</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Carbon Coders</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">22</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">IP Quest Quizzy</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">23</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Qumail</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">29</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Blasto Ice</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">31</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">QUANTUM LEAPERS</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">39</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Team Regensis</h3>
+                        </div>
+
+                        <div class="finalist-card p-6 rounded-[1.5rem] group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-gold/30 font-orbitron font-black text-4xl group-hover:text-gold/50 transition-colors">40</div>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gold/40"></i>
+                            </div>
+                            <h3 class="text-xl font-orbitron font-bold tracking-tight">Gobardhan</h3>
                         </div>
                     </div>
                 </div>
